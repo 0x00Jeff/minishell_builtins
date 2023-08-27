@@ -4,7 +4,7 @@ NAME = minishell
 
 CFLAGS = -Wall -Wextra -Werror
 
-M_SRC = minishell.c utils.c
+M_SRC = minishell.c builtins_utils.c
 
 M_OBJ = $(M_SRC:.c=.o)
 
