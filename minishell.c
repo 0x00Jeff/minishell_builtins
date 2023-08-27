@@ -1,6 +1,5 @@
 #include "libft/libft.h"
 #include "minishell.h"
-#include "builtins_utils.h"
 #include<stdio.h>
 #include<string.h> // TODO : add clone the libft that has ft_strcmp
 
@@ -28,29 +27,17 @@ void builtins(int argc, char *command, char **args)
 		return ;
 	if (!strcmp(command, "echo")) // TODO : use libft version that has ft_strcmp
 		echo(argc, args);
+//	else if (!strcmp(command, "cd"))
+//		cd(argc, args);
+	else if (!strcmp(command, "pwd"))
+		pwd();
+//	else if (!strcmp(command, "export"))
+//		export(argc, args);
+//	else if (!strcmp(command, "unset"))
+//		unset(argc, args);
+//	else if (!strcmp(command, "env"))
+//		env(argc, args);
+//	else if (!strcmp(command, "exit"))
+//		exit(argc, args);
 }
 
-void echo(int argc, char **args)
-{
-	int new_line;
-	int i;
-	char *option;
-	if (!args)
-		return (ft_putstr_fd("\n", 1));
-	i = 0;
-	option = args[i];
-	new_line = 1;
-	if (option && strlen(option + 1) && consists_of(option + 1, 'n'))
-	{
-		new_line = 0;
-		i++;
-	}
-	while (i < argc - 1)
-	{
-		ft_putstr_fd(args[i++], 1);
-		ft_putstr_fd(" ", 1);
-	}
-	ft_putstr_fd(args[i++], 1);
-	if (new_line)
-		ft_putstr_fd("\n", 1);
-}
