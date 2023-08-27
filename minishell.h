@@ -1,6 +1,6 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-int builtins(char *command, char *arg);
-void echo(char *command, char *arg);
+void builtins(int argc, char *command, char **args);
+void echo(int argc, char **args);
 # endif

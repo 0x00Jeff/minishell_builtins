@@ -4,9 +4,7 @@ NAME = minishell
 
 CFLAGS = -Wall -Wextra -Werror
 
-BONUS = checker_bonus
-
-M_SRC = minishell.c
+M_SRC = minishell.c utils.c
 
 M_OBJ = $(M_SRC:.c=.o)
 

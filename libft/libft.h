@@ -6,7 +6,7 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:21:49 by afatimi           #+#    #+#             */
-/*   Updated: 2022/10/22 23:17:27 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/27 16:50:47 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+int		in_set(char *set, char c);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
