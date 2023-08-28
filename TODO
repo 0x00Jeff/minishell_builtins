@@ -1,0 +1,3 @@
+make append_to_env to make export add new variables
+make the other builtins
+make a diff in printing between env and export

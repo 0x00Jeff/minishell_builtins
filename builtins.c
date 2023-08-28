@@ -1,7 +1,8 @@
 #include "builtins.h"
-#include "builtins_utils.h"
+#include "builtin_utils.h"
 #include "libft/libft.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 void echo(int argc, char **args)
@@ -29,6 +30,43 @@ void echo(int argc, char **args)
 		ft_putstr_fd("\n", 1);
 }
 
+void cd(int argc, char *arg)
+{
+	char *home_dir;
+	if (argc && !arg)
+		return;
+	home_dir = getenv("HOME");
+	// TODO : check if MAC's gentev has the extension that allocates the buffer
+	// in the heap just like linux
+	if (!argc)
+	{
+		if (!home_dir)
+			return (ft_putstr_fd("cd: HOME not set\n", 2));
+	//		return (ft_putstr_fd("cd: HOME not set\n", 2), free(home_dir)); ??
+
+		// TODO : test this when u make pwd!!!
+		else
+		 	if (chdir(home_dir) == -1)
+		 		perror("chdir");
+	}
+	else
+	{
+		if (arg[0] == '/')
+		{
+		 	if (chdir(arg) == -1)
+		 		perror("chdir");
+		}
+		else
+		{
+			;
+			// TODO make a path depending on if args is relative or absolute
+		}
+
+	}
+	// free(cur_dir); ?
+	// TODO : change PWD in env
+}
+
 void	pwd()
 {
 	// TODO : make this static to handle the edgecase
@@ -37,4 +75,17 @@ void	pwd()
 
 	cur_dir = getcwd(NULL, 0);
 	printf("%s\n", cur_dir);
+}
+
+void export(int argc, char **argv, char **envp)
+{
+	// TODO : still have to make append_to_env and del_from_env and search_in_env
+	t_env *env = create_env(envp);
+	if (!argc)
+	{
+		print_env(env);
+		return ;
+	}
+	//printf(search_in_env(env, "HOME2"));
+	(void)argv;
 }

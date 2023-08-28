@@ -4,7 +4,7 @@ NAME = minishell
 
 CFLAGS = -Wall -Wextra -Werror
 
-M_SRC = minishell.c builtins_utils.c builtins.c
+M_SRC = minishell.c builtin_utils.c builtins.c
 
 M_OBJ = $(M_SRC:.c=.o)
 
@@ -16,7 +16,7 @@ $(NAME): $(M_OBJ) $(LIBFT)/libft.a
 	$(CC) $(M_OBJ) $(LIBFT)/libft.a -o $(NAME)
 
 $(LIBFT)/libft.a:
-	make -C $(LIBFT)
+	make -C $(LIBFT) all
 
 %.o : %.c # TODO : add minishell.c here
 	$(CC) $(CFLAGS) -c $< -o $@

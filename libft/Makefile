@@ -20,7 +20,7 @@ bonus_src = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 
 bonus_obj = $(bonus_src:.c=.o)
 
-all : $(NAME)
+all : $(NAME) bonus
 
 $(NAME) : $(OBJ) libft.h
 	ar rcs $@ $^

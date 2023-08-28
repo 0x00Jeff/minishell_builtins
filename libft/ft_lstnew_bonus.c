@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:40:43 by afatimi           #+#    #+#             */
-/*   Updated: 2022/10/09 12:06:23 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/28 01:09:16 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include<stdio.h> // TODO : delete this
 #include<stdlib.h>
 #include"libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_env	*ft_lstnew(char *elem, t_env *prev)
 {
-	t_list	*node;
+	t_env	*node;
+	size_t split_index;
 
-	node = (t_list *)malloc(sizeof(t_list));
+	node = (t_env *)malloc(sizeof(t_env));
 	if (!node)
 		return (NULL);
-	node -> content = content;
+	split_index = (size_t)ft_strchr(elem, '=') - (size_t)elem;
+	node -> key = ft_substr(elem, 0, split_index);
+	node -> value = ft_strdup(elem + split_index + 1);
+	node -> prev = prev;
 	node -> next = NULL;
 	return (node);
 }
