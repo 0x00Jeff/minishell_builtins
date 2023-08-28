@@ -13,12 +13,17 @@ void echo(int argc, char **args)
 	if (!args)
 		return (ft_putstr_fd("\n", 1));
 	i = 0;
-	option = args[i];
 	new_line = 1;
-	if (option && ft_strlen(option + 1) && consists_of(option + 1, 'n'))
+	while (i < argc - 1)
 	{
-		new_line = 0;
-		i++;
+		option = args[i];
+		if (option && ft_strlen(option + 1) && consists_of(option + 1, 'n'))
+		{
+			new_line = 0;
+			i++;
+		}
+		else
+			break;
 	}
 	while (i < argc - 1)
 	{
