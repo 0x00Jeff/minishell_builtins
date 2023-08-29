@@ -102,7 +102,10 @@ void export(int argc, char **argv, t_env **env)
 			continue;
 		tmp = ft_split(ptr, '=');
 		if (!tmp)
+		{
+			free_list(tmp);
 			continue;
+		}
 		tmp_node = search_in_env(*env, tmp[0]);
 		if (!tmp_node)
 		{
@@ -115,8 +118,8 @@ void export(int argc, char **argv, t_env **env)
 		{
 			free(tmp_node ->value);
 			tmp_node -> value = ft_strdup(tmp[1]);
-			free_list(tmp);
 		}
+		free_list(tmp);
 	}
 }
 
