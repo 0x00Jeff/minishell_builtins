@@ -58,14 +58,12 @@ t_env *search_in_env(t_env *env, char *key)
 	if (!env)
 		return (NULL);
 	ptr = env;
-	while(ptr -> next != env)
+	while(ptr)
 	{
 		if (!strcmp(ptr -> key, key))  // TODO : use the libft version with strcmp
 			return (ptr);
 		ptr = ptr -> next;
 	}
-	if (!strcmp(ptr -> key, key))  // TODO : use the libft version with strcmp
-		return (ptr);
 	return (NULL);
 }
 
@@ -100,5 +98,6 @@ int validate_var_name(char *str)
 	}
 	if (ft_isdigit(str[0]))
 		return (free_list(pair), printf("export: `%s': not a valid identifier\n", str));
+	free_list(pair);
 	return (0);
 }

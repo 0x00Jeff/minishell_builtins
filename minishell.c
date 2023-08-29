@@ -10,6 +10,7 @@ int main(int argc, char *argv[], char **envp)
 	char *command_ptr;
 	char command[100];
 	char	**args;
+	char	**tmp;
 	size_t	size;
 
 	(void)argv;
@@ -26,15 +27,17 @@ int main(int argc, char *argv[], char **envp)
 
 		if (strlen(command) == 1)
 			continue;
-		args = ft_split(command, ' ');
-		command_ptr = args[0];
-		args = &args[1];
+		tmp = ft_split(command, ' ');
+		command_ptr = tmp[0];
+		args = &tmp[1];
 		while(*args++)
 			size++;
-		args = ft_split(command, ' ');
-		args = &args[1];
+		free_list(tmp);
+		tmp = ft_split(command, ' ');
+		args = &tmp[1];
 		builtins(size, command_ptr, args, &env);
 		memset(command, 0, sizeof(command));
+		free_list(tmp);
 	}
 }
 
