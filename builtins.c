@@ -80,29 +80,29 @@ void	pwd()
 	printf("%s\n", cur_dir);
 }
 
-void export(int argc, char **argv, t_env *env)
+void export(int argc, char **argv, t_env **env)
 {
 	int i;
-	char **pair;
-//	char *key;
-//	char *value;
-	// TODO : still have to make append_to_env and del_from_env and search_in_env
+	char *ptr;
+	t_env *node;
+	t_env *prev;
+	// TODO : still have to make append_to_env
+	if (!env)
+		return ;
 	if (!argc)
-		return (print_env(env));
+		return (print_env(*env));
 	i = 0;
+	prev = NULL;
 	while(i < argc)
 	{
-		pair = ft_split(argv[i++], '=');
-		if (!pair)
-			return; // TODO : ask yego what to do here??;
-		if (!pair[0] || !pair[1])
-		{
-			free_list(pair);
+		ptr = argv[i++];
+		if (validate_var_name(ptr))
 			continue;
-		}
-		printf("%s\n", argv[i++]);
+		if (*env)
+			prev = (*env) -> prev;
+		node = ft_lstnew(ptr, prev);
+		ft_lstadd_back(env, node);
 	}
-	(void)argv;
 }
 
 void unset(int argc, char **args, t_env *env)

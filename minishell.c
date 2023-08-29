@@ -33,12 +33,12 @@ int main(int argc, char *argv[], char **envp)
 			size++;
 		args = ft_split(command, ' ');
 		args = &args[1];
-		builtins(size, command_ptr, args, env);
+		builtins(size, command_ptr, args, &env);
 		memset(command, 0, sizeof(command));
 	}
 }
 
-void builtins(int argc, char *command, char **args,/* char **envp, */t_env *env)
+void builtins(int argc, char *command, char **args,/* char **envp, */t_env **env)
 {
 	if (!command/* || !envp)*/) // TODO : double check this statement
 		return ;
@@ -51,7 +51,7 @@ void builtins(int argc, char *command, char **args,/* char **envp, */t_env *env)
 	else if (!strcmp(command, "export")) // TODO : this doesn't print like bash command does
 		export(argc, args, env);
 	else if (!strcmp(command, "unset"))
-		unset(argc, args, env);
+		unset(argc, args, *env);
 	else if (!strcmp(command, "exit"))
 		my_exit(*args);
 	else

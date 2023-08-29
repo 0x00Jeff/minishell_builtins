@@ -1,3 +1,6 @@
+- adding an env var to a non-empty env
+- unset then export a=b segfaults
+- handle export options, lackof more of
 - make append_to_env to make export add new variables
 - dont forget del_from_env check for the case when u need to delete the head
 - in echo check `echo -n -n -n lol` case

@@ -47,12 +47,13 @@ void print_env(t_env *env)
 	if (!env)
 		return;
 	ptr = env;
-	while(ptr -> next != env)
+	while(ptr && ptr -> next != env)
 	{
 		printf("%s=%s\n", ptr -> key, ptr -> value);
 		ptr = ptr -> next;
 	}
-	printf("%s=%s\n", ptr -> key, ptr -> value);
+	if (ptr)
+		printf("%s=%s\n", ptr -> key, ptr -> value);
 }
 
 t_env *search_in_env(t_env *env, char *key)
@@ -83,4 +84,23 @@ void del_from_env(t_env *env, char *key)
 	node -> prev -> next = node -> next;
 	node -> next -> prev = node -> prev;
 	ft_lstdelone(node, free);
+}
+
+int validate_var_name(char *str)
+{
+	char **pair;
+
+	if (!str)
+		return (1);
+	pair = ft_split(str, '=');
+	if (!pair)
+		return (1);
+	if (!pair[0] || !pair[1])
+	{
+		free_list(pair);
+		return (1); //  TODO : might do return !!!free_list(pair)
+	}
+	if (ft_isdigit(str[0]))
+		return printf("export: `%s': not a valid identifier\n", str);
+	return (0);
 }
