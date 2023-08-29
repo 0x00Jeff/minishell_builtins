@@ -131,8 +131,9 @@ void edit_env_node_value(t_env *node, char *value)
 	node -> value = ft_strdup(value);
 }
 
-void unset(int argc, char **args, t_env *env)
+void unset(int argc, char **args, t_env **env)
 {
+	char *ptr;
 	int i;
 	if (!args || !env)
 		return;
@@ -140,7 +141,9 @@ void unset(int argc, char **args, t_env *env)
 	i = 0;
 	while (i < argc)
 	{
-		// TODO : validate name first??
+		ptr = args[i++];
+		if (validate_var_name(ptr))
+			continue;
 		del_from_env(env, args[i++]);
 	}
 }

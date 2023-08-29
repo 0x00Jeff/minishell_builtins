@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:48:46 by afatimi           #+#    #+#             */
-/*   Updated: 2022/10/08 11:28:49 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/29 21:45:38 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"libft.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize(t_env *lst)
 {
-	t_list	*ptr;
+	t_env	*ptr;
 	size_t	count;
 
 	ptr = lst;

@@ -6,7 +6,7 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:50:57 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/29 20:51:11 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/29 21:36:32 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"libft.h"
@@ -20,9 +20,6 @@ t_list	*ft_lstlast(t_list *lst)
 		return (NULL);
 	ptr = lst;
 	while (ptr -> next)
-	{
-		printf("%s=%s\n", ptr -> key, ptr -> value);
 		ptr = ptr -> next;
-	}
 	return (ptr);
 }

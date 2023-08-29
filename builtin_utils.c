@@ -67,16 +67,25 @@ t_env *search_in_env(t_env *env, char *key)
 	return (NULL);
 }
 
-void del_from_env(t_env *env, char *key)
+void del_from_env(t_env **env, char *key)
 {
 	t_env *node;
-	if (!env)
+	if (!env || !*env)
 		return ;
-	node = search_in_env(env, key);
+	node = search_in_env(*env, key);
 	if (!node)
 		return;
-	node -> prev -> next = node -> next;
-	node -> next -> prev = node -> prev;
+	if (ft_lstsize(*env) == 1)
+	{
+		ft_lstdelone(*env, free);
+		*env = NULL;
+	}
+	else
+	{
+		node -> prev -> next = node -> next;
+		node -> next -> prev = node -> prev;
+	}
+
 	ft_lstdelone(node, free);
 }
 
