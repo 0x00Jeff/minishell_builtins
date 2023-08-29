@@ -80,10 +80,10 @@ void	pwd()
 	printf("%s\n", cur_dir);
 }
 
-void export(int argc, char **argv, char **envp)
+void export(int argc, char **argv, t_env *env)
 {
 	// TODO : still have to make append_to_env and del_from_env and search_in_env
-	t_env *env = create_env(envp);
+	(void)env;
 	if (!argc)
 	{
 		print_env(env);

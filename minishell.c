@@ -3,6 +3,7 @@
 #include "builtins.h"
 #include<stdio.h>
 #include<string.h> // TODO : add clone the libft that has ft_strcmp
+# include "builtin_utils.h"
 
 int main(int argc, char *argv[], char **envp)
 {
@@ -13,6 +14,7 @@ int main(int argc, char *argv[], char **envp)
 
 	(void)argv;
 	(void)argc;
+	t_env *env = create_env(envp);
 	while(1)
 	{
 		size = 0;
@@ -31,23 +33,23 @@ int main(int argc, char *argv[], char **envp)
 			size++;
 		args = ft_split(command, ' ');
 		args = &args[1];
-		builtins(size, command_ptr, args, envp);
+		builtins(size, command_ptr, args, env);
 		memset(command, 0, sizeof(command));
 	}
 }
 
-void builtins(int argc, char *command, char **args, char **envp)
+void builtins(int argc, char *command, char **args,/* char **envp, */t_env *env)
 {
-	if (!command || !envp) // TODO : double check this statement
+	if (!command/* || !envp)*/) // TODO : double check this statement
 		return ;
 	if (!strcmp(command, "echo")) // TODO : use libft version that has ft_strcmp
 		echo(argc, args);
 	else if (!strcmp(command, "cd"))
-		cd(argc, *args);
+		cd(argc, *args); // TODO : should we send env here?
 	else if (!strcmp(command, "pwd"))
-		pwd();
+		pwd(); // TODO : should we send env here?
 	else if (!strcmp(command, "export")) // TODO : this doesn't print like bash command does
-		export(argc, args, envp);
+		export(argc, args, env);
 	else
 		ft_putstr_fd("command not a builtin!\n", 2);
 //	else if (!strcmp(command, "unset"))
