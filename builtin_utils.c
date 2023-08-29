@@ -24,7 +24,7 @@ t_env *create_env(char **envp)
 	t_env *env;
 	t_env *prev;
 	t_env *ptr;
-	if (!envp || !*envp)
+	if (!envp)
 		return (NULL);
 
 	env = NULL;
@@ -32,11 +32,9 @@ t_env *create_env(char **envp)
 	while(*envp)
 	{
 		ptr = ft_lstnew(*envp++, prev);
-		prev = ptr;
-		// TODO : ask yego how to protect this??
 		ft_lstadd_back(&env, ptr);
+		prev = ptr;
 	}
-	ptr -> next = env;
 	return (env);
 }
 
@@ -47,13 +45,11 @@ void print_env(t_env *env)
 	if (!env)
 		return;
 	ptr = env;
-	while(ptr && ptr -> next != env)
+	while(ptr)
 	{
 		printf("%s=%s\n", ptr -> key, ptr -> value);
 		ptr = ptr -> next;
 	}
-	if (ptr)
-		printf("%s=%s\n", ptr -> key, ptr -> value);
 }
 
 t_env *search_in_env(t_env *env, char *key)
@@ -103,6 +99,6 @@ int validate_var_name(char *str)
 		return (1); //  TODO : might do return !!!free_list(pair)
 	}
 	if (ft_isdigit(str[0]))
-		return printf("export: `%s': not a valid identifier\n", str);
+		return (free_list(pair), printf("export: `%s': not a valid identifier\n", str));
 	return (0);
 }

@@ -44,14 +44,14 @@ void builtins(int argc, char *command, char **args,/* char **envp, */t_env **env
 		return ;
 	if (!strcmp(command, "echo")) // TODO : use libft version that has ft_strcmp
 		echo(argc, args);
-	else if (!strcmp(command, "cd"))
-		cd(argc, *args); // TODO : should we send env here?
-	else if (!strcmp(command, "pwd"))
-		pwd(); // TODO : should we send env here?
+//	else if (!strcmp(command, "cd"))
+//		cd(argc, *args); // TODO : should we send env here?
+//	else if (!strcmp(command, "pwd"))
+//		pwd(); // TODO : should we send env here?
 	else if (!strcmp(command, "export")) // TODO : this doesn't print like bash command does
 		export(argc, args, env);
-	else if (!strcmp(command, "unset"))
-		unset(argc, args, *env);
+//	else if (!strcmp(command, "unset"))
+//		unset(argc, args, *env);
 	else if (!strcmp(command, "exit"))
 		my_exit(*args);
 	else

@@ -86,9 +86,7 @@ void export(int argc, char **argv, t_env **env)
 	char *ptr;
 	char **tmp;
 	t_env *tmp_node;
-	t_env *node;
 	t_env *prev;
-	// TODO : still have to make append_to_env
 	if (!env)
 		return ;
 	if (!argc)
@@ -102,25 +100,35 @@ void export(int argc, char **argv, t_env **env)
 			continue;
 		tmp = ft_split(ptr, '=');
 		if (!tmp)
-		{
-			free_list(tmp);
 			continue;
-		}
 		tmp_node = search_in_env(*env, tmp[0]);
 		if (!tmp_node)
-		{
-			if (*env)
-				prev = (*env) -> prev;
-			node = ft_lstnew(ptr, prev);
-			ft_lstadd_back(env, node);
-		}
+			add_new_node_to_env(env, ptr);
 		else
-		{
-			free(tmp_node ->value);
-			tmp_node -> value = ft_strdup(tmp[1]);
-		}
+			edit_env_node_value(tmp_node, tmp[1]);
 		free_list(tmp);
 	}
+}
+
+void add_new_node_to_env(t_env **env, char *value)
+{
+	t_env *prev;
+	if (!env || !value)
+		return;
+
+	prev = NULL;
+	if (*env)
+		prev = (*env) -> prev;
+	t_env *node = ft_lstnew(value, prev);
+	ft_lstadd_back(env, node);
+}
+
+void edit_env_node_value(t_env *node, char *value)
+{
+	if (!node || !value)
+		return;
+	free(node -> value);
+	node -> value = ft_strdup(value);
 }
 
 void unset(int argc, char **args, t_env *env)

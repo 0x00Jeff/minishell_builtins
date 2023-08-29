@@ -2,7 +2,7 @@ CC = cc
 
 NAME = minishell
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 M_SRC = minishell.c builtin_utils.c builtins.c
 
