@@ -6,7 +6,7 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 13:53:01 by afatimi           #+#    #+#             */
-/*   Updated: 2022/11/06 16:03:36 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/29 17:15:42 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include<stdio.h>
@@ -48,9 +48,4 @@ void	*ft_memset(void *b, int c, size_t len)
 	while (len--)
 		*ptr++ = (unsigned char)c;
 	return (b);
-}
-
-int main(void)
-{
-	printf("%lx\n", char_to_long_long(0x55));
 }

@@ -6,20 +6,34 @@
 
 int main(int argc, char *argv[], char **envp)
 {
+	char *command_ptr;
+	char command[100];
 	char	**args;
+	size_t	size;
 
-	args = NULL;
-	if (argc == 1)
+	(void)argv;
+	(void)argc;
+	while(1)
 	{
-		printf("Usage : %s args\n", argv[0]);
-		return (1);
+		size = 0;
+		command_ptr = NULL;
+		args  = NULL;
+		printf("$ ");fflush(stdout);
+		fgets(command, sizeof(command), stdin);
+		command[strlen(command) - 1] = 0;
+
+		if (strlen(command) == 1)
+			continue;
+		args = ft_split(command, ' ');
+		command_ptr = args[0];
+		args = &args[1];
+		while(*args++)
+			size++;
+		args = ft_split(command, ' ');
+		args = &args[1];
+		builtins(size, command_ptr, args, envp);
+		memset(command, 0, sizeof(command));
 	}
-	if (argc >= 3)
-		args = &argv[2];
-//	printf("command = %s\n", command);
-//	printf("option = %s\n", option);
-//	printf("arg = %s\n", arg);
-	builtins(argc - 2, argv[1], args, envp);
 }
 
 void builtins(int argc, char *command, char **args, char **envp)
@@ -34,6 +48,8 @@ void builtins(int argc, char *command, char **args, char **envp)
 		pwd();
 	else if (!strcmp(command, "export")) // TODO : this doesn't print like bash command does
 		export(argc, args, envp);
+	else
+		ft_putstr_fd("command not a builtin!\n", 2);
 //	else if (!strcmp(command, "unset"))
 //		unset(argc, args, envp);
 //	else if (!strcmp(command, "env"))
