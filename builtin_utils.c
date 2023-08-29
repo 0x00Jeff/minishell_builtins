@@ -92,6 +92,8 @@ int validate_var_name(char *str)
 
 	if (!str)
 		return (1);
+//	if (!strrchr(str, '='))
+//		return (1);
 	pair = ft_split(str, '=');
 	if (!pair)
 		return (1);
