@@ -57,14 +57,18 @@ void print_env(t_env *env)
 
 t_env *search_in_env(t_env *env, char *key)
 {
+	t_env *ptr;
 	if (!env)
 		return (NULL);
-	while(env)
+	ptr = env;
+	while(ptr -> next != env)
 	{
-		if (!strcmp(env -> key, key))  // TODO : use the libft version with strcmp
-			return (env);
-		env = env -> next;
+		if (!strcmp(ptr -> key, key))  // TODO : use the libft version with strcmp
+			return (ptr);
+		ptr = ptr -> next;
 	}
+	if (!strcmp(ptr -> key, key))  // TODO : use the libft version with strcmp
+		return (ptr);
 	return (NULL);
 }
 
@@ -74,6 +78,8 @@ void del_from_env(t_env *env, char *key)
 	if (!env)
 		return ;
 	node = search_in_env(env, key);
+	if (!node)
+		return;
 	node -> prev -> next = node -> next;
 	node -> next -> prev = node -> prev;
 	ft_lstdelone(node, free);

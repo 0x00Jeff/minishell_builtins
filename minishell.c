@@ -50,12 +50,12 @@ void builtins(int argc, char *command, char **args,/* char **envp, */t_env *env)
 		pwd(); // TODO : should we send env here?
 	else if (!strcmp(command, "export")) // TODO : this doesn't print like bash command does
 		export(argc, args, env);
+	else if (!strcmp(command, "unset"))
+		unset(argc, args, env);
 	else if (!strcmp(command, "exit"))
 		my_exit(*args);
 	else
 		ft_putstr_fd("command not a builtin!\n", 2);
-//	else if (!strcmp(command, "unset"))
-//		unset(argc, args, envp);
 //	else if (!strcmp(command, "env"))
 //		env(argc, args);
 }

@@ -82,12 +82,41 @@ void	pwd()
 
 void export(int argc, char **argv, t_env *env)
 {
+	int i;
+	char **pair;
+//	char *key;
+//	char *value;
 	// TODO : still have to make append_to_env and del_from_env and search_in_env
-	(void)env;
 	if (!argc)
 		return (print_env(env));
-	//printf(search_in_env(env, "HOME2"));
+	i = 0;
+	while(i < argc)
+	{
+		pair = ft_split(argv[i++], '=');
+		if (!pair)
+			return; // TODO : ask yego what to do here??;
+		if (!pair[0] || !pair[1])
+		{
+			free_list(pair);
+			continue;
+		}
+		printf("%s\n", argv[i++]);
+	}
 	(void)argv;
+}
+
+void unset(int argc, char **args, t_env *env)
+{
+	int i;
+	if (!args || !env)
+		return;
+
+	i = 0;
+	while (i < argc)
+	{
+		// TODO : validate name first??
+		del_from_env(env, args[i++]);
+	}
 }
 
 void my_exit(char *arg)
