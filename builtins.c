@@ -85,10 +85,12 @@ void export(int argc, char **argv, t_env *env)
 	// TODO : still have to make append_to_env and del_from_env and search_in_env
 	(void)env;
 	if (!argc)
-	{
-		print_env(env);
-		return ;
-	}
+		return (print_env(env));
 	//printf(search_in_env(env, "HOME2"));
 	(void)argv;
+}
+
+void my_exit(char *arg)
+{
+	exit(ft_atoi(arg));
 }
