@@ -14,7 +14,7 @@ void echo(int argc, char **args)
 		return (ft_putstr_fd("\n", 1));
 	i = 0;
 	new_line = 1;
-	while (i < argc - 1)
+	while (i <= argc - 1)
 	{
 		option = args[i];
 		if (option && ft_strlen(option + 1) && consists_of(option + 1, 'n'))
@@ -26,11 +26,9 @@ void echo(int argc, char **args)
 			break;
 	}
 	while (i < argc - 1)
-	{
+		ft_putstr_fd(args[i++], 1), ft_putstr_fd(" ", 1);
+	if (i <= argc - 1)
 		ft_putstr_fd(args[i++], 1);
-		ft_putstr_fd(" ", 1);
-	}
-	ft_putstr_fd(args[i++], 1);
 	if (new_line)
 		ft_putstr_fd("\n", 1);
 }
