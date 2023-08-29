@@ -84,6 +84,8 @@ void export(int argc, char **argv, t_env **env)
 {
 	int i;
 	char *ptr;
+	char **tmp;
+	t_env *tmp_node;
 	t_env *node;
 	t_env *prev;
 	// TODO : still have to make append_to_env
@@ -98,10 +100,23 @@ void export(int argc, char **argv, t_env **env)
 		ptr = argv[i++];
 		if (validate_var_name(ptr))
 			continue;
-		if (*env)
-			prev = (*env) -> prev;
-		node = ft_lstnew(ptr, prev);
-		ft_lstadd_back(env, node);
+		tmp = ft_split(ptr, '=');
+		if (!tmp)
+			continue;
+		tmp_node = search_in_env(*env, tmp[0]);
+		if (!tmp_node)
+		{
+			if (*env)
+				prev = (*env) -> prev;
+			node = ft_lstnew(ptr, prev);
+			ft_lstadd_back(env, node);
+		}
+		else
+		{
+			free(tmp_node ->value);
+			tmp_node -> value = ft_strdup(tmp[1]);
+			free_list(tmp);
+		}
 	}
 }
 
