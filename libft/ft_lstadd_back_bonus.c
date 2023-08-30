@@ -6,11 +6,11 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:19:25 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/28 00:35:08 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/30 22:47:13 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 void	ft_lstadd_back(t_env **lst, t_env *new)
 {
@@ -20,7 +20,7 @@ void	ft_lstadd_back(t_env **lst, t_env *new)
 		return ;
 	ptr = *lst;
 	if (ptr)
-		ft_lstlast(ptr) -> next = new;
+		ft_lstlast(ptr)->next = new;
 	else
 		*lst = new;
 }

@@ -6,16 +6,14 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 22:53:39 by afatimi           #+#    #+#             */
-/*   Updated: 2022/11/05 18:17:17 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/30 22:41:08 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+#include "libft.h"
 
-static unsigned int	min(size_t n, size_t m)
+static size_t	min(size_t n, size_t m)
 {
-	if (n <= m)
-		return (n);
-	return (m);
+	return (n * (n <= m) + m * (n > m));
 }
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)

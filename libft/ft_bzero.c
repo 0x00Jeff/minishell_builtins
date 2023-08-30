@@ -6,11 +6,11 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:20:26 by afatimi           #+#    #+#             */
-/*   Updated: 2022/10/22 17:00:39 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/30 22:45:55 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

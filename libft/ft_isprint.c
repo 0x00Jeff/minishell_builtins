@@ -6,10 +6,10 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:05:13 by afatimi           #+#    #+#             */
-/*   Updated: 2022/10/22 23:39:35 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/30 22:46:54 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+#include "libft.h"
 
 int	ft_isprint(int c)
 {

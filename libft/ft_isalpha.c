@@ -6,10 +6,10 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:11:39 by afatimi           #+#    #+#             */
-/*   Updated: 2022/10/22 23:16:59 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/30 22:46:30 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+#include "libft.h"
 
 static int	ft_isupper(int c)
 {

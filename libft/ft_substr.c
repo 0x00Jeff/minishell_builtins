@@ -6,17 +6,15 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 18:47:37 by afatimi           #+#    #+#             */
-/*   Updated: 2022/11/05 19:31:53 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/30 22:39:13 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdlib.h>
-#include"libft.h"
+#include "libft.h"
+#include <stdlib.h>
 
-size_t	min(size_t a, size_t b)
+static size_t	min(size_t n, size_t m)
 {
-	if (a <= b)
-		return (a);
-	return (b);
+	return (n * (n <= m) + m * (n > m));
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)

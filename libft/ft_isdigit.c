@@ -6,10 +6,10 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:48:21 by afatimi           #+#    #+#             */
-/*   Updated: 2022/10/22 17:58:33 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/30 22:46:46 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {

@@ -6,10 +6,10 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 20:50:51 by afatimi           #+#    #+#             */
-/*   Updated: 2022/10/13 16:37:15 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/30 22:42:04 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+#include "libft.h"
 
 int	ft_get_ten_pow(int nbr)
 {

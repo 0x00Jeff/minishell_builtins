@@ -6,11 +6,11 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 20:46:06 by afatimi           #+#    #+#             */
-/*   Updated: 2022/10/09 12:04:53 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/30 22:41:57 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

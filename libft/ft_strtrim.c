@@ -6,11 +6,11 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 13:25:14 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/27 16:50:23 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/30 22:39:32 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<string.h>
-#include"libft.h"
+#include "libft.h"
+#include <string.h>
 
 int	in_set(char *set, char c)
 {

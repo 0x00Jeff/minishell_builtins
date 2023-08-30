@@ -6,10 +6,10 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:48:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/29 21:45:38 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/30 22:48:37 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+#include "libft.h"
 
 int	ft_lstsize(t_env *lst)
 {
@@ -20,9 +20,9 @@ int	ft_lstsize(t_env *lst)
 	if (!ptr)
 		return (0);
 	count = 1;
-	while (ptr -> next)
+	while (ptr->next)
 	{
-		ptr = ptr -> next;
+		ptr = ptr->next;
 		count++;
 	}
 	return (count);
