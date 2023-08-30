@@ -6,7 +6,7 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:18:09 by afatimi           #+#    #+#             */
-/*   Updated: 2022/11/06 14:44:58 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/30 21:46:47 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"libft.h"
@@ -23,6 +23,8 @@ int	ft_atoi(const char *str)
 	long long	result;
 	int			sign;
 
+	if (!str)
+		return (0);
 	sign = 1;
 	while (ft_isspace(*str))
 		str++;
