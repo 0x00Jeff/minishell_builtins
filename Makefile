@@ -2,7 +2,7 @@ CC = cc
 
 NAME = minishell
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 M_SRC = minishell.c builtin_utils.c builtins.c
 
@@ -13,7 +13,7 @@ LIBFT = libft
 all: $(NAME)
 
 $(NAME): $(M_OBJ) $(LIBFT)/libft.a
-	$(CC) $(M_OBJ) $(LIBFT)/libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $(M_OBJ) $(LIBFT)/libft.a -o $(NAME)
 
 $(LIBFT)/libft.a:
 	make -C $(LIBFT) all

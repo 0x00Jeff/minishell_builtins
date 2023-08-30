@@ -27,17 +27,14 @@ int main(int argc, char *argv[], char **envp)
 
 		if (strlen(command) == 1)
 			continue;
-		tmp = ft_split(command, ' ');
-		command_ptr = tmp[0];
-		args = &tmp[1];
-		while(*args++)
+		args = ft_split(command, ' ');
+		command_ptr = args[0];
+		tmp = &args[1];
+		while(*tmp++)
 			size++;
-		free_list(tmp);
-		tmp = ft_split(command, ' ');
-		args = &tmp[1];
-		builtins(size, command_ptr, args, &env);
+		builtins(size, command_ptr, &args[1], &env);
 		memset(command, 0, sizeof(command));
-		free_list(tmp);
+		free_list(args);
 	}
 }
 
