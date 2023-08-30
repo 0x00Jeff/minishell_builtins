@@ -74,7 +74,13 @@ void del_from_env(t_env **env, char *key)
 		return ;
 	node = search_in_env(*env, key);
 	if (!node)
+	{
+		ft_putstr_fd("node not found\n", 1);
 		return;
+	}
+	else
+		ft_putstr_fd("node found\n", 1);
+
 	if (ft_lstsize(*env) == 1)
 	{
 		ft_lstdelone(*env, free);

@@ -103,14 +103,14 @@ void export(int argc, char **argv, t_env **env)
 			continue;
 		tmp_node = search_in_env(*env, tmp[0]);
 		if (!tmp_node)
-			add_new_node_to_env(env, ptr);
+			append_to_env(env, ptr);
 		else
-			edit_env_node_value(tmp_node, tmp[1]);
+			edit_env(tmp_node, tmp[1]);
 		free_list(tmp);
 	}
 }
 
-void add_new_node_to_env(t_env **env, char *value)
+void append_to_env(t_env **env, char *value)
 {
 	t_env *prev;
 	if (!env || !value)
@@ -123,7 +123,7 @@ void add_new_node_to_env(t_env **env, char *value)
 	ft_lstadd_back(env, node);
 }
 
-void edit_env_node_value(t_env *node, char *value)
+void edit_env(t_env *node, char *value)
 {
 	if (!node || !value)
 		return;
@@ -142,8 +142,11 @@ void unset(int argc, char **args, t_env **env)
 	while (i < argc)
 	{
 		ptr = args[i++];
-		if (validate_var_name(ptr))
+		if (ft_isdigit(*ptr))
+		{
+			printf("unset: `%s': not a valid identifier\n", ptr);
 			continue;
+		}
 		del_from_env(env, args[i++]);
 	}
 }
