@@ -147,7 +147,7 @@ void unset(int argc, char **args, t_env **env)
 			printf("unset: `%s': not a valid identifier\n", ptr);
 			continue;
 		}
-		del_from_env(env, args[i++]);
+		del_from_env(env, ptr);
 	}
 }
 

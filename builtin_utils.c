@@ -55,7 +55,7 @@ void print_env(t_env *env)
 t_env *search_in_env(t_env *env, char *key)
 {
 	t_env *ptr;
-	if (!env)
+	if (!env || !key)
 		return (NULL);
 	ptr = env;
 	while(ptr)
@@ -81,11 +81,11 @@ void del_from_env(t_env **env, char *key)
 	else
 		ft_putstr_fd("node found\n", 1);
 
-	if (ft_lstsize(*env) == 1)
-	{
-		ft_lstdelone(*env, free);
-		*env = NULL;
-	}
+	printf("list = size = %d\n", ft_lstsize(*env));
+	if (node == *env)
+		*env = (*env) -> next;
+	else if (!node -> next)
+		node -> prev -> next = NULL;
 	else
 	{
 		node -> prev -> next = node -> next;

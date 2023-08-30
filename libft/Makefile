@@ -2,7 +2,7 @@ CC = cc
 
 NAME = libft.a
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g # -ggdb3 -fsanitize=address
 
 SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 		 ft_isprint.c ft_isascii.c ft_itoa.c ft_tolower.c ft_toupper.c \
@@ -29,7 +29,7 @@ bonus : $(bonus_obj) libft.h
 	ar rcs $(NAME) $^
 
 %.o : %.c libft.h
-	$(CC) $(FLAGS)  -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
 	rm -rf $(OBJ) $(bonus_obj)

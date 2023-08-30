@@ -2,7 +2,7 @@ CC = cc
 
 NAME = minishell
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -ggdb3 -fsanitize=address
 
 M_SRC = minishell.c builtin_utils.c builtins.c
 
