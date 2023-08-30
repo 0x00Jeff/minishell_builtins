@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/30 22:49:38 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/30 23:34:14 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_env	*create_env(char **envp)
 	return (env);
 }
 
-void	print_env(t_env *env)
+void	print_env(t_env *env, char *surplus)
 {
 	t_env	*ptr;
 
@@ -59,6 +59,8 @@ void	print_env(t_env *env)
 	ptr = env;
 	while (ptr)
 	{
+		if (surplus)
+			printf("%s ", surplus);
 		printf("%s=%s\n", ptr->key, ptr->value);
 		ptr = ptr->next;
 	}

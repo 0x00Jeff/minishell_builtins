@@ -57,8 +57,8 @@ void	builtins(int argc, char *command, char **args, /* char **envp,
 		unset(argc, args, env);
 	else if (!strcmp(command, "exit"))
 		my_exit(*args);
+		else if (!strcmp(command, "env"))
+			env_(argc, args, env);
 	else
 		ft_putstr_fd("command not a builtin!\n", 2);
-	//	else if (!strcmp(command, "env"))
-	//		env(argc, args);
 }

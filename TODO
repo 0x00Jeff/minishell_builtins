@@ -2,6 +2,5 @@
 - export a = b
 - sort export keys
 - handle export options, lackof more of
-- dont forget del_from_env check for the case when u need to delete the head
 - make the other builtins
 - make a diff in printing between env and export
