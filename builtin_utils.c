@@ -88,11 +88,14 @@ void del_from_env(t_env **env, char *key)
 		node -> prev -> next = NULL;
 	else
 	{
+		printf("node -> prev = %p\n", node -> prev);
 		node -> prev -> next = node -> next;
 		node -> next -> prev = node -> prev;
 	}
 
+	puts("freeing now .. .");
 	ft_lstdelone(node, free);
+	printf("list = size = %d\n", ft_lstsize(*env));
 }
 
 int validate_var_name(char *str)

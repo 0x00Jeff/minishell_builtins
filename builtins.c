@@ -118,7 +118,7 @@ void append_to_env(t_env **env, char *value)
 
 	prev = NULL;
 	if (*env)
-		prev = (*env) -> prev;
+		prev = ft_lstlast(*env);
 	t_env *node = ft_lstnew(value, prev);
 	ft_lstadd_back(env, node);
 }

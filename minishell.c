@@ -16,6 +16,7 @@ int main(int argc, char *argv[], char **envp)
 	(void)argv;
 	(void)argc;
 	t_env *env = create_env(envp);
+	env = NULL;
 	while(1)
 	{
 		size = 0;
