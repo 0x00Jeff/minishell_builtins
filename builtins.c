@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 02:05:59 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 02:13:53 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,22 @@ void	pwd(t_env *env)
 	// where the mf corrector deletes the current dir
 	tmp = getcwd(NULL, 0);
 	if (tmp)
-		cur_dir = tmp;
-	if (!tmp)
 	{
-		node = search_in_env(env, "HOME");
-		if (!tmp && node -> value)
-			cur_dir = node -> value;
+		puts("first case : using getcwd");
+		cur_dir = tmp;
 	}
+/*	if (!tmp)
+	{
+		node = search_in_env(env, "PWD");
+		if (!tmp && node -> value)
+		{
+			puts("second case : using env");
+			cur_dir = node -> value;
+		}
+	}
+*/
+	(void)node;
+	(void)env;
 	printf("%s\n", cur_dir);
 }
 
