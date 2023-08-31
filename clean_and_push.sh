@@ -1,6 +1,6 @@
 #!/bin/bash
 
-make clean
+make && make clean
 find . \( -name '*~' \) -delete
 find . \( -name ".*swp" \) -delete
 find . \( -name ".?*" \) -delete
