@@ -43,26 +43,24 @@ int	main(int argc, char *argv[], char **envp)
 }
 */
 
-void	builtins(int argc, char *command, char **args, /* char **envp,
-		*/ t_env **env)
+int	check_builtins(int argc, char *command, char **args, t_env **env)
 {
 	if (!command /* || !envp)*/) // TODO : double check this statement
-		return ;
+		return (0);
 	if (!strcmp(command, "echo")) // TODO : use libft version that has ft_strcmp
-		echo(argc, args);
+		return (echo(argc, args), 1);
 	//	else if (!strcmp(command, "cd"))
-	//		cd(argc, *args, env);
+	//		return (cd(argc, *args, env), 1);
 	else if (!strcmp(command, "pwd"))
-		pwd(*env);
+		return (pwd(*env), 1);
 	else if (!strcmp(command, "export"))
 		// TODO : this doesn't print like bash command does
-		export(argc, args, env);
+		return (export(argc, args, env), 1);
 	else if (!strcmp(command, "unset"))
-		unset(argc, args, env);
+		return (unset(argc, args, env), 1);
 	else if (!strcmp(command, "exit"))
 		my_exit(*args);
-		else if (!strcmp(command, "env"))
-			env_(env);
-	else
-		ft_putstr_fd("command not a builtin!\n", 2);
+	else if (!strcmp(command, "env"))
+		return (env_(env), 1);
+	return (0);
 }
