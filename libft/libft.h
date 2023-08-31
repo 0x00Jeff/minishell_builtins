@@ -6,7 +6,7 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:21:49 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 00:55:26 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 16:37:43 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef t_env		t_list;
 int					in_set(char *set, char c);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
+int					ft_isalphanum(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);

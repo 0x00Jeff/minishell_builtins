@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 02:34:39 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 16:56:15 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,12 +127,32 @@ void	del_from_env(t_env **env, char *key)
 // TODO : this function needs some work
 int	validate_var_name(char *str)
 {
+	char *key;
+	size_t split_index;
+
 	if (!str)
 		return (1);
 	if (ft_isdigit(str[0]))
-	{
-		printf("export: `%s': not a valid identifier\n", str);
 		return (1);
+	if (ft_strchr(str, '='))
+	{
+		split_index = (size_t)ft_strchr(str, '=') - (size_t)str;
+		key = ft_substr(str, 0, split_index);
+	}
+	else
+		key = str;
+	return (ft_is_alphanum_underscore(key + 1));
+}
+
+int ft_is_alphanum_underscore(char *str)
+{
+	if (!str)
+		return (1);
+	while(*str)
+	{
+		if (!ft_isalphanum(*str) && *str != '_')
+			return (1);
+		str++;
 	}
 	return (0);
 }
