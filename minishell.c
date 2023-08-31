@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string.h> // TODO : add clone the libft that has ft_strcmp
 
+/*
 int	main(int argc, char *argv[], char **envp)
 {
 	char	*command_ptr;
@@ -16,8 +17,8 @@ int	main(int argc, char *argv[], char **envp)
 
 	(void)argv;
 	(void)argc;
-	env = create_env(envp);
-	pwd_trolling(getcwd(NULL, 0));
+	env = create_env(envp);			// TODO : add this
+	pwd_trolling(getcwd(NULL, 0)); // TODO : add this
 	puts(pwd_trolling(NULL));
 	while (1)
 	{
@@ -40,6 +41,7 @@ int	main(int argc, char *argv[], char **envp)
 		free_list(args);
 	}
 }
+*/
 
 void	builtins(int argc, char *command, char **args, /* char **envp,
 		*/ t_env **env)
