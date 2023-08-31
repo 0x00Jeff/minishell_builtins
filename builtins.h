@@ -1,6 +1,7 @@
 #ifndef BUILTILNS_H
 # define BUILTILNS_H
 # include "builtin_utils.h"
+# include "utils.h"
 
 void	echo(int argc, char **args);
 void	cd(int argc, char *arg);
@@ -11,5 +12,4 @@ void	append_to_env(t_env **env, char *value);
 void	edit_env(t_env *node, char *value);
 void	env_(t_env **env);
 void	pwd();
-char	**consume_env(t_env **env);
 #endif

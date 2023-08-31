@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 22:27:45 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 22:52:57 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 22:54:26 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	**consume_env(t_env *env)
 	size_t	i;
 	char	**ptr;
 	t_env	*node;
-	if (!env || !*env)
+	if (!env)
 		return (NULL);
 
 	ptr = (char **)malloc(ft_lstsize(env) + 1);
-	node = *env;
+	node = env;
 	i = 0;
 	while (i < 0)
 	{
