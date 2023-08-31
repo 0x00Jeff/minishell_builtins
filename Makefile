@@ -2,7 +2,7 @@ CC = cc
 
 NAME = builtins.a
 
-CFLAGS = -Wall -Wextra -Werror # -g -ggdb3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -I../libft # -g -ggdb3 -fsanitize=address
 
 M_SRC = minishell.c builtin_utils.c builtins.c
 

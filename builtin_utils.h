@@ -6,13 +6,13 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:37:21 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 17:43:00 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 21:43:54 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTIN_UTILS_H
 # define BUILTIN_UTILS_H
-# include "libft/libft.h"
+# include <libft.h>
 # include <stddef.h>
 
 int		consists_of(char *line, char c);

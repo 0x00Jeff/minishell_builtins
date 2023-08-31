@@ -6,12 +6,12 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 17:51:24 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 21:44:28 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin_utils.h"
-#include "libft/libft.h"
+#include <libft.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h> // TODO : use libft's instead
@@ -153,7 +153,7 @@ int ft_is_alphanum_underscore(char *str)
 		return (1);
 	while(*str)
 	{
-		if (!ft_isalphanum(*str) && *str != '_')
+		if (!ft_isalnum(*str) && *str != '_')
 			return (1);
 		str++;
 	}

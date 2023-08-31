@@ -6,13 +6,13 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 17:55:23 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 21:44:43 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin_utils.h"
 #include "builtins.h"
-#include "libft/libft.h"
+#include <libft.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>

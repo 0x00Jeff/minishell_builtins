@@ -1,6 +1,6 @@
 #include "builtin_utils.h"
 #include "builtins.h"
-#include "libft/libft.h"
+#include <libft.h>
 #include "minishell.h"
 #include <stdio.h>
 #include <string.h> // TODO : add clone the libft that has ft_strcmp
