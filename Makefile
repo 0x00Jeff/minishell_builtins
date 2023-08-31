@@ -4,7 +4,7 @@ NAME = builtins.a
 
 CFLAGS = -Wall -Wextra -Werror -I../libft # -g -ggdb3 -fsanitize=address
 
-M_SRC = minishell.c builtin_utils.c builtins.c
+M_SRC = minishell.c builtin_utils.c builtins.c lst_operations.c
 
 M_HEAD = $(M_SRC:.c=.h)
 
