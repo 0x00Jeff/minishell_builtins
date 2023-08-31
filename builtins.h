@@ -11,4 +11,5 @@ void	append_to_env(t_env **env, char *value);
 void	edit_env(t_env *node, char *value);
 void	env_(t_env **env);
 void	pwd();
+char	**consume_env(t_env **env);
 #endif

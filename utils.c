@@ -6,12 +6,13 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 22:27:45 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 22:42:41 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 22:49:07 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <stdlib.h>
+#include "builtins.h"
 
 char	**consume_env(t_env **env)
 {
