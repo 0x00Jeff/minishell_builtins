@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 16:56:15 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 17:20:54 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,10 +129,11 @@ int	validate_var_name(char *str)
 {
 	char *key;
 	size_t split_index;
+	int res;
 
-	if (!str)
+	if (!str || !strcmp(str, "=")) // TODO : use libft verison that has strcmp
 		return (1);
-	if (ft_isdigit(str[0]))
+	if (!ft_isalpha(str[0]))
 		return (1);
 	if (ft_strchr(str, '='))
 	{
@@ -140,8 +141,10 @@ int	validate_var_name(char *str)
 		key = ft_substr(str, 0, split_index);
 	}
 	else
-		key = str;
-	return (ft_is_alphanum_underscore(key + 1));
+		key = ft_strdup(str);
+	res = ft_is_alphanum_underscore(key + 1);
+	free(key);
+	return (res);
 }
 
 int ft_is_alphanum_underscore(char *str)
