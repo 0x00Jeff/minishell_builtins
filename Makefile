@@ -14,9 +14,8 @@ LIBFT = libft
 
 all: $(NAME)
 
-$(NAME): $(M_OBJ) # $(LIBFT)/libft.a
-	ar rcs $@ $^
-	echo lol
+$(NAME): rf_lib $(M_OBJ) # $(LIBFT)/libft.a
+	ar rcs $@ $(M_OBJ)
 #$(NAME):
 #	$(CC) $(CFLAGS) $(M_OBJ) $(LIBFT)/libft.a -o $(NAME)
 
@@ -25,7 +24,8 @@ $(NAME): $(M_OBJ) # $(LIBFT)/libft.a
 
 %.o : %.c $(M_HEAD) # TODO : add minishell.c here
 	$(CC) $(CFLAGS) -c $< -o $@
-
+rf_lib:
+	rm -f $(NAME)
 clean:
 	rm -rf $(M_OBJ)
 #	make -C $(LIBFT) clean
