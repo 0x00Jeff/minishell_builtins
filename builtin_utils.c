@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 02:01:58 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 02:34:39 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,12 @@ void	print_exports(t_env *env)
 		if (ptr -> equal_sign)
 		{
 			if (ptr -> value)
-			{
-				puts("sign and value good");
 				printf("declare -x %s=%s\n", ptr -> key, ptr -> value);
-			}
 			else
-			{
-				puts("sign good value bad");
 				printf("declare -x %s=\"\"\n", ptr -> key);
-			}
 		}
 		else
-		{
-			puts("sign bad value bad");
 			printf("declare -x %s\n", ptr -> key);
-		}
 		ptr = ptr->next;
 	}
 }

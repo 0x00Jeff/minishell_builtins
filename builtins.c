@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 02:19:57 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 02:33:55 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,15 +140,9 @@ void	export(int argc, char **argv, t_env **env)
 			continue ;
 		tmp_node = search_in_env(*env, tmp[0]);
 		if (!tmp_node)
-		{
-			puts("appending new node to env");
 			append_to_env(env, ptr);
-		}
 		else
-		{
-			puts("editing an existing node in env");
 			edit_env(tmp_node, tmp[1]);
-		}
 		free_list(tmp);
 	}
 }
