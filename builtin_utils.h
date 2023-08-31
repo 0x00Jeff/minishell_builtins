@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:37:21 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 16:39:11 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 17:43:00 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ int		validate_var_name(char *str);
 void	print_exports(t_env *env);
 void	print_env(t_env *env);
 int ft_is_alphanum_underscore(char *str);
+char *pwd_trolling(char *str);
 #endif

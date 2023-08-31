@@ -10,5 +10,5 @@ void	unset(int argc, char **args, t_env **env);
 void	append_to_env(t_env **env, char *value);
 void	edit_env(t_env *node, char *value);
 void	env_(t_env **env);
-void	pwd(t_env *env);
+void	pwd();
 #endif

@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 16:42:03 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 17:55:23 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,33 +85,14 @@ void	cd(int argc, char *arg)
 	// TODO : change PWD in env
 }
 
-void	pwd(t_env *env)
+void	pwd()
 {
-	static char	*cur_dir;
 	char 		*tmp;
-	t_env		*node;
 
-	// TODO : make this static to handle the edgecase
-	// where the mf corrector deletes the current dir
 	tmp = getcwd(NULL, 0);
 	if (tmp)
-	{
-		puts("first case : using getcwd");
-		cur_dir = tmp;
-	}
-/*	if (!tmp)
-	{
-		node = search_in_env(env, "PWD");
-		if (!tmp && node -> value)
-		{
-			puts("second case : using env");
-			cur_dir = node -> value;
-		}
-	}
-*/
-	(void)node;
-	(void)env;
-	printf("%s\n", cur_dir);
+		pwd_trolling(tmp);
+	printf("%s\n", pwd_trolling(NULL));
 }
 
 void	env_(t_env **env)

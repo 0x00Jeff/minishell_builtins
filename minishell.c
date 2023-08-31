@@ -17,6 +17,8 @@ int	main(int argc, char *argv[], char **envp)
 	(void)argv;
 	(void)argc;
 	env = create_env(envp);
+	pwd_trolling(getcwd(NULL, 0));
+	puts(pwd_trolling(NULL));
 	while (1)
 	{
 		size = 0;
