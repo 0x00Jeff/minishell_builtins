@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/30 23:34:14 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 01:52:33 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_env	*create_env(char **envp)
 	return (env);
 }
 
-void	print_env(t_env *env, char *surplus)
+void	print_exports(t_env *env)
 {
 	t_env	*ptr;
 
@@ -59,9 +59,39 @@ void	print_env(t_env *env, char *surplus)
 	ptr = env;
 	while (ptr)
 	{
-		if (surplus)
-			printf("%s ", surplus);
-		printf("%s=%s\n", ptr->key, ptr->value);
+		if (ptr -> equal_sign)
+		{
+			if (ptr -> value)
+			{
+				puts("sign and value good");
+				printf("declare -x %s=%s\n", ptr -> key, ptr -> value);
+			}
+			else
+			{
+				puts("sign good value bad");
+				printf("declare -x %s=\"\"\n", ptr -> key);
+			}
+		}
+		else
+		{
+			puts("sign bad value bad");
+			printf("declare -x %s\n", ptr -> key);
+		}
+		ptr = ptr->next;
+	}
+}
+
+void	print_env(t_env *env)
+{
+	t_env	*ptr;
+
+	if (!env)
+		return ;
+	ptr = env;
+	while (ptr)
+	{
+		if (ptr -> equal_sign && ptr -> value)
+			printf("%s=%s\n", ptr -> key, ptr -> value);
 		ptr = ptr->next;
 	}
 }
@@ -103,25 +133,15 @@ void	del_from_env(t_env **env, char *key)
 	ft_lstdelone(node, free);
 }
 
+// TODO : this function needs some work
 int	validate_var_name(char *str)
 {
-	char	**pair;
-
 	if (!str)
 		return (1);
-	if (!strrchr(str, '='))
-		return (1);
-	pair = ft_split(str, '=');
-	if (!pair)
-		return (1);
-	if (!pair[0] || !pair[1])
-	{
-		free_list(pair);
-		return (1); //  TODO : might do return !!!free_list(pair)
-	}
 	if (ft_isdigit(str[0]))
-		return (free_list(pair),
-			printf("export: `%s': not a valid identifier\n", str));
-	free_list(pair);
+	{
+		printf("export: `%s': not a valid identifier\n", str);
+		return (1);
+	}
 	return (0);
 }

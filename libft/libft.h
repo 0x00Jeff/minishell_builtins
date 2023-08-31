@@ -6,7 +6,7 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 12:21:49 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/30 22:44:52 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 00:55:26 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 typedef struct s_env
 {
 	char			*key;
+	char			*equal_sign;
 	char			*value;
 	void			*content; // TODO : delete this placeholder later
 	struct s_env	*prev;

@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/30 23:37:19 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 01:45:32 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	env_(int argc, char **argv, t_env **env)
 	// TODO : send args to be executed
 	(void)argv;
 	if (!argc)
-		return (print_env(*env, NULL));
+		return (print_env(*env));
 }
 void	export(int argc, char **argv, t_env **env)
 {
@@ -108,14 +108,12 @@ void	export(int argc, char **argv, t_env **env)
 	char	*ptr;
 	char	**tmp;
 	t_env	*tmp_node;
-	t_env	*prev;
 
 	if (!env)
 		return ;
 	if (!argc)
-		return (print_env(*env, "declare -x"));
+		return (print_exports(*env));
 	i = 0;
-	prev = NULL;
 	while (i < argc)
 	{
 		ptr = argv[i++];
@@ -126,9 +124,15 @@ void	export(int argc, char **argv, t_env **env)
 			continue ;
 		tmp_node = search_in_env(*env, tmp[0]);
 		if (!tmp_node)
+		{
+			puts("appending new node to env");
 			append_to_env(env, ptr);
+		}
 		else
+		{
+			puts("editing an existing node in env");
 			edit_env(tmp_node, tmp[1]);
+		}
 		free_list(tmp);
 	}
 }
@@ -152,7 +156,7 @@ void	edit_env(t_env *node, char *value)
 	if (!node || !value)
 		return ;
 	free(node->value);
-	node->value = ft_strdup(value);
+	node -> value = ft_strdup(value);
 }
 
 void	unset(int argc, char **args, t_env **env)
