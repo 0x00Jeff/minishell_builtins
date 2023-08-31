@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 02:13:53 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 02:19:57 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,12 +114,9 @@ void	pwd(t_env *env)
 	printf("%s\n", cur_dir);
 }
 
-void	env_(int argc, char **argv, t_env **env)
+void	env_(t_env **env)
 {
-	// TODO : send args to be executed
-	(void)argv;
-	if (!argc)
-		return (print_env(*env));
+	return (print_env(*env));
 }
 void	export(int argc, char **argv, t_env **env)
 {
