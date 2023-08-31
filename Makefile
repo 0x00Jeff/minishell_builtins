@@ -1,6 +1,6 @@
 CC = cc
 
-NAME = builtins.a
+NAME = libbuiltins.a
 
 CFLAGS = -Wall -Wextra -Werror -I../libft # -g -ggdb3 -fsanitize=address
 
