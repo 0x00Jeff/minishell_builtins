@@ -6,7 +6,7 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:40:43 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 22:03:03 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 23:42:59 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -83,4 +83,16 @@ int	ft_lstsize(t_env *lst)
 		count++;
 	}
 	return (count);
+}
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	t_list	*ptr;
+
+	if (!lst)
+		return (NULL);
+	ptr = lst;
+	while (ptr->next)
+		ptr = ptr->next;
+	return (ptr);
 }
