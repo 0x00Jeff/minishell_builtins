@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 01:45:32 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/08/31 02:05:59 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,23 @@ void	cd(int argc, char *arg)
 	// TODO : change PWD in env
 }
 
-void	pwd(void)
+void	pwd(t_env *env)
 {
-	char	*cur_dir;
+	static char	*cur_dir;
+	char 		*tmp;
+	t_env		*node;
 
 	// TODO : make this static to handle the edgecase
 	// where the mf corrector deletes the current dir
-	cur_dir = getcwd(NULL, 0);
+	tmp = getcwd(NULL, 0);
+	if (tmp)
+		cur_dir = tmp;
+	if (!tmp)
+	{
+		node = search_in_env(env, "HOME");
+		if (!tmp && node -> value)
+			cur_dir = node -> value;
+	}
 	printf("%s\n", cur_dir);
 }
 
@@ -135,28 +145,6 @@ void	export(int argc, char **argv, t_env **env)
 		}
 		free_list(tmp);
 	}
-}
-
-void	append_to_env(t_env **env, char *value)
-{
-	t_env	*prev;
-	t_env	*node;
-
-	if (!env || !value)
-		return ;
-	prev = NULL;
-	if (*env)
-		prev = ft_lstlast(*env);
-	node = ft_lstnew(value, prev);
-	ft_lstadd_back(env, node);
-}
-
-void	edit_env(t_env *node, char *value)
-{
-	if (!node || !value)
-		return ;
-	free(node->value);
-	node -> value = ft_strdup(value);
 }
 
 void	unset(int argc, char **args, t_env **env)

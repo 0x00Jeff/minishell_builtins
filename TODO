@@ -1,3 +1,4 @@
+- created a bug in export : `export a then export`
 - export +=
 - export a = b
 - sort export keys

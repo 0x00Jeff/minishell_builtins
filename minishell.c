@@ -48,8 +48,8 @@ void	builtins(int argc, char *command, char **args, /* char **envp,
 		echo(argc, args);
 	//	else if (!strcmp(command, "cd"))
 	//		cd(argc, *args, env);
-	//	else if (!strcmp(command, "pwd"))
-	//		pwd(env);
+	else if (!strcmp(command, "pwd"))
+		pwd(*env);
 	else if (!strcmp(command, "export"))
 		// TODO : this doesn't print like bash command does
 		export(argc, args, env);
