@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/01 18:29:54 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/01 18:51:16 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	cd(char *arg, t_env *env)
 
 void change_directory(char *dir)
 {
-//	char *path;
+	char *path;
 	if (!dir)
 		return;
 	if (chdir(dir) == -1)
@@ -77,10 +77,11 @@ void change_directory(char *dir)
 		perror("chdir");
 		return;
 	}
-	pwd_trolling(dir);
-//	if(dir[0] == '/')
-//		path = dir;
+	path = structure_path(pwd_trolling(NULL), dir);
+	pwd_trolling(path);
+	free(path);
 }
+
 
 void	pwd()
 {

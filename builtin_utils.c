@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/01 18:34:50 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/01 18:49:46 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,4 +191,16 @@ char *pwd_trolling(char *str)
 	free(pwd);
 	pwd = ft_strdup(str);
 	return (pwd);
+}
+
+char *structure_path(char *curr_dir, char *dir)
+{
+	char *path;
+	char *tmp;
+	if (!curr_dir || !dir)
+		return (NULL);
+	tmp = ft_strjoin(curr_dir, "/");
+	path = ft_strjoin(tmp, dir);
+	free(tmp);
+	return (path);
 }

@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:37:21 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/01 02:26:19 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/01 18:50:04 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ char *pwd_trolling(char *str);
 void change_directory(char *dir);
 void	append_to_env(t_env **env, char *value);
 void	edit_env(t_env *node, char *value);
+char *structure_path(char *curr_dir, char *dir);
 #endif
