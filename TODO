@@ -1,6 +1,5 @@
-- created a bug in export : `export a then export`
 - export +=
-- export a = b
+- export bug : `export -a kek`, should return instead of registering kek in the env
 - declare extern int g_exit_status
 - when a function errors edit g_exit_status
 - sort export keys
