@@ -6,12 +6,13 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 22:27:45 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/01 01:22:49 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/01 03:03:38 by ylyoussf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "builtins.h"
 
 char	**consume_env(t_env *env)
@@ -24,6 +25,7 @@ char	**consume_env(t_env *env)
 		return (NULL);
 
 	size = ft_lstsize(env);
+	printf("size = %lu\n", size);
 	ptr = (char **)malloc(size + 1);
 	node = env;
 	i = 0;

@@ -6,11 +6,12 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:40:43 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/01 00:04:12 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/01 03:02:41 by ylyoussf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include <libft.h>
 #include <stdio.h> // TODO : delete this
+#include "lst_operations.h"
 #include <stdlib.h>
 
 t_env	*ft_lstnew(char *elem, t_env *prev)

@@ -1,6 +1,7 @@
 #ifndef BUILTILNS_H
 # define BUILTILNS_H
 # include "builtin_utils.h"
+# include "lst_operations.h"
 # include "utils.h"
 
 void	echo(int argc, char **args);
