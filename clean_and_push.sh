@@ -1,5 +1,6 @@
 #!/bin/bash
 
+make exec_fclean
 make && make clean
 find . \( -name '*~' \) -delete
 find . \( -name ".*swp" \) -delete

@@ -2,25 +2,30 @@ CC = cc
 
 NAME = libbuiltins.a
 
+EXEC = minishell
+
 CFLAGS = -Wall -Wextra -Werror -I../libft # -g -ggdb3 -fsanitize=address
 
 M_SRC = minishell.c builtin_utils.c builtins.c lst_operations.c utils.c
 
+EXEC_SRC = main.c $(M_SRC)
+
 M_HEAD = $(M_SRC:.c=.h)
 
 M_OBJ = $(M_SRC:.c=.o)
+EXEC_OBJ = main.o $(M_SRC:.c=.o)
 
-LIBFT = libft
+LIBFT = ../libft
 
 all: $(NAME)
 
-$(NAME): rf_lib $(M_OBJ) # $(LIBFT)/libft.a
+$(NAME): rf_lib $(M_OBJ)
 	ar rcs $@ $(M_OBJ)
-#$(NAME):
-#	$(CC) $(CFLAGS) $(M_OBJ) $(LIBFT)/libft.a -o $(NAME)
+exec:	$(EXEC_OBJ) $(LIBFT)/libft.a
+	$(CC) $(CFLAGS) $(EXEC_OBJ) $(LIBFT)/libft.a -o $(EXEC)
 
-#$(LIBFT)/libft.a:
-#	make -C $(LIBFT) all
+$(LIBFT)/libft.a:
+	make -C $(LIBFT) all
 
 %.o : %.c $(M_HEAD) # TODO : add minishell.c here
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -28,11 +33,15 @@ rf_lib:
 	rm -f $(NAME)
 clean:
 	rm -rf $(M_OBJ)
-#	make -C $(LIBFT) clean
+exec_clean:
+	make -C $(LIBFT) clean
+	rm -rf $(EXEC_OBJ)
 
 fclean: clean
 	rm -rf $(NAME)
-#	make -C $(LIBFT) fclean
+exec_fclean: exec_clean
+	rm -rf $(EXEC)
+	rm -rf $(LIBFT)/libft.a
 
 re: fclean all
 
