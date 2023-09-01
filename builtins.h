@@ -4,7 +4,7 @@
 # include "utils.h"
 
 void	echo(int argc, char **args);
-void	cd(int argc, char *arg);
+void	cd(char *arg, t_env *env);
 void	my_exit(char *arg);
 void	export(int argc, char **argv, t_env **env);
 void	unset(int argc, char **args, t_env **env);

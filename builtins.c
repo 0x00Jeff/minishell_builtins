@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 21:44:43 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/01 02:18:19 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,40 +49,32 @@ void	echo(int argc, char **args)
 		ft_putstr_fd("\n", 1);
 }
 
-void	cd(int argc, char *arg)
+void	cd(char *arg, t_env *env)
 {
-	char	*home_dir;
-
-	if (argc && !arg)
-		return ;
-	home_dir = getenv("HOME");
-	// TODO : check if MAC's gentev has the extension that allocates the buffer
-	// in the heap just like linux
-	if (!argc)
+	t_env *node;
+	if (!arg)
 	{
-		if (!home_dir)
-			return (ft_putstr_fd("cd: HOME not set\n", 2));
-		//		return (ft_putstr_fd("cd: HOME not set\n", 2),
-		//				free(home_dir));
-		// TODO : test this when u make pwd!!!
-		else if (chdir(home_dir) == -1)
-			perror("chdir");
-	}
-	else
-	{
-		if (arg[0] == '/')
+		node = search_in_env(env, "HOME");
+		if (!node)
 		{
-			if (chdir(arg) == -1)
-				perror("chdir");
+			printf("cd: HOME not set\n");
+			return;
 		}
 		else
-		{
-			;
-			// TODO make a path depending on if args is relative or absolute
-		}
+			change_directory(node -> value);
 	}
-	// free(cur_dir); ?
-	// TODO : change PWD in env
+	else
+		change_directory(arg);
+}
+
+void change_directory(char *dir)
+{
+	if (!dir)
+		return;
+	if (chdir(dir) == -1)
+		pwd_trolling(dir);
+	else
+		perror("chdir");
 }
 
 void	pwd()
