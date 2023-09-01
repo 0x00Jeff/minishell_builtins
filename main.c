@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include"builtins.h"
 #include<string.h>
+#include<stdlib.h>
 #include"../libft/libft.h"
 
 
@@ -12,12 +13,14 @@ int	main(int argc, char *argv[], char **envp)
 	char	**tmp;
 	size_t	size;
 	t_env	*env;
+	char	*tmp_pwd;
 
 	(void)argv;
 	(void)argc;
 	env = create_env(envp);			// TODO : add this
-	pwd_trolling(getcwd(NULL, 0)); // TODO : add this
-	puts(pwd_trolling(NULL));
+	tmp_pwd = getcwd(NULL, 0);
+	pwd_trolling(tmp_pwd); // TODO : add this
+	free(tmp_pwd);
 	while (1)
 	{
 		size = 0;

@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/08/31 23:42:46 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/01 18:34:50 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,6 @@ char *pwd_trolling(char *str)
 	static char *pwd;
 	if (!str)
 		return (pwd);
-	printf("setting pwd to %s\n", str);
 	free(pwd);
 	pwd = ft_strdup(str);
 	return (pwd);
