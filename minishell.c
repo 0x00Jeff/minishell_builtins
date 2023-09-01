@@ -49,8 +49,8 @@ int	check_builtins(int argc, char *command, char **args, t_env **env)
 		return (0);
 	if (!strcmp(command, "echo")) // TODO : use libft version that has ft_strcmp
 		return (echo(argc, args), 1);
-	//	else if (!strcmp(command, "cd"))
-	//		return (cd(argc, *args, env), 1);
+		else if (!strcmp(command, "cd"))
+			return (cd(argc, *args), 1);
 	else if (!strcmp(command, "pwd"))
 		return (pwd(*env), 1);
 	else if (!strcmp(command, "export"))

@@ -1,6 +1,8 @@
 - created a bug in export : `export a then export`
 - export +=
 - export a = b
+- declare extern int g_exit_status
+- when a function errors edit g_exit_status
 - sort export keys
 - handle export options, lackof more of
 - make the other builtins
