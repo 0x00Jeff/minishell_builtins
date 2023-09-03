@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 22:27:45 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/03 12:58:31 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/03 13:04:26 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**consume_env(t_env *env)
 
 	size = ft_lstsize(env);
 	printf("size = %ld\n", size);
-	ptr = (char **)malloc((size * sizeof(char *)) + 1);
+	ptr = (char **)malloc((size + 1 ) * sizeof(char *));
 	node = env;
 	i = 0;
 	while (i < size)
