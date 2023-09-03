@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/01 18:49:46 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/03 10:03:07 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,11 +196,38 @@ char *pwd_trolling(char *str)
 char *structure_path(char *curr_dir, char *dir)
 {
 	char *path;
+	char **slice;
+	char **slice_ptr;
 	char *tmp;
 	if (!curr_dir || !dir)
 		return (NULL);
+	if (!strcmp(dir, "."))
+		return ft_strdup(pwd_trolling(NULL));
+	if (*dir == '/')
+		return ft_strdup(dir);
+	if (!ft_strnstr(dir, "..", ft_strlen(dir)))
+	{
+		tmp = ft_strjoin(curr_dir, "/");
+		path = ft_strjoin(tmp, dir);
+		return (free(tmp), path);
+	}
+
 	tmp = ft_strjoin(curr_dir, "/");
+
 	path = ft_strjoin(tmp, dir);
 	free(tmp);
+	(void)slice;
+	(void)slice_ptr;
+
+	/*
+	slice = ft_split(dir, '/');
+	slice_ptr = slice;
+	while(!strcmp(*slice_ptr++, ".."));
+	puts(*slice_ptr);
+	tmp = ft_strjoin(curr_dir, "/");
+
+	path = ft_strjoin(tmp, dir);
+	free(tmp);
+	*/
 	return (path);
 }
