@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/03 10:03:07 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/03 12:12:38 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,8 @@ char *structure_path(char *curr_dir, char *dir)
 	char **slice;
 	char **slice_ptr;
 	char *tmp;
+	char *tmp_path;
+
 	if (!curr_dir || !dir)
 		return (NULL);
 	if (!strcmp(dir, "."))
@@ -211,23 +213,48 @@ char *structure_path(char *curr_dir, char *dir)
 		path = ft_strjoin(tmp, dir);
 		return (free(tmp), path);
 	}
-
-	tmp = ft_strjoin(curr_dir, "/");
-
-	path = ft_strjoin(tmp, dir);
-	free(tmp);
-	(void)slice;
-	(void)slice_ptr;
-
-	/*
-	slice = ft_split(dir, '/');
+	path = ft_strdup("/");
+	tmp_path = join_dirs(pwd_trolling(NULL), dir);
+	slice = ft_split(tmp_path, '/');
+//	slice_ptr = slice;
+//	while(*slice_ptr)
+//		printf("%s/", *slice_ptr++);
+//	puts("");
+	// TODO : protect this split?
 	slice_ptr = slice;
-	while(!strcmp(*slice_ptr++, ".."));
-	puts(*slice_ptr);
-	tmp = ft_strjoin(curr_dir, "/");
-
-	path = ft_strjoin(tmp, dir);
-	free(tmp);
-	*/
+	while (*slice_ptr)
+	{
+//		printf("- slice = %s && slice++ = %s\n", *slice_ptr, *(slice_ptr + 1));
+		if (*(slice_ptr + 1) && !strcmp(*(slice_ptr + 1), ".."))
+		{
+//			printf("skipping over '%s'\n", *slice_ptr);
+			slice_ptr+=2;
+			continue;
+		}
+//		printf("===> joining '%s' and '%s'\n", path, *slice_ptr);
+		tmp = join_dirs(path, *slice_ptr);
+//		printf("===> so far path = '%s'\n", tmp);
+		free(path);
+		path = tmp;
+		slice_ptr++;
+	}
 	return (path);
+}
+
+char *join_dirs(char *dirname, char *basename)
+{
+	char *tmp;
+	char *path;
+	if (!dirname || !basename)
+		return (NULL);
+	if (!strcmp(dirname, "/"))
+	{
+		if (!strcmp(basename, ".."))
+			return (ft_strdup("/"));
+		tmp = strdup("/");
+	}
+	else
+		tmp = ft_strjoin(dirname, "/");
+	path = ft_strjoin(tmp, basename);
+	return (free(tmp), path);
 }

@@ -4,7 +4,7 @@ NAME = libbuiltins.a
 
 EXEC = minishell
 
-CFLAGS = -Wall -Wextra -Werror -I../libft # -g -ggdb3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -I../libft -g -ggdb3 -fsanitize=address
 
 M_SRC = minishell.c builtin_utils.c builtins.c lst_operations.c utils.c
 

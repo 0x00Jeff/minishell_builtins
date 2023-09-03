@@ -1,8 +1,8 @@
+- implement checking the existence of a path in cd
 - export +=
 - export bug : `export -a kek`, should return instead of registering kek in the env
 - declare extern int g_exit_status
 - when a function errors edit g_exit_status
-- sort export keys
+- sort export keys ?
 - handle export options, lackof more of
 - make the other builtins
-- make a diff in printing between env and export
