@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 22:27:45 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/03 12:52:12 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/03 12:58:31 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ char	**consume_env(t_env *env)
 		node = node -> next;
 	}
 	printf("i = %ld\n", i);
-	ptr[i] = 0;
+//	ptr[i] = 0;
 	return (ptr);
 }
