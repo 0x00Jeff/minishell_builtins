@@ -6,3 +6,4 @@
 - sort export keys ?
 - handle export options, lackof more of
 - make the other builtins
+- return g_exit in exit if u dont send any args to it
