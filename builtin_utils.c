@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/03 12:12:38 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/10 03:38:09 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,7 @@ char *structure_path(char *curr_dir, char *dir)
 	path = ft_strdup("/");
 	tmp_path = join_dirs(pwd_trolling(NULL), dir);
 	slice = ft_split(tmp_path, '/');
+	free(tmp_path);
 //	slice_ptr = slice;
 //	while(*slice_ptr)
 //		printf("%s/", *slice_ptr++);
@@ -238,6 +239,7 @@ char *structure_path(char *curr_dir, char *dir)
 		path = tmp;
 		slice_ptr++;
 	}
+	free_list(slice);
 	return (path);
 }
 

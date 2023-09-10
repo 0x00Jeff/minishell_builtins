@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/01 18:51:16 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/10 03:29:09 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	echo(int argc, char **args)
 void	cd(char *arg, t_env *env)
 {
 	t_env *node;
+//	char **tmp = consume_env(env);
+//	(void)tmp;
 	if (!arg)
 	{
 		node = search_in_env(env, "HOME");
@@ -147,5 +149,6 @@ void	unset(int argc, char **args, t_env **env)
 
 void	my_exit(char *arg)
 {
+	free(pwd_trolling(NULL));
 	exit(ft_atoi(arg));
 }
