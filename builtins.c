@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/10 03:29:09 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/13 17:26:56 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	export(int argc, char **argv, t_env **env)
 	char	**tmp;
 	t_env	*tmp_node;
 
+	printf("env = %p -> %p\n", env, *env);
 	if (!env)
 		return ;
 	if (!argc)
@@ -120,9 +121,15 @@ void	export(int argc, char **argv, t_env **env)
 			continue ;
 		tmp_node = search_in_env(*env, tmp[0]);
 		if (!tmp_node)
+		{
+			puts("appending to env");
 			append_to_env(env, ptr);
+		}
 		else
+		{
+			puts("editing env");
 			edit_env(tmp_node, tmp[1]);
+		}
 		free_list(tmp);
 	}
 }
@@ -151,4 +158,13 @@ void	my_exit(char *arg)
 {
 	free(pwd_trolling(NULL));
 	exit(ft_atoi(arg));
+}
+
+t_env	*get_envp(t_env *envp)
+{
+	static t_env	*env;
+
+	if (envp)
+		env = envp;
+	return (env);
 }

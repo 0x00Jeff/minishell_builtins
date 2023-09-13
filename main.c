@@ -1,8 +1,9 @@
 #include<stdio.h>
+#include<unistd.h>
 #include"builtins.h"
 #include<string.h>
 #include<stdlib.h>
-#include"../libft/libft.h"
+#include<libft.h>
 
 
 int	main(int argc, char *argv[], char **envp)

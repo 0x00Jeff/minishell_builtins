@@ -1,3 +1,4 @@
+- tell yego about the weird bug when running his minishell with env -i
 - implement checking the existence of a path in cd
 - export +=
 - export bug : `export -a kek`, should return instead of registering kek in the env
