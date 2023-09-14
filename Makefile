@@ -17,7 +17,7 @@ EXEC_OBJ = main.o $(M_SRC:.c=.o)
 
 LIBFT = ../libft
 
-all: $(NAME)
+all: $(NAME) clean
 
 $(NAME): rf_lib $(M_OBJ)
 	ar rcs $@ $(M_OBJ)

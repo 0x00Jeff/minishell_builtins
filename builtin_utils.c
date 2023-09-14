@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/13 17:38:51 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/14 01:34:50 by ylyoussf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,9 +267,9 @@ char	*get_env_value(char *var)
 	t_env	*node;
 
 	node = search_in_env(get_envp(NULL), var + 1);
+	free(var);
 	if (!node)
 		return (ft_strdup(""));
 	value = node->value;
-	free(var);
 	return (ft_strdup(value));
 }

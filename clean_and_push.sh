@@ -1,11 +1,10 @@
 #!/bin/bash
 
+make fclean
 make exec_fclean
-make && make clean
 find . \( -name '*~' \) -delete
 find . \( -name ".*swp" \) -delete
 find . \( -name ".?*" \) -delete
-rm -f a.out*
 
 if [ $# != 1 ]
 then
