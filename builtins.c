@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/15 17:50:20 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/15 18:03:29 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,8 +143,13 @@ int	unset(int argc, char **args, t_env **env)
 
 void	my_exit(char *arg)
 {
+	int status;
+
+	status = g_exit_status;
+	if (arg)
+		status = ft_atoi(arg);
 	free(pwd_trolling(NULL));
-	exit(ft_atoi(arg));
+	exit(status);
 }
 
 t_env	*get_envp(t_env *envp)
