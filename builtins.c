@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/15 17:12:03 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/15 17:50:20 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	echo(int argc, char **args)
+int	echo(int argc, char **args)
 {
-	printf("g_exit value is %d\n", g_exit_status);
 	int		new_line;
 	int		i;
 	char	*option;
 
 	if (!args)
-		return (ft_putstr_fd("\n", 1));
+		return (ft_putstr_fd("\n", 1), 0);
 	i = 0;
 	new_line = 1;
 	while (i <= argc - 1)
@@ -48,10 +47,10 @@ void	echo(int argc, char **args)
 		ft_putstr_fd(args[i++], 1);
 	if (new_line)
 		ft_putstr_fd("\n", 1);
-	g_exit_status = 0;
+	return (0);
 }
 
-void	cd(char *arg, t_env *env)
+int	cd(char *arg, t_env *env)
 {
 	t_env	*node;
 
@@ -63,26 +62,29 @@ void	cd(char *arg, t_env *env)
 		if (!node)
 		{
 			printf("cd: HOME not set\n");
-			return ;
+			return (1);
 		}
 		else
 			change_directory(node->value);
 	}
 	else
 		change_directory(arg);
+	return (0);
 }
 
-void	pwd(void)
+int	pwd(void)
 {
 	// TODO : might replace with ft_putstr_fd
 	printf("%s\n", pwd_trolling(NULL));
+	return (0);
 }
 
-void	env_(t_env **env)
+int	env_(t_env **env)
 {
 	return (print_env(*env));
 }
-void	export(int argc, char **argv, t_env **env)
+
+int	export(int argc, char **argv, t_env **env)
 {
 	int		i;
 	char	*ptr;
@@ -91,17 +93,18 @@ void	export(int argc, char **argv, t_env **env)
 
 	//	printf("env = %p -> %p\n", env, *env);
 	if (!env)
-		return ;
+		return (1);
 	if (!argc)
 		return (print_exports(*env));
 	i = 0;
 	while (i < argc)
 	{
+// TODO : move this outside of the loop -> check the validity of all keys before modifying it
 		ptr = argv[i++];
 		if (validate_var_name(ptr))
 		{
 			printf("export: `%s': not a valid identifier\n", ptr);
-			continue ;
+			return (1);
 		}
 		tmp = ft_split(ptr, '=');
 		if (!tmp)
@@ -109,36 +112,33 @@ void	export(int argc, char **argv, t_env **env)
 		tmp_node = search_in_env(*env, tmp[0]);
 		if (!tmp_node)
 		{
-			puts("appending to env");
+//			puts("appending to env");
 			append_to_env(env, ptr);
 		}
 		else
 		{
-			puts("editing env");
+//			puts("editing env");
 			edit_env(tmp_node, tmp[1]);
 		}
 		free_list(tmp);
 	}
+	return (0);
 }
 
-void	unset(int argc, char **args, t_env **env)
+int	unset(int argc, char **args, t_env **env)
 {
 	char	*ptr;
 	int		i;
 
 	if (!args || !env)
-		return ;
+		return (1);
 	i = 0;
 	while (i < argc)
 	{
 		ptr = args[i++];
-		if (ft_isdigit(*ptr))
-		{
-			printf("unset: `%s': not a valid identifier\n", ptr);
-			continue ;
-		}
 		del_from_env(env, ptr);
 	}
+	return (0);
 }
 
 void	my_exit(char *arg)

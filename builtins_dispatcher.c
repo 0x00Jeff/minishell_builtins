@@ -4,26 +4,29 @@
 #include <stdio.h>
 #include <string.h> // TODO : add clone the libft that has ft_strcmp
 
-int g_exit;
+int g_exit = 0;
 
 int	check_builtins(int argc, char *command, char **args, t_env **env)
 {
+	int used;
+	int res;
 	if (!command /* || !envp)*/) // TODO : double check this statement
 		return (0);
+	used = 0;
 	if (!strcmp(command, "echo")) // TODO : use libft version that has ft_strcmp
-		return (echo(argc, args), 1);
+		(res = echo(argc, args), used = 1);
 	else if (!strcmp(command, "cd"))
-		return (cd(*args, *env), 1);
+		(res = cd(*args, *env), used = 1);
 	else if (!strcmp(command, "pwd"))
-		return (pwd(), 1);
+		(res = pwd(), used = 1);
 	else if (!strcmp(command, "export"))
-		// TODO : this doesn't print like bash command does
-		return (export(argc, args, env), 1);
+		(res = export(argc, args, env), used = 1);
 	else if (!strcmp(command, "unset"))
-		return (unset(argc, args, env), 1);
+		(res = unset(argc, args, env), used = 1);
 	else if (!strcmp(command, "exit"))
 		my_exit(*args);
 	else if (!strcmp(command, "env"))
-		return (env_(env), 1);
-	return (0);
+		(res = env_(env), used = 1);
+	g_exit_status = res;
+	return (used);
 }

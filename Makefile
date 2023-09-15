@@ -6,7 +6,7 @@ EXEC = minishell
 
 CFLAGS = -Wall -Wextra -Werror -I../../include -g -ggdb3 -fsanitize=address
 
-M_SRC = minishell.c builtin_utils.c builtins.c lst_operations.c utils.c
+M_SRC = builtins_dispatcher.c builtin_utils.c builtins.c lst_operations.c utils.c
 
 EXEC_SRC = main.c $(M_SRC)
 

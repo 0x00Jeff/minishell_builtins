@@ -1,10 +1,4 @@
-- builtins that should change g_exit:
-	- echo
-	- cd
-	- pwd
-	- env
-	- export
-	- unset
+- stress test the return value of the builtins
 - tell yego about the weird bug when running his minishell with env -i
 - implement checking the existence of a path in cd
 - export +=

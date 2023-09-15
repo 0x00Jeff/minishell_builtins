@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/15 16:58:46 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/15 17:42:54 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ t_env	*create_env(char **envp)
 	return (env);
 }
 
-void	print_exports(t_env *env)
+int	print_exports(t_env *env)
 {
 	t_env	*ptr;
 
 	if (!env)
-		return ;
+		return (1);
 	ptr = env;
 	while (ptr)
 	{
@@ -72,14 +72,15 @@ void	print_exports(t_env *env)
 			printf("declare -x %s\n", ptr -> key);
 		ptr = ptr->next;
 	}
+	return (0);
 }
 
-void	print_env(t_env *env)
+int	print_env(t_env *env)
 {
 	t_env	*ptr;
 
 	if (!env)
-		return ;
+		return (1);
 	ptr = env;
 	while (ptr)
 	{
@@ -87,6 +88,7 @@ void	print_env(t_env *env)
 			printf("%s=%s\n", ptr -> key, ptr -> value);
 		ptr = ptr->next;
 	}
+	return (0);
 }
 
 t_env	*search_in_env(t_env *env, char *key)
