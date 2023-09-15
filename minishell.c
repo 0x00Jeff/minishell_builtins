@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <string.h> // TODO : add clone the libft that has ft_strcmp
 
+int g_exit;
+
 int	check_builtins(int argc, char *command, char **args, t_env **env)
 {
 	if (!command /* || !envp)*/) // TODO : double check this statement
@@ -13,7 +15,7 @@ int	check_builtins(int argc, char *command, char **args, t_env **env)
 	else if (!strcmp(command, "cd"))
 		return (cd(*args, *env), 1);
 	else if (!strcmp(command, "pwd"))
-		return (pwd(*env), 1);
+		return (pwd(), 1);
 	else if (!strcmp(command, "export"))
 		// TODO : this doesn't print like bash command does
 		return (export(argc, args, env), 1);

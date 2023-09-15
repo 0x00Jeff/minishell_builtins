@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/14 01:34:50 by ylyoussf         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:58:46 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h> // TODO : use libft's instead
+#include <unistd.h>
 
 int	consists_of(char *line, char c)
 {
@@ -273,3 +274,20 @@ char	*get_env_value(char *var)
 	value = node->value;
 	return (ft_strdup(value));
 }
+
+void	change_directory(char *dir)
+{
+	char	*path;
+
+	if (!dir)
+		return ;
+	if (chdir(dir) == -1)
+	{
+		perror("chdir");
+		return ;
+	}
+	path = structure_path(pwd_trolling(NULL), dir);
+	pwd_trolling(path);
+	free(path);
+}
+

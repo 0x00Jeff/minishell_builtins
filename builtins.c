@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/15 01:16:19 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/15 17:12:03 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 void	echo(int argc, char **args)
 {
+	printf("g_exit value is %d\n", g_exit_status);
 	int		new_line;
 	int		i;
 	char	*option;
@@ -47,45 +48,31 @@ void	echo(int argc, char **args)
 		ft_putstr_fd(args[i++], 1);
 	if (new_line)
 		ft_putstr_fd("\n", 1);
+	g_exit_status = 0;
 }
 
 void	cd(char *arg, t_env *env)
 {
-	t_env *node;
-//	char **tmp = consume_env(env);
-//	(void)tmp;
+	t_env	*node;
+
+	//	char **tmp = consume_env(env);
+	//	(void)tmp;
 	if (!arg)
 	{
 		node = search_in_env(env, "HOME");
 		if (!node)
 		{
 			printf("cd: HOME not set\n");
-			return;
+			return ;
 		}
 		else
-			change_directory(node -> value);
+			change_directory(node->value);
 	}
 	else
 		change_directory(arg);
 }
 
-void change_directory(char *dir)
-{
-	char *path;
-	if (!dir)
-		return;
-	if (chdir(dir) == -1)
-	{
-		perror("chdir");
-		return;
-	}
-	path = structure_path(pwd_trolling(NULL), dir);
-	pwd_trolling(path);
-	free(path);
-}
-
-
-void	pwd()
+void	pwd(void)
 {
 	// TODO : might replace with ft_putstr_fd
 	printf("%s\n", pwd_trolling(NULL));
@@ -102,7 +89,7 @@ void	export(int argc, char **argv, t_env **env)
 	char	**tmp;
 	t_env	*tmp_node;
 
-//	printf("env = %p -> %p\n", env, *env);
+	//	printf("env = %p -> %p\n", env, *env);
 	if (!env)
 		return ;
 	if (!argc)
