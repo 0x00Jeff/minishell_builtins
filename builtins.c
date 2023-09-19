@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/15 18:03:29 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/19 18:50:58 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ int	cd(char *arg, t_env *env)
 {
 	t_env	*node;
 
-	//	char **tmp = consume_env(env);
-	//	(void)tmp;
 	if (!arg)
 	{
 		node = search_in_env(env, "HOME");
@@ -91,7 +89,7 @@ int	export(int argc, char **argv, t_env **env)
 	char	**tmp;
 	t_env	*tmp_node;
 
-	//	printf("env = %p -> %p\n", env, *env);
+	printf("env = %p -> %p\n", env, *env);
 	if (!env)
 		return (1);
 	if (!argc)
@@ -150,13 +148,4 @@ void	my_exit(char *arg)
 		status = ft_atoi(arg);
 	free(pwd_trolling(NULL));
 	exit(status);
-}
-
-t_env	*get_envp(t_env *envp)
-{
-	static t_env	*env;
-
-	if (envp)
-		env = envp;
-	return (env);
 }

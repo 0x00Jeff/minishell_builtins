@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/15 17:42:54 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/19 18:45:44 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,22 @@ size_t	count(const char *s, int c)
 	return (res);
 }
 
-t_env	*create_env(char **envp)
+void	create_env(char **envp)
 {
-	t_env	*env;
+	t_env	**env;
 	t_env	*prev;
 	t_env	*ptr;
 
 	if (!envp)
-		return (NULL);
-	env = NULL;
+		return;
+	env = get_envp_internal(NULL);
 	prev = NULL;
 	while (*envp)
 	{
 		ptr = ft_lstnew(*envp++, prev);
-		ft_lstadd_back(&env, ptr);
+		ft_lstadd_back(env, ptr);
 		prev = ptr;
 	}
-	return (env);
 }
 
 int	print_exports(t_env *env)
@@ -293,3 +292,19 @@ void	change_directory(char *dir)
 	free(path);
 }
 
+t_env	**get_envp_internal(t_env *envp)
+{
+	static t_env	*env;
+
+	if (envp)
+		env = envp;
+
+	return (&env);
+}
+
+t_env	*get_envp(t_env *envp)
+{
+	if (envp)
+		get_envp_internal(envp);
+	return (*get_envp_internal(NULL));
+}

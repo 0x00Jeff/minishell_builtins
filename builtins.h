@@ -13,9 +13,8 @@ int	export(int argc, char **argv, t_env **env);
 int	unset(int argc, char **args, t_env **env);
 int	env_(t_env **env);
 int	pwd(void);
-t_env	*create_env(char **envp);
 t_env	*search_in_env(t_env *env, char *key);
 char	*pwd_trolling(char *str);
-int	check_builtins(int argc, char *command, char **args, t_env **env);
+int	check_builtins(int argc, char *command, char **args);
 char	**consume_env(t_env *env);
 #endif

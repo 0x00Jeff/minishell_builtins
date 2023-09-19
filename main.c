@@ -5,6 +5,8 @@
 #include<stdlib.h>
 #include<libft.h>
 
+int g_exit_status;
+
 
 int	main(int argc, char *argv[], char **envp)
 {
@@ -13,12 +15,11 @@ int	main(int argc, char *argv[], char **envp)
 	char	**args;
 	char	**tmp;
 	size_t	size;
-	t_env	*env;
 	char	*tmp_pwd;
 
 	(void)argv;
 	(void)argc;
-	env = create_env(envp);			// TODO : add this
+	create_env(envp);			// TODO : add this
 	tmp_pwd = getcwd(NULL, 0);
 	pwd_trolling(tmp_pwd); // TODO : add this
 	free(tmp_pwd);
@@ -38,7 +39,7 @@ int	main(int argc, char *argv[], char **envp)
 		tmp = &args[1];
 		while (*tmp++)
 			size++;
-		check_builtins(size, command_ptr, &args[1], &env);
+		check_builtins(size, command_ptr, &args[1]);
 		memset(command, 0, sizeof(command));
 		free_list(args);
 	}
