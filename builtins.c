@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/20 19:12:23 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/21 00:15:04 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,17 @@ int	export(int argc, char **argv, t_env **env)
 	i = 0;
 	while (i < argc)
 	{
-// TODO : move this outside of the loop -> check the validity of all keys before modifying it
 		ptr = argv[i++];
 		if (validate_var_name(ptr))
 		{
 			printf("export: `%s': not a valid identifier\n", ptr);
 			return (1);
 		}
+	}
+	i = 0;
+	while (i < argc)
+	{
+		ptr = argv[i++];
 		tmp = ft_split(ptr, '=');
 		if (!tmp)
 			continue ;

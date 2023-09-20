@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:37:21 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/20 19:24:09 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/21 00:29:41 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ char	*join_dirs(char *dirname, char *basename);
 char	*get_env_value(char *var);
 t_env	*get_envp(t_env *envp);
 t_env	**get_envp_internal(t_env *envp);
+void concate_env(char *elem);
 #endif

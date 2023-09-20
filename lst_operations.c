@@ -6,7 +6,7 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:40:43 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/01 03:02:41 by ylyoussf         ###   ########.fr       */
+/*   Updated: 2023/09/21 00:37:56 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <libft.h>
@@ -35,11 +35,28 @@ t_env	*ft_lstnew(char *elem, t_env *prev)
 		if (elem[split_index + 1] == '\0')
 			node -> value = NULL;
 		else
-			node -> value = ft_strdup(elem + split_index + 1);
+			node -> value = ft_strdup(elem + split_index + 1);;
 		node -> equal_sign = "";
 	}
 	node -> prev = prev;
 	node -> next = NULL;
+	return (node);
+}
+
+t_env	*ft_better_lstnew(char *key, char *value, int equal_sign, t_env *prev)
+{
+	t_env	*node;
+
+	node = (t_env *)malloc(sizeof(t_env));
+	if (!node)
+		return (NULL);
+	node -> key = ft_strdup(key);
+	node -> value = value;
+	node -> equal_sign = NULL;
+	node -> prev = prev;
+	node -> next = NULL;
+	if (equal_sign)
+		node -> equal_sign = "";
 	return (node);
 }
 

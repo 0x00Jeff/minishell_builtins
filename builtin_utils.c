@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/20 19:24:33 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/21 00:38:12 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,41 @@ void	edit_env(t_env *node, char *value)
 		return ;
 	free(node->value);
 	node->value = ft_strdup(value);
+}
+
+void concate_env(char *elem)
+{
+	puts("function called with");
+	puts(elem);
+	size_t	split_index;
+	char 	*key;
+	char	*value;
+	t_env 	*node;
+	char *old_value;
+	if (!elem)
+		return;
+
+	split_index = (size_t)ft_strchr(elem, '+') - (size_t)elem;
+	key = ft_substr(elem, 0, split_index);
+	if (elem[split_index + 2] == '\0')
+		value = NULL;
+	else
+		value = ft_strdup(elem + split_index + 2);
+
+	printf("key = '%s'\n", key);
+	printf("value = '%s'\n", value);
+	node = search_in_env(get_envp(NULL), key);
+	if (node)
+	{
+		old_value = node -> value;
+		node -> value = ft_strjoin(old_value, value);
+		free(old_value);
+	}
+	else
+	{
+		node = ft_better_lstnew(key, value, 1, ft_lstlast(get_envp(NULL)));
+		ft_lstadd_back(get_envp_internal(NULL), node);
+	}
 }
 
 char	*pwd_trolling(char *str)
