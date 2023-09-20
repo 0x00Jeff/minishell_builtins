@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/21 00:38:12 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/21 00:53:31 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,22 +127,25 @@ void	del_from_env(t_env **env, char *key)
 	ft_lstdelone(node, free);
 }
 
-// TODO : this function needs some work
 int	validate_var_name(char *str)
 {
 	char	*key;
 	size_t	split_index;
 	int		res;
+	char *concat_sign;
+	char *equal_sign;
 
-	if (!str || !strcmp(str, "=")) // TODO : use libft verison that has strcmp
+	if (!str || !strcmp(str, "=") || ft_isdigit(str[0])) // TODO : use libft verison that has strcmp
 		return (1);
-	if (ft_isdigit(str[0]))
-		return (1);
-	if (ft_strchr(str, '='))
-	{
+	equal_sign = ft_strchr(str, '=');
+	concat_sign = ft_strnstr(str, "+=", ft_strlen(str));
+	split_index = 0;
+	if (concat_sign && (size_t)concat_sign < (size_t)equal_sign)
+		split_index = (size_t)ft_strchr(str, '+') - (size_t)str;
+	else if (equal_sign)
 		split_index = (size_t)ft_strchr(str, '=') - (size_t)str;
+	if (split_index)
 		key = ft_substr(str, 0, split_index);
-	}
 	else
 		key = ft_strdup(str);
 	res = ft_is_alphanum_underscore(key + 1);
