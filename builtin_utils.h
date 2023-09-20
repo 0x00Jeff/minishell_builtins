@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:37:21 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/20 19:14:19 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/20 19:24:09 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int		consist_of(char *line, char c);
 size_t	count(const char *s, int c);
-void	create_env(void);
+void	create_env(char **envp);
 t_env	*search_in_env(t_env *env, char *key);
 void	del_from_env(t_env **env, char *key);
 int		validate_var_name(char *str);

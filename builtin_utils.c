@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/20 19:14:11 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/20 19:24:33 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,8 +228,7 @@ char	*structure_path(char *curr_dir, char *dir)
 	slice_ptr = slice;
 	while (*slice_ptr)
 	{
-		//		printf("- slice = %s && slice++ = %s\n", *slice_ptr, *(slice_ptr
-						+ 1));
+		//		printf("- slice = %s && slice++ = %s\n", *slice_ptr, *(slice_ptr + 1));
 		if (*(slice_ptr + 1) && !strcmp(*(slice_ptr + 1), ".."))
 		{
 			//			printf("skipping over '%s'\n", *slice_ptr);
