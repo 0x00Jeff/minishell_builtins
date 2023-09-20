@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/20 11:38:53 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/20 15:15:58 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ char *pwd_trolling(char *str)
 	if (!str)
 		return (pwd);
 	free(pwd);
-	pwd = ft_strdup(str);
+	pwd = trim_path(str);
 	return (pwd);
 }
 
@@ -206,9 +206,9 @@ char *structure_path(char *curr_dir, char *dir)
 	if (!curr_dir || !dir)
 		return (NULL);
 	if (!strcmp(dir, "."))
-		return ft_strdup(pwd_trolling(NULL));
+		return ft_strdup(curr_dir);
 	if (*dir == '/')
-		return ft_strdup(dir);
+		return (ft_strdup(dir));
 	if (!ft_strnstr(dir, "..", ft_strlen(dir)))
 	{
 		tmp = ft_strjoin(curr_dir, "/");
@@ -216,7 +216,7 @@ char *structure_path(char *curr_dir, char *dir)
 		return (free(tmp), path);
 	}
 	path = ft_strdup("/");
-	tmp_path = join_dirs(pwd_trolling(NULL), dir);
+	tmp_path = join_dirs(curr_dir, dir);
 	slice = ft_split(tmp_path, '/');
 	free(tmp_path);
 //	slice_ptr = slice;
@@ -243,6 +243,35 @@ char *structure_path(char *curr_dir, char *dir)
 	}
 	free_list(slice);
 	return (path);
+}
+
+char *trim_path(char *pwd)
+{
+	size_t pwd_len;
+	size_t i;
+	size_t fake_i;
+	char *buff;
+
+	pwd_len = ft_strlen(pwd);
+	if (ft_strlen(pwd) == 1)
+		return ft_strdup(pwd);
+	buff = malloc((pwd_len + 1 )* sizeof(char));
+	// TODO : fuck protection xd;
+	i = 0;
+	fake_i = 0;
+	while(fake_i < pwd_len)
+	{
+		if (pwd[fake_i] == '/' && pwd[fake_i + 1] == '/')
+		{
+			fake_i++;
+			continue;
+		}
+		buff[i++] = pwd[fake_i++];
+	}
+	buff[i--] = 0;
+	if (ft_strlen(buff) > 1 && buff[i] == '/')
+		buff[i] = '\0';
+	return (buff);
 }
 
 char *join_dirs(char *dirname, char *basename)

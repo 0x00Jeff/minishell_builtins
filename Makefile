@@ -24,7 +24,7 @@ $(NAME): rf_lib $(M_OBJ)
 exec:	$(EXEC_OBJ) $(LIBFT)/libft.a
 	$(CC) $(CFLAGS) $(EXEC_OBJ) $(LIBFT)/libft.a -o $(EXEC)
 
-cp:
+cp: $(NAME)
 	cp -v $(M_SRC) $(M_HEAD) ~/git/1337/minishell-1337/src/minishell_builtins/
 
 $(LIBFT)/libft.a:
