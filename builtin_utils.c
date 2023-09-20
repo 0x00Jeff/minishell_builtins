@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/19 18:45:44 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/20 11:38:53 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ int	validate_var_name(char *str)
 
 	if (!str || !strcmp(str, "=")) // TODO : use libft verison that has strcmp
 		return (1);
-	if (!ft_isalpha(str[0]))
+	if (ft_isdigit(str[0]))
 		return (1);
 	if (ft_strchr(str, '='))
 	{

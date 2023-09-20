@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/19 18:50:58 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/20 11:35:58 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	export(int argc, char **argv, t_env **env)
 	char	**tmp;
 	t_env	*tmp_node;
 
-	printf("env = %p -> %p\n", env, *env);
 	if (!env)
 		return (1);
 	if (!argc)
