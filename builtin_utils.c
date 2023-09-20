@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/20 15:15:58 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/20 19:14:11 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <string.h> // TODO : use libft's instead
 #include <unistd.h>
 
-int	consists_of(char *line, char c)
+int	consist_of(char *line, char c)
 {
 	return (count(line, c) == ft_strlen(line));
 }
@@ -40,7 +40,7 @@ void	create_env(char **envp)
 	t_env	*ptr;
 
 	if (!envp)
-		return;
+		return ;
 	env = get_envp_internal(NULL);
 	prev = NULL;
 	while (*envp)
@@ -60,15 +60,15 @@ int	print_exports(t_env *env)
 	ptr = env;
 	while (ptr)
 	{
-		if (ptr -> equal_sign)
+		if (ptr->equal_sign)
 		{
-			if (ptr -> value)
-				printf("declare -x %s=%s\n", ptr -> key, ptr -> value);
+			if (ptr->value)
+				printf("declare -x %s=%s\n", ptr->key, ptr->value);
 			else
-				printf("declare -x %s=\"\"\n", ptr -> key);
+				printf("declare -x %s=\"\"\n", ptr->key);
 		}
 		else
-			printf("declare -x %s\n", ptr -> key);
+			printf("declare -x %s\n", ptr->key);
 		ptr = ptr->next;
 	}
 	return (0);
@@ -83,8 +83,8 @@ int	print_env(t_env *env)
 	ptr = env;
 	while (ptr)
 	{
-		if (ptr -> equal_sign && ptr -> value)
-			printf("%s=%s\n", ptr -> key, ptr -> value);
+		if (ptr->equal_sign && ptr->value)
+			printf("%s=%s\n", ptr->key, ptr->value);
 		ptr = ptr->next;
 	}
 	return (0);
@@ -130,9 +130,9 @@ void	del_from_env(t_env **env, char *key)
 // TODO : this function needs some work
 int	validate_var_name(char *str)
 {
-	char *key;
-	size_t split_index;
-	int res;
+	char	*key;
+	size_t	split_index;
+	int		res;
 
 	if (!str || !strcmp(str, "=")) // TODO : use libft verison that has strcmp
 		return (1);
@@ -150,11 +150,11 @@ int	validate_var_name(char *str)
 	return (res);
 }
 
-int ft_is_alphanum_underscore(char *str)
+int	ft_is_alphanum_underscore(char *str)
 {
 	if (!str)
 		return (1);
-	while(*str)
+	while (*str)
 	{
 		if (!ft_isalnum(*str) && *str != '_')
 			return (1);
@@ -182,12 +182,13 @@ void	edit_env(t_env *node, char *value)
 	if (!node || !value)
 		return ;
 	free(node->value);
-	node -> value = ft_strdup(value);
+	node->value = ft_strdup(value);
 }
 
-char *pwd_trolling(char *str)
+char	*pwd_trolling(char *str)
 {
-	static char *pwd;
+	static char	*pwd;
+
 	if (!str)
 		return (pwd);
 	free(pwd);
@@ -195,18 +196,18 @@ char *pwd_trolling(char *str)
 	return (pwd);
 }
 
-char *structure_path(char *curr_dir, char *dir)
+char	*structure_path(char *curr_dir, char *dir)
 {
-	char *path;
-	char **slice;
-	char **slice_ptr;
-	char *tmp;
-	char *tmp_path;
+	char	*path;
+	char	**slice;
+	char	**slice_ptr;
+	char	*tmp;
+	char	*tmp_path;
 
 	if (!curr_dir || !dir)
 		return (NULL);
 	if (!strcmp(dir, "."))
-		return ft_strdup(curr_dir);
+		return (ft_strdup(curr_dir));
 	if (*dir == '/')
 		return (ft_strdup(dir));
 	if (!ft_strnstr(dir, "..", ft_strlen(dir)))
@@ -219,24 +220,25 @@ char *structure_path(char *curr_dir, char *dir)
 	tmp_path = join_dirs(curr_dir, dir);
 	slice = ft_split(tmp_path, '/');
 	free(tmp_path);
-//	slice_ptr = slice;
-//	while(*slice_ptr)
-//		printf("%s/", *slice_ptr++);
-//	puts("");
+	//	slice_ptr = slice;
+	//	while(*slice_ptr)
+	//		printf("%s/", *slice_ptr++);
+	//	puts("");
 	// TODO : protect this split?
 	slice_ptr = slice;
 	while (*slice_ptr)
 	{
-//		printf("- slice = %s && slice++ = %s\n", *slice_ptr, *(slice_ptr + 1));
+		//		printf("- slice = %s && slice++ = %s\n", *slice_ptr, *(slice_ptr
+						+ 1));
 		if (*(slice_ptr + 1) && !strcmp(*(slice_ptr + 1), ".."))
 		{
-//			printf("skipping over '%s'\n", *slice_ptr);
-			slice_ptr+=2;
-			continue;
+			//			printf("skipping over '%s'\n", *slice_ptr);
+			slice_ptr += 2;
+			continue ;
 		}
-//		printf("===> joining '%s' and '%s'\n", path, *slice_ptr);
+		//		printf("===> joining '%s' and '%s'\n", path, *slice_ptr);
 		tmp = join_dirs(path, *slice_ptr);
-//		printf("===> so far path = '%s'\n", tmp);
+		//		printf("===> so far path = '%s'\n", tmp);
 		free(path);
 		path = tmp;
 		slice_ptr++;
@@ -245,26 +247,26 @@ char *structure_path(char *curr_dir, char *dir)
 	return (path);
 }
 
-char *trim_path(char *pwd)
+char	*trim_path(char *pwd)
 {
-	size_t pwd_len;
-	size_t i;
-	size_t fake_i;
-	char *buff;
+	size_t	pwd_len;
+	size_t	i;
+	size_t	fake_i;
+	char	*buff;
 
 	pwd_len = ft_strlen(pwd);
 	if (ft_strlen(pwd) == 1)
-		return ft_strdup(pwd);
-	buff = malloc((pwd_len + 1 )* sizeof(char));
+		return (ft_strdup(pwd));
+	buff = malloc((pwd_len + 1) * sizeof(char));
 	// TODO : fuck protection xd;
 	i = 0;
 	fake_i = 0;
-	while(fake_i < pwd_len)
+	while (fake_i < pwd_len)
 	{
 		if (pwd[fake_i] == '/' && pwd[fake_i + 1] == '/')
 		{
 			fake_i++;
-			continue;
+			continue ;
 		}
 		buff[i++] = pwd[fake_i++];
 	}
@@ -274,10 +276,11 @@ char *trim_path(char *pwd)
 	return (buff);
 }
 
-char *join_dirs(char *dirname, char *basename)
+char	*join_dirs(char *dirname, char *basename)
 {
-	char *tmp;
-	char *path;
+	char	*tmp;
+	char	*path;
+
 	if (!dirname || !basename)
 		return (NULL);
 	if (!strcmp(dirname, "/"))
@@ -327,7 +330,6 @@ t_env	**get_envp_internal(t_env *envp)
 
 	if (envp)
 		env = envp;
-
 	return (&env);
 }
 

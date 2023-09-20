@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/20 11:35:58 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/20 19:12:23 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,14 @@ int	echo(int argc, char **args)
 {
 	int		new_line;
 	int		i;
-	char	*option;
+	char	*opt;
 
-	if (!args)
-		return (ft_putstr_fd("\n", 1), 0);
 	i = 0;
 	new_line = 1;
 	while (i <= argc - 1)
 	{
-		option = args[i];
-		if (option && ft_strlen(option + 1) && consists_of(option + 1, 'n'))
+		opt = args[i];
+		if (opt && ft_strlen(opt + 1) && consist_of(opt + 1, 'n'))
 		{
 			new_line = 0;
 			i++;
@@ -39,12 +37,8 @@ int	echo(int argc, char **args)
 			break ;
 	}
 	while (i < argc - 1)
-	{
-		ft_putstr_fd(args[i++], 1);
-		ft_putstr_fd(" ", 1);
-	}
-	if (i <= argc - 1)
-		ft_putstr_fd(args[i++], 1);
+		(ft_putstr_fd(args[i++], 1), ft_putstr_fd(" ", 1));
+	ft_putstr_fd(args[i++], 1);
 	if (new_line)
 		ft_putstr_fd("\n", 1);
 	return (0);
