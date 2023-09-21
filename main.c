@@ -37,6 +37,8 @@ int	main(int argc, char *argv[], char **envp)
 		if (strlen(command) == 1)
 			continue ;
 		args = ft_split(command, ' ');
+		if (!args)
+			continue;
 		command_ptr = args[0];
 		tmp = &args[1];
 		while (*tmp++)

@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/21 00:15:04 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/21 01:28:59 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,11 @@ int	export(int argc, char **argv, t_env **env)
 	while (i < argc)
 	{
 		ptr = argv[i++];
+		if (is_concate(ptr))
+		{
+			concate_env(ptr);
+			continue;
+		}
 		tmp = ft_split(ptr, '=');
 		if (!tmp)
 			continue ;

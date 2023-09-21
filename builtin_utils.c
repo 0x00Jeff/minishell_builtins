@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/21 00:53:31 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/21 01:26:42 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <string.h> // TODO : use libft's instead
 #include <unistd.h>
+#include <stdbool.h>
 
 int	consist_of(char *line, char c)
 {
@@ -132,25 +133,36 @@ int	validate_var_name(char *str)
 	char	*key;
 	size_t	split_index;
 	int		res;
-	char *concat_sign;
-	char *equal_sign;
 
 	if (!str || !strcmp(str, "=") || ft_isdigit(str[0])) // TODO : use libft verison that has strcmp
 		return (1);
-	equal_sign = ft_strchr(str, '=');
-	concat_sign = ft_strnstr(str, "+=", ft_strlen(str));
 	split_index = 0;
-	if (concat_sign && (size_t)concat_sign < (size_t)equal_sign)
+	if (is_concate(str))
 		split_index = (size_t)ft_strchr(str, '+') - (size_t)str;
-	else if (equal_sign)
+	else if (ft_strchr(str, '='))
 		split_index = (size_t)ft_strchr(str, '=') - (size_t)str;
 	if (split_index)
 		key = ft_substr(str, 0, split_index);
 	else
 		key = ft_strdup(str);
+	printf("key = '%s'\n", key);
 	res = ft_is_alphanum_underscore(key + 1);
 	free(key);
 	return (res);
+}
+
+int is_concate(char *str)
+{
+	char *concat_sign;
+	char *equal_sign;
+	if (!str)
+		return false;
+
+	equal_sign = ft_strchr(str, '=');
+	concat_sign = ft_strnstr(str, "+=", ft_strlen(str));
+	if (concat_sign && (size_t)concat_sign < (size_t)equal_sign)
+		return true;
+	return false;
 }
 
 int	ft_is_alphanum_underscore(char *str)
@@ -190,13 +202,9 @@ void	edit_env(t_env *node, char *value)
 
 void concate_env(char *elem)
 {
-	puts("function called with");
-	puts(elem);
 	size_t	split_index;
 	char 	*key;
 	char	*value;
-	t_env 	*node;
-	char *old_value;
 	if (!elem)
 		return;
 
@@ -206,15 +214,25 @@ void concate_env(char *elem)
 		value = NULL;
 	else
 		value = ft_strdup(elem + split_index + 2);
+	concate_env_node(key, value);
+}
 
-	printf("key = '%s'\n", key);
-	printf("value = '%s'\n", value);
+void concate_env_node(char *key, char *value)
+{
+	t_env 	*node;
+	char *old_value;
+	if (!key)
+		return;
+
+	printf("key = '%s', value = '%s'\n", key, value);
 	node = search_in_env(get_envp(NULL), key);
 	if (node)
 	{
+		free(key);
 		old_value = node -> value;
 		node -> value = ft_strjoin(old_value, value);
 		free(old_value);
+		free(value);
 	}
 	else
 	{

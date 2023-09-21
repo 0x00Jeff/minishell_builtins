@@ -6,7 +6,7 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:40:43 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/21 00:37:56 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/21 01:19:39 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <libft.h>
@@ -50,7 +50,7 @@ t_env	*ft_better_lstnew(char *key, char *value, int equal_sign, t_env *prev)
 	node = (t_env *)malloc(sizeof(t_env));
 	if (!node)
 		return (NULL);
-	node -> key = ft_strdup(key);
+	node -> key = key;
 	node -> value = value;
 	node -> equal_sign = NULL;
 	node -> prev = prev;
