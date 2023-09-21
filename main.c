@@ -23,8 +23,6 @@ int	main(int argc, char *argv[], char **envp)
 	tmp_pwd = getcwd(NULL, 0);
 	pwd_trolling(tmp_pwd); // TODO : add this
 	free(tmp_pwd);
-	concate_env("kek+=lol");
-	concate_env("kek+=lol");
 	while (1)
 	{
 		size = 0;

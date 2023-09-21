@@ -1,4 +1,3 @@
 - stress test the return value of the builtins
 - implement checking the existence of a path in cd
-- export +=
 - sort export keys ?

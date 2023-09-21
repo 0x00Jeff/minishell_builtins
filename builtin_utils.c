@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/21 01:26:42 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/21 01:32:17 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,6 @@ int	validate_var_name(char *str)
 		key = ft_substr(str, 0, split_index);
 	else
 		key = ft_strdup(str);
-	printf("key = '%s'\n", key);
 	res = ft_is_alphanum_underscore(key + 1);
 	free(key);
 	return (res);
@@ -224,7 +223,6 @@ void concate_env_node(char *key, char *value)
 	if (!key)
 		return;
 
-	printf("key = '%s', value = '%s'\n", key, value);
 	node = search_in_env(get_envp(NULL), key);
 	if (node)
 	{
