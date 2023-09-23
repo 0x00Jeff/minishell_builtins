@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/21 01:32:17 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/23 19:43:29 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -355,7 +355,7 @@ char	*get_env_value(char *var)
 
 	node = search_in_env(get_envp(NULL), var + 1);
 	free(var);
-	if (!node)
+	if (!node || !node -> value)
 		return (ft_strdup(""));
 	value = node->value;
 	return (ft_strdup(value));
