@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/23 19:43:29 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/23 19:49:03 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,7 +210,7 @@ void concate_env(char *elem)
 	split_index = (size_t)ft_strchr(elem, '+') - (size_t)elem;
 	key = ft_substr(elem, 0, split_index);
 	if (elem[split_index + 2] == '\0')
-		value = NULL;
+		value = ft_strdup("");
 	else
 		value = ft_strdup(elem + split_index + 2);
 	concate_env_node(key, value);
@@ -355,7 +355,7 @@ char	*get_env_value(char *var)
 
 	node = search_in_env(get_envp(NULL), var + 1);
 	free(var);
-	if (!node || !node -> value)
+	if (!node)
 		return (ft_strdup(""));
 	value = node->value;
 	return (ft_strdup(value));
