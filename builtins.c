@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/23 20:04:55 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/24 21:22:27 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,9 @@ int	export(int argc, char **argv, t_env **env)
 		return (1);
 	if (!argc)
 		return (print_exports(*env));
-	i = 0;
-	while (i < argc)
-	{
-		ptr = argv[i++];
-		if (validate_var_name(ptr))
-		{
-			printf("export: `%s': not a valid identifier\n", ptr);
-			return (1);
-		}
-	}
+
+	if (validate_args(argc, argv))
+		return (1);
 	i = 0;
 	while (i < argc)
 	{

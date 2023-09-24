@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/23 19:49:03 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/24 21:46:28 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,13 +128,36 @@ void	del_from_env(t_env **env, char *key)
 	ft_lstdelone(node, free);
 }
 
+int validate_args(int args_num, char **args)
+{
+	int i;
+	if (!args)
+		return false;
+
+	i = 0;
+	while (i < args_num){
+		if (validate_var_name(args[i]))
+		{
+			printf("export: `%s': not a valid identifier\n", args[i]);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+int is_bad_env_name_start(char c)
+{
+	return (!ft_isalpha(c) && (c != '_'));
+}
+
 int	validate_var_name(char *str)
 {
 	char	*key;
 	size_t	split_index;
 	int		res;
 
-	if (!str || !strcmp(str, "=") || ft_isdigit(str[0])) // TODO : use libft verison that has strcmp
+	if (!str || is_bad_env_name_start(str[0]))
 		return (1);
 	split_index = 0;
 	if (is_concate(str))
