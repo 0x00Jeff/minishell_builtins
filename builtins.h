@@ -7,6 +7,7 @@
 extern int	g_exit_status;
 
 int			echo(int argc, char **args);
+////// new stuff
 int			cd(char *arg, t_env *env);
 void		my_exit(char *arg);
 int			export(int argc, char **argv, t_env **env);

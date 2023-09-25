@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 22:27:45 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/15 01:10:27 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/25 01:20:50 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,3 @@
 #include <stdio.h>
 #include "builtins.h"
 
-char	**consume_env(t_env *env)
-{
-	size_t	i;
-	char	**ptr;
-	size_t size;
-	t_env	*node;
-	char	*tmp;
-	if (!env)
-		return (NULL);
-
-	size = ft_lstsize(env);
-	ptr = (char **)malloc((size + 1) * sizeof(char *));
-	node = env;
-	i = 0;
-	while (i < size)
-	{
-		tmp = ft_strjoin(node -> key, "=");
-		// TODO: protect this
-		ptr[i++] = ft_strjoin(tmp, node -> value);
-		free(tmp);
-		node = node -> next;
-	}
-	ptr[i] = 0;
-	return (ptr);
-}
