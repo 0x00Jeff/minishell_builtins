@@ -142,4 +142,5 @@ void log_last_command(char *value)
 	arr[1] = 0;
 
 	export(1, arr, get_envp_internal(NULL));
+	free(arr[0]);
 }
