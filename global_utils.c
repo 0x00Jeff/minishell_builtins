@@ -131,3 +131,15 @@ void	create_env(char **envp)
 		prev = ptr;
 	}
 }
+
+void log_last_command(char *value)
+{
+	char *arr[2];
+	if (!value)
+		return;
+
+	arr[0] = ft_strjoin("_=", value);
+	arr[1] = 0;
+
+	export(1, arr, get_envp_internal(NULL));
+}

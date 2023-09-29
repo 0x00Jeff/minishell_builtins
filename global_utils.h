@@ -12,4 +12,6 @@ t_env	*get_envp(t_env *envp);
 char	**consume_env(t_env *env);
 char	*get_env_value(char *var);
 void	create_env(char **envp);
+void log_last_command(char *value);
+int	export(int argc, char **argv, t_env **env);
 #endif
