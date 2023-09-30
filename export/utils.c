@@ -1,4 +1,16 @@
-#include"utils.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/30 14:35:10 by afatimi           #+#    #+#             */
+/*   Updated: 2023/09/30 14:35:11 by afatimi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "utils.h"
 
 int	print_exports(t_env *env)
 {
@@ -23,14 +35,15 @@ int	print_exports(t_env *env)
 	return (0);
 }
 
-int validate_args(int args_num, char **args)
+int	validate_args(int args_num, char **args)
 {
-	int i;
-	if (!args)
-		return false;
+	int	i;
 
+	if (!args)
+		return (false);
 	i = 0;
-	while (i < args_num){
+	while (i < args_num)
+	{
 		if (validate_var_name(args[i]))
 		{
 			printf("export: `%s': not a valid identifier\n", args[i]);
@@ -41,28 +54,28 @@ int validate_args(int args_num, char **args)
 	return (0);
 }
 
-int is_concate(char *str)
+int	is_concate(char *str)
 {
-	char *concat_sign;
-	char *equal_sign;
-	if (!str)
-		return false;
+	char	*concat_sign;
+	char	*equal_sign;
 
+	if (!str)
+		return (false);
 	equal_sign = ft_strchr(str, '=');
 	concat_sign = ft_strnstr(str, "+=", ft_strlen(str));
 	if (concat_sign && (size_t)concat_sign < (size_t)equal_sign)
-		return true;
-	return false;
+		return (true);
+	return (false);
 }
 
-void concate_env(char *elem)
+void	concate_env(char *elem)
 {
 	size_t	split_index;
-	char 	*key;
+	char	*key;
 	char	*value;
-	if (!elem)
-		return;
 
+	if (!elem)
+		return ;
 	split_index = (size_t)ft_strchr(elem, '+') - (size_t)elem;
 	key = ft_substr(elem, 0, split_index);
 	if (elem[split_index + 2] == '\0')
@@ -116,24 +129,24 @@ int	validate_var_name(char *str)
 	return (res);
 }
 
-int is_bad_env_name_start(char c)
+int	is_bad_env_name_start(char c)
 {
 	return (!ft_isalpha(c) && (c != '_'));
 }
 
-void concate_env_node(char *key, char *value)
+void	concate_env_node(char *key, char *value)
 {
-	t_env 	*node;
-	char *old_value;
-	if (!key)
-		return;
+	t_env	*node;
+	char	*old_value;
 
+	if (!key)
+		return ;
 	node = search_in_env(get_envp(NULL), key);
 	if (node)
 	{
 		free(key);
-		old_value = node -> value;
-		node -> value = ft_strjoin(old_value, value);
+		old_value = node->value;
+		node->value = ft_strjoin(old_value, value);
 		free(old_value);
 		free(value);
 	}
@@ -157,13 +170,13 @@ int	ft_is_alphanum_underscore(char *str)
 	return (0);
 }
 
-char *get_key(char *line)
+char	*get_key(char *line)
 {
-	size_t index;
-	char *equal_sign;
+	size_t	index;
+	char	*equal_sign;
+
 	if (!line)
 		return (NULL);
-
 	equal_sign = ft_strchr(line, '=');
 	if (!equal_sign)
 		return (ft_strdup(line));
@@ -171,9 +184,10 @@ char *get_key(char *line)
 	return (ft_substr(line, 0, index));
 }
 
-char *get_value(char *line)
+char	*get_value(char *line)
 {
-	char *equal_sign;
+	char	*equal_sign;
+
 	if (!line)
 		return (NULL);
 	equal_sign = ft_strchr(line, '=');
