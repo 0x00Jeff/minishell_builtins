@@ -1,4 +1,4 @@
-#include"utils.c"
+#include"utils.h"
 #include<stdio.h>
 
 int	cd(char *arg, t_env *env)

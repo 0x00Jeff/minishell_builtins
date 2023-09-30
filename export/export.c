@@ -13,6 +13,8 @@ int	export(int argc, char **argv, t_env **env)
 		return (print_exports(*env));
 	if (validate_args(argc, argv))
 		return (1);
+	puts(get_key(argv[0]));
+	puts(get_value(argv[0]));
 	i = 0;
 	while (i < argc)
 	{

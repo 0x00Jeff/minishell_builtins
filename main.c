@@ -32,7 +32,7 @@ int	main(int argc, char *argv[], char **envp)
 		fflush(stdout);
 		fgets(command, sizeof(command), stdin);
 		command[strlen(command) - 1] = 0;
-		if (strlen(command) == 1)
+		if (!strlen(command))
 			continue ;
 		args = ft_split(command, ' ');
 		if (!args)

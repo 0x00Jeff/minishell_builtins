@@ -12,6 +12,7 @@ int	check_builtins(int argc, char *command, char **args)
 	int res;
 	if (!command)
 		return (0);
+	res = 0;
 	used = 0;
 	if (!strcmp(command, "echo")) // TODO : use libft version that has ft_strcmp
 		(res = echo(argc, args), used = 1);
