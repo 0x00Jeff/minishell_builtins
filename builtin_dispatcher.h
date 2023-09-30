@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.c                                         :+:      :+:    :+:   */
+/*   builtin_dispatcher.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 22:50:41 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/24 23:39:15 by afatimi          ###   ########.fr       */
+/*   Created: 2023/09/30 14:01:34 by afatimi           #+#    #+#             */
+/*   Updated: 2023/09/30 14:01:48 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin_utils.h"
-#include "builtins.h"
-#include <libft.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#ifndef BUILTIN_DISPATCHER_H
+# define BUILTIN_DISPATCHER_H
+# include <libft.h>
 
-
-
+int		check_builtins(int argc, char *command, char **args, t_env **env);
+void	echo(int argc, char **args);
+void	pwd(void);
+void	cd(char *arg, t_env *env);
+#endif

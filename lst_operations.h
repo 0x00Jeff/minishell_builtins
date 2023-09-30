@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 22:01:05 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/23 19:01:42 by afatimi          ###   ########.fr       */
+/*   Created: 2023/09/30 14:03:16 by afatimi           #+#    #+#             */
+/*   Updated: 2023/09/30 14:03:40 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LST_OPEATIONS
-# define LST_OPEATIONS
+#ifndef LST_OPERATIONS_H
+# define LST_OPERATIONS_H
 # include <libft.h>
 
 t_env	*ft_lstnew(char *elem, t_env *prev);

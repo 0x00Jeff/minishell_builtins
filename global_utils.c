@@ -1,7 +1,19 @@
-#include<string.h> // TODO : GET RID OF THIS AND USE libft's instead!!
-#include "global_utils.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   global_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
+/*   Updated: 2023/09/30 14:08:49 by afatimi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-extern int g_exit_status;
+#include "global_utils.h"
+#include <string.h> // TODO : GET RID OF THIS AND USE libft's instead!!
+
+extern int	g_exit_status;
 
 char	*pwd_trolling(char *str)
 {
@@ -25,7 +37,6 @@ char	*trim_path(char *pwd)
 	if (ft_strlen(pwd) == 1)
 		return (ft_strdup(pwd));
 	buff = malloc((pwd_len + 1) * sizeof(char));
-	// TODO : fuck protection xd;
 	i = 0;
 	fake_i = 0;
 	while (fake_i < pwd_len)
@@ -79,23 +90,23 @@ char	**consume_env(t_env *env)
 {
 	size_t	i;
 	char	**ptr;
-	size_t size;
+	size_t	size;
 	t_env	*node;
 	char	*tmp;
+
 	if (!env)
 		return (NULL);
-
 	size = ft_lstsize(env);
 	ptr = (char **)malloc((size + 1) * sizeof(char *));
 	node = env;
 	i = 0;
 	while (i < size)
 	{
-		tmp = ft_strjoin(node -> key, "=");
+		tmp = ft_strjoin(node->key, "=");
 		// TODO: protect this
-		ptr[i++] = ft_strjoin(tmp, node -> value);
+		ptr[i++] = ft_strjoin(tmp, node->value);
 		free(tmp);
-		node = node -> next;
+		node = node->next;
 	}
 	ptr[i] = 0;
 	return (ptr);

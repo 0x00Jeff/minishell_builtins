@@ -1,9 +1,9 @@
 #include "utils.h"
-#include<stdio.h>
-#include<libft.h>
-#include<stdlib.h>
-#include<unistd.h>
-#include<string.h> // TODO : GET RID OF THIS AND USE LIBFT's INSTEAD!!
+#include <libft.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h> // TODO : GET RID OF THIS AND USE LIBFT's INSTEAD!!
+#include <unistd.h>
 
 void	change_directory(char *dir)
 {
@@ -14,7 +14,7 @@ void	change_directory(char *dir)
 	if (chdir(dir) == -1)
 	{
 		perror("chdir");
-		return ;
+		return;
 	}
 	path = structure_path(pwd_trolling(NULL), dir);
 	pwd_trolling(path);

@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:37:21 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/25 01:29:42 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/30 13:57:57 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_env	**get_envp_internal(t_env *envp);
 void	concate_env(char *elem);
 int		is_concate(char *str);
 void	concate_env_node(char *key, char *value);
-int validate_args(int args_num, char **args);
-int is_bad_env_name_start(char c);
-void log_last_command(char *value);
+int		validate_args(int args_num, char **args);
+int		is_bad_env_name_start(char c);
+void	log_last_command(char *value);
 #endif
