@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:35:10 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/01 16:25:10 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/01 16:32:06 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ void	concate_env(char *key, char *value)
 	node = search_in_env(get_envp(NULL), key);
 	if (node)
 	{
-		puts("node found!");
 		free(key);
 		old_value = node->value;
 		node->value = ft_strjoin(old_value, value);
@@ -136,7 +135,6 @@ void	concate_env(char *key, char *value)
 	}
 	else
 	{
-		puts("new node!");
 		node = ft_better_lstnew(key, value, 1, ft_lstlast(get_envp(NULL)));
 		ft_lstadd_back(get_envp_internal(NULL), node);
 	}
