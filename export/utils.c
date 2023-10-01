@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:35:10 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/30 14:55:39 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/01 16:25:10 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,26 +68,6 @@ int	is_concate(char *str)
 	return (false);
 }
 
-void	concate_env(char *elem)
-{
-	concate_env_node(get_key(elem), get_value(elem));
-	/*
-	size_t	split_index;
-	char	*key;
-	char	*value;
-
-	if (!elem)
-		return ;
-	split_index = (size_t)ft_strchr(elem, '+') - (size_t)elem;
-	key = ft_substr(elem, 0, split_index);
-	if (elem[split_index + 2] == '\0')
-		value = ft_strdup("");
-	else
-		value = ft_strdup(elem + split_index + 2);
-	concate_env_node(key, value);
-	*/
-}
-
 void	append_to_env(t_env **env, char *value)
 {
 	t_env	*prev;
@@ -137,7 +117,7 @@ int	is_bad_env_name_start(char c)
 	return (!ft_isalpha(c) && (c != '_'));
 }
 
-void	concate_env_node(char *key, char *value)
+void	concate_env(char *key, char *value)
 {
 	t_env	*node;
 	char	*old_value;
@@ -147,6 +127,7 @@ void	concate_env_node(char *key, char *value)
 	node = search_in_env(get_envp(NULL), key);
 	if (node)
 	{
+		puts("node found!");
 		free(key);
 		old_value = node->value;
 		node->value = ft_strjoin(old_value, value);
@@ -155,6 +136,7 @@ void	concate_env_node(char *key, char *value)
 	}
 	else
 	{
+		puts("new node!");
 		node = ft_better_lstnew(key, value, 1, ft_lstlast(get_envp(NULL)));
 		ft_lstadd_back(get_envp_internal(NULL), node);
 	}
@@ -181,10 +163,14 @@ char	*get_key(char *line)
 	if (!line)
 		return (NULL);
 	equal_sign = ft_strchr(line, '=');
-	if (!equal_sign)
-		return (ft_strdup(line));
-	index = (size_t)equal_sign - (size_t)line;
-	return (ft_substr(line, 0, index));
+	if (equal_sign)
+	{
+		index = (size_t)equal_sign - (size_t)line;
+		if (is_concate(line))
+			index--;
+		return (ft_substr(line, 0, index));
+	}
+	return (ft_strdup(line));
 }
 
 char	*get_value(char *line)

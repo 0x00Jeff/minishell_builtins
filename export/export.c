@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:52:58 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/30 14:55:41 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/01 16:25:41 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	export(int argc, char **argv, t_env **env)
 		ptr = argv[i++];
 		if (is_concate(ptr))
 		{
+			concate_env(get_key(ptr), get_value(ptr));
 //			puts("concating");
-			concate_env(ptr);
 			continue;
 		}
 		tmp = ft_split(ptr, '=');
