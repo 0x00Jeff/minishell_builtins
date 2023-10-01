@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/30 14:52:58 by afatimi           #+#    #+#             */
+/*   Updated: 2023/09/30 14:55:41 by afatimi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"utils.h"
 
 int	export(int argc, char **argv, t_env **env)
@@ -13,8 +25,6 @@ int	export(int argc, char **argv, t_env **env)
 		return (print_exports(*env));
 	if (validate_args(argc, argv))
 		return (1);
-	puts(get_key(argv[0]));
-	puts(get_value(argv[0]));
 	i = 0;
 	while (i < argc)
 	{

@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:35:10 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/30 14:35:11 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/09/30 14:55:39 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	is_concate(char *str)
 
 void	concate_env(char *elem)
 {
+	concate_env_node(get_key(elem), get_value(elem));
+	/*
 	size_t	split_index;
 	char	*key;
 	char	*value;
@@ -83,6 +85,7 @@ void	concate_env(char *elem)
 	else
 		value = ft_strdup(elem + split_index + 2);
 	concate_env_node(key, value);
+	*/
 }
 
 void	append_to_env(t_env **env, char *value)
