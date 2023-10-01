@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/01 15:48:29 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/01 16:55:22 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,12 +147,11 @@ void	create_env(char **envp)
 void log_last_command(char *value)
 {
 	char *arr[2];
+
 	if (!value)
 		return;
-
 	arr[0] = ft_strjoin("_=", value);
 	arr[1] = 0;
-
 	export(1, arr, get_envp_internal(NULL));
 	free(arr[0]);
 }

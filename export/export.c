@@ -6,17 +6,16 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:52:58 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/01 16:25:41 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/01 16:53:16 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"utils.h"
+#include "utils.h"
 
 int	export(int argc, char **argv, t_env **env)
 {
 	int		i;
 	char	*ptr;
-	char	**tmp;
 	t_env	*tmp_node;
 
 	if (!env)
@@ -29,27 +28,21 @@ int	export(int argc, char **argv, t_env **env)
 	while (i < argc)
 	{
 		ptr = argv[i++];
-		if (is_concate(ptr))
-		{
-			concate_env(get_key(ptr), get_value(ptr));
-//			puts("concating");
-			continue;
-		}
-		tmp = ft_split(ptr, '=');
-		if (!tmp)
+		if (handle_concate_case(ptr))
 			continue ;
-		tmp_node = search_in_env(*env, tmp[0]);
+		tmp_node = search_in_env(*env, get_key(ptr));
 		if (!tmp_node)
-		{
-//			puts("appending to env");
 			append_to_env(env, ptr);
-		}
 		else
-		{
-//			puts("editing env");
-			edit_env(tmp_node, tmp[1]);
-		}
-		free_list(tmp);
+			edit_env(tmp_node, get_value(ptr));
 	}
 	return (0);
+}
+
+int	handle_concate_case(char *line)
+{
+	if (!line || !is_concate(line))
+		return (0);
+	concate_env(get_key(line), get_value(line));
+	return (1);
 }
