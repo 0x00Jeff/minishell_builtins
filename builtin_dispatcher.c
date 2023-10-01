@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:09:31 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/30 14:15:52 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/01 16:21:15 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	check_builtins(int argc, char *command, char **args)
 	else if (!strcmp(command, "env"))
 		res = env_(get_envp_internal(NULL));
 	else
-		res = 0;
-	g_exit_status = res;
+		used = 0;
+	if (used)
+		g_exit_status = res;
 	return (used);
 }
