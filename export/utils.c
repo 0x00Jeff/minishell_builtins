@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:35:10 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/02 14:31:52 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/02 14:36:57 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	edit_env(t_env *node, char *value)
 	if (!node || !value)
 		return ;
 	free(node->value);
-	node->value = ft_strdup(value);
+	node->value = value;
 }
 
 int	validate_var_name(char *str)
