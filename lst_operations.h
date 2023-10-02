@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:03:16 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/30 14:03:40 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/02 14:27:10 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define LST_OPERATIONS_H
 # include <libft.h>
 
-t_env	*ft_lstnew(char *elem, t_env *prev);
-t_env	*ft_better_lstnew(char *key, char *value, int equal_sign, t_env *prev);
+t_env	*ft_lstnew(char *key, char *value, int equal_sign, t_env *prev);
 void	ft_lstadd_back(t_env **lst, t_env *new);
 int		ft_lstsize(t_env *lst);
 void	ft_lstdelone(t_env *lst, void (*del)(void *));

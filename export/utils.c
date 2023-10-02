@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:35:10 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/02 00:38:04 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/02 14:37:41 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	is_concate(char *str)
 	return (false);
 }
 
-void	append_to_env(t_env **env, char *value)
+void	append_to_env(t_env **env, char *value, int equal_sign)
 {
 	t_env	*prev;
 	t_env	*node;
@@ -78,7 +78,7 @@ void	append_to_env(t_env **env, char *value)
 	prev = NULL;
 	if (*env)
 		prev = ft_lstlast(*env);
-	node = ft_lstnew(value, prev);
+	node = ft_lstnew(get_key(value), get_value(value), equal_sign, prev);
 	ft_lstadd_back(env, node);
 }
 
@@ -135,7 +135,7 @@ void	concate_env(char *key, char *value)
 	}
 	else
 	{
-		node = ft_better_lstnew(key, value, 1, ft_lstlast(get_envp(NULL)));
+		node = ft_lstnew(key, value, 1, ft_lstlast(get_envp(NULL)));
 		ft_lstadd_back(get_envp_internal(NULL), node);
 	}
 }
@@ -151,34 +151,4 @@ int	ft_is_alphanum_underscore(char *str)
 		str++;
 	}
 	return (0);
-}
-
-char	*get_key(char *line)
-{
-	size_t	index;
-	char	*equal_sign;
-
-	if (!line)
-		return (NULL);
-	equal_sign = ft_strchr(line, '=');
-	if (equal_sign)
-	{
-		index = (size_t)equal_sign - (size_t)line;
-		if (is_concate(line))
-			index--;
-		return (ft_substr(line, 0, index));
-	}
-	return (ft_strdup(line));
-}
-
-char	*get_value(char *line)
-{
-	char	*equal_sign;
-
-	if (!line)
-		return (NULL);
-	equal_sign = ft_strchr(line, '=');
-	if (!equal_sign)
-		return (ft_strdup(""));
-	return (ft_substr(equal_sign, 1, ft_strlen(equal_sign + 1)));
 }

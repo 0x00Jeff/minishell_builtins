@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:02:00 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/01 15:44:53 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/02 14:15:02 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,6 @@ t_env		*get_envp(t_env *envp);
 char		**consume_env(t_env *env);
 char		*get_env_value(char *var);
 void		create_env(char **envp);
+char		*get_key(char *line);
+char		*get_value(char *line);
 #endif
