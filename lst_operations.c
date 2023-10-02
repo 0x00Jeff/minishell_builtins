@@ -6,14 +6,16 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:40:43 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/30 14:06:26 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/02 14:17:27 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <libft.h>
 #include <stdio.h> // TODO : delete this
 #include "lst_operations.h"
+#include "global_utils.h"
 #include <stdlib.h>
 
+/*
 t_env	*ft_lstnew(char *elem, t_env *prev)
 {
 	t_env	*node;
@@ -41,6 +43,12 @@ t_env	*ft_lstnew(char *elem, t_env *prev)
 	node -> prev = prev;
 	node -> next = NULL;
 	return (node);
+}
+*/
+
+t_env *ft_lstnew(char *elem, t_env *prev)
+{
+	return (ft_better_lstnew(get_key(elem), get_value(elem), !!ft_strchr(elem, '='), prev));
 }
 
 t_env	*ft_better_lstnew(char *key, char *value, int equal_sign, t_env *prev)

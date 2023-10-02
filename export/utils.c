@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:35:10 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/01 16:32:06 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/02 14:14:49 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,34 +151,4 @@ int	ft_is_alphanum_underscore(char *str)
 		str++;
 	}
 	return (0);
-}
-
-char	*get_key(char *line)
-{
-	size_t	index;
-	char	*equal_sign;
-
-	if (!line)
-		return (NULL);
-	equal_sign = ft_strchr(line, '=');
-	if (equal_sign)
-	{
-		index = (size_t)equal_sign - (size_t)line;
-		if (is_concate(line))
-			index--;
-		return (ft_substr(line, 0, index));
-	}
-	return (ft_strdup(line));
-}
-
-char	*get_value(char *line)
-{
-	char	*equal_sign;
-
-	if (!line)
-		return (NULL);
-	equal_sign = ft_strchr(line, '=');
-	if (!equal_sign)
-		return (ft_strdup(""));
-	return (ft_substr(equal_sign, 1, ft_strlen(equal_sign + 1)));
 }
