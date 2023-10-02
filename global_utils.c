@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/02 14:14:46 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/02 14:32:39 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,9 +138,11 @@ void	create_env(char **envp)
 	prev = NULL;
 	while (*envp)
 	{
-		ptr = ft_lstnew(*envp++, prev);
+		// make sure the flag should always be in this particular function
+		ptr = ft_lstnew(get_key(*envp), get_value(*envp), 1, prev);
 		ft_lstadd_back(env, ptr);
 		prev = ptr;
+		envp++;
 	}
 }
 
