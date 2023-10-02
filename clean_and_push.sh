@@ -5,6 +5,7 @@ make exec_fclean
 find . \( -name '*~' \) -delete
 find . \( -name ".*swp" \) -delete
 find . \( -name ".?*" \) -delete
+find . \( -name "*.o" \) -delete
 
 if [ $# != 1 ]
 then

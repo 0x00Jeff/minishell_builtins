@@ -1,0 +1,4 @@
+we don't set OLDPWD
+unset PWD; cd anything; fails to set pwd after its been unset
+export noure noure=hello noure+=hii
+export += doesn't add stuff to empty variables
