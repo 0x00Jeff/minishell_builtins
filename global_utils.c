@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/02 14:37:46 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/04 01:21:08 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_env	*search_in_env(t_env *env, char *key)
 	while (ptr)
 	{
 		if (!strcmp(ptr->key, key)) // TODO : use the libft version with strcmp
-			return (free(key), ptr);
+			return (ptr);
 		ptr = ptr->next;
 	}
 	return (free(key), NULL);
