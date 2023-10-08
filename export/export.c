@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:52:58 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/04 01:23:01 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/08 20:21:46 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	export(int argc, char **argv, t_env **env)
 		else
 			edit_env(tmp_node, get_value(ptr));
 	}
-	free(key);
 	return (0);
 }
 
