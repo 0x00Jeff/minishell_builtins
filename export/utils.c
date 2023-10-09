@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:35:10 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/09 15:43:50 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/09 16:28:38 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	print_exports(t_env *env)
 		if (ptr->equal_sign)
 		{
 			if (ptr->value)
-				printf("declare -x %s=%s\n", ptr->key, ptr->value);
+				printf("declare -x %s=\"%s\"\n", ptr->key, ptr->value);
 			else
 				printf("declare -x %s=\"\"\n", ptr->key);
 		}
@@ -88,7 +88,7 @@ void	edit_env(t_env *node, char *value, int equal_sign)
 		return ;
 	free(node->value);
 	node->value = value;
-	node -> equal_sign = equal_sign;
+	node->equal_sign = equal_sign;
 }
 
 int	validate_var_name(char *str)
@@ -131,6 +131,7 @@ void	concate_env(char *key, char *value)
 		free(key);
 		old_value = node->value;
 		node->value = ft_strjoin(old_value, value);
+		node->equal_sign = 1;
 		free(old_value);
 		free(value);
 	}
