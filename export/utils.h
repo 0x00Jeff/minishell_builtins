@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:25:08 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/02 14:32:26 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/08 20:25:53 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		validate_args(int args_num, char **args);
 int		is_concate(char *str);
 void	concate_env(char *key, char *value);
 void	append_to_env(t_env **env, char *value, int equal_sign);
-void	edit_env(t_env *node, char *value);
+void	edit_env(t_env *node, char *value, int equal_sign);
 int		validate_var_name(char *str);
 int		is_bad_env_name_start(char c);
 int		ft_is_alphanum_underscore(char *str);

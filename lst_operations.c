@@ -6,7 +6,7 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:40:43 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/02 14:26:22 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/09 15:42:18 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <libft.h>
@@ -24,11 +24,9 @@ t_env	*ft_lstnew(char *key, char *value, int equal_sign, t_env *prev)
 		return (NULL);
 	node -> key = key;
 	node -> value = value;
-	node -> equal_sign = NULL;
 	node -> prev = prev;
 	node -> next = NULL;
-	if (equal_sign)
-		node -> equal_sign = "";
+	node -> equal_sign = equal_sign;
 	return (node);
 }
 

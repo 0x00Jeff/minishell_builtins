@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:35:10 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/02 14:37:41 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/09 15:43:50 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,13 @@ void	append_to_env(t_env **env, char *value, int equal_sign)
 	ft_lstadd_back(env, node);
 }
 
-void	edit_env(t_env *node, char *value)
+void	edit_env(t_env *node, char *value, int equal_sign)
 {
 	if (!node || !value)
 		return ;
 	free(node->value);
 	node->value = value;
+	node -> equal_sign = equal_sign;
 }
 
 int	validate_var_name(char *str)
