@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/08 20:19:17 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/10 22:59:31 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char	*pwd_trolling(char *str)
 
 	if (!str)
 		return (pwd);
+	set_env_value(ft_strdup("OLDPWD"), trim_path(str), 1); // TODO : maybe shouldn't always be one!!;
 	free(pwd);
 	pwd = trim_path(str);
 	return (pwd);
@@ -186,4 +187,20 @@ char	*get_value(char *line)
 	if (!equal_sign)
 		return (ft_strdup(""));
 	return (ft_substr(equal_sign, 1, ft_strlen(equal_sign + 1)));
+}
+
+// TODO : might move this function to a more specific file!!
+void	set_env_value(char *key, char *value, int equal_sign)
+{
+	t_env	**env;
+	t_env	*node;
+
+	if (!key || !value)
+		return ;
+	env = get_envp_internal(NULL);
+	node = search_in_env(*env, value);
+	if (!node)
+		append_to_env(env, key, value, equal_sign);
+	else
+		edit_env(node, value);
 }

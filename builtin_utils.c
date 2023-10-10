@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:49:12 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/01 16:56:26 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/10 23:12:38 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,41 +20,6 @@
 #include <stdlib.h>
 #include <string.h> // TODO : use libft's instead
 #include <unistd.h>
-
-void	set_env_value(char *key, char *value, int equal_sign)
-{
-	t_env	**env;
-	t_env	*node;
-
-	if (!key || !value)
-		return ;
-	env = get_envp_internal(NULL);
-	node = search_in_env(*env, value);
-	if (!node)
-		better_append_to_env(env, key, value, equal_sign);
-	else
-		better_edit_env(node, value);
-}
-
-void	better_append_to_env(t_env **env, char *key, char *value,
-		int equal_sign)
-{
-	t_env	*prev;
-	t_env	*node;
-
-	if (!env || !value)
-		return ;
-	prev = NULL;
-	if (*env)
-		prev = ft_lstlast(*env);
-	node = ft_better_lstnew(key, value, equal_sign, prev);
-	ft_lstadd_back(env, node);
-}
-
-void	better_edit_env(t_env *env, char *value)
-{
-	edit_env(env, value);
-}
 
 void	log_last_command(char *value)
 {

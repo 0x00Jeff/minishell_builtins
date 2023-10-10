@@ -6,27 +6,28 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:40:43 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/09 15:42:18 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/10 23:05:05 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "global_utils.h"
+#include "lst_operations.h"
 #include <libft.h>
 #include <stdio.h> // TODO : delete this
-#include "lst_operations.h"
-#include "global_utils.h"
 #include <stdlib.h>
 
 t_env	*ft_lstnew(char *key, char *value, int equal_sign, t_env *prev)
 {
 	t_env	*node;
 
-	node = (t_env *)malloc(sizeof(t_env));;
+	node = (t_env *)malloc(sizeof(t_env));
 	if (!node)
 		return (NULL);
-	node -> key = key;
-	node -> value = value;
-	node -> prev = prev;
-	node -> next = NULL;
-	node -> equal_sign = equal_sign;
+	// TODO : protect malloc
+	node->key = key;
+	node->value = value;
+	node->prev = prev;
+	node->next = NULL;
+	node->equal_sign = equal_sign;
 	return (node);
 }
 

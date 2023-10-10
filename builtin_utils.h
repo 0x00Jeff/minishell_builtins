@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:37:21 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/01 15:44:41 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/10 23:01:02 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int		ft_is_alphanum_underscore(char *str);
 char	*pwd_trolling(char *str);
 void	change_directory(char *dir);
 char	*trim_path(char *pwd);
-void	append_to_env(t_env **env, char *value);
 void	edit_env(t_env *node, char *value);
 char	*get_env_value(char *var);
 t_env	*get_envp(t_env *envp);

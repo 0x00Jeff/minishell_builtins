@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:35:10 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/09 16:28:38 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/10 23:08:30 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	is_concate(char *str)
 	return (false);
 }
 
-void	append_to_env(t_env **env, char *value, int equal_sign)
+void	append_to_env(t_env **env, char *key, char *value, int equal_sign)
 {
 	t_env	*prev;
 	t_env	*node;
@@ -78,7 +78,7 @@ void	append_to_env(t_env **env, char *value, int equal_sign)
 	prev = NULL;
 	if (*env)
 		prev = ft_lstlast(*env);
-	node = ft_lstnew(get_key(value), get_value(value), equal_sign, prev);
+	node = ft_lstnew(key, value, equal_sign, prev);
 	ft_lstadd_back(env, node);
 }
 
