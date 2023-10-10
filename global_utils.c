@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/10 23:33:33 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/10 23:40:30 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,8 +139,7 @@ void	create_env(char **envp)
 	prev = NULL;
 	while (*envp)
 	{
-		// make sure the flag should always be in this particular function
-		ptr = ft_lstnew(get_key(*envp), get_value(*envp), 1, prev);
+		ptr = ft_lstnew(get_key(*envp), get_value(*envp), !!ft_strchr(*envp, '='), prev);
 		ft_lstadd_back(env, ptr);
 		prev = ptr;
 		envp++;
@@ -152,7 +151,7 @@ void log_last_command(char *value)
 	char *arr[2];
 
 	if (!value)
-		return;
+		return ;
 	arr[0] = ft_strjoin("_=", value);
 	arr[1] = 0;
 	export(1, arr, get_envp_internal(NULL));
