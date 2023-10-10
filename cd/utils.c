@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:36:07 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/30 14:36:10 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/10 23:44:49 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,6 @@ char	*structure_path(char *curr_dir, char *dir)
 	tmp_path = join_dirs(curr_dir, dir);
 	slice = ft_split(tmp_path, '/');
 	free(tmp_path);
-	//	slice_ptr = slice;
-	//	while(*slice_ptr)
-	//		printf("%s/", *slice_ptr++);
-	//	puts("");
 	// TODO : protect this split?
 	slice_ptr = slice;
 	while (*slice_ptr)

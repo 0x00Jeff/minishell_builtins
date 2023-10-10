@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/10 23:40:30 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/10 23:44:21 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,9 +146,9 @@ void	create_env(char **envp)
 	}
 }
 
-void log_last_command(char *value)
+void	log_last_command(char *value)
 {
-	char *arr[2];
+	char	*arr[2];
 
 	if (!value)
 		return ;

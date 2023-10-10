@@ -1,12 +1,11 @@
-#include<stdio.h>
-#include<unistd.h>
-#include"builtins.h"
-#include<string.h>
-#include<stdlib.h>
-#include<libft.h>
+#include <stdio.h>
+#include <unistd.h>
+#include "builtins.h"
+#include <string.h>
+#include <stdlib.h>
+#include <libft.h>
 
-int g_exit_status;
-
+int	g_exit_status;
 
 int	main(int argc, char *argv[], char **envp)
 {
@@ -19,9 +18,9 @@ int	main(int argc, char *argv[], char **envp)
 
 	(void)argv;
 	(void)argc;
-	create_env(envp);			// TODO : add this
+	create_env(envp);
 	tmp_pwd = getcwd(NULL, 0);
-	pwd_trolling(tmp_pwd); // TODO : add this
+	pwd_trolling(tmp_pwd);
 	free(tmp_pwd);
 	while (1)
 	{
@@ -36,7 +35,7 @@ int	main(int argc, char *argv[], char **envp)
 			continue ;
 		args = ft_split(command, ' ');
 		if (!args)
-			continue;
+			continue ;
 		command_ptr = args[0];
 		tmp = &args[1];
 		while (*tmp++)
