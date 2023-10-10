@@ -1,4 +1,4 @@
-#include"utils.h"
+#include "utils.h"
 
 int	echo(int argc, char **args)
 {
@@ -20,9 +20,24 @@ int	echo(int argc, char **args)
 			break ;
 	}
 	while (i < argc - 1)
-		(ft_putstr_fd(args[i++], 1), ft_putstr_fd(" ", 1));
-	ft_putstr_fd(args[i++], 1);
+		print_spaced_arg(args[i++]);
+	print_last_arg(args[i], new_line);
+	return (0);
+}
+
+void	print_spaced_arg(char *arg)
+{
+	if (!arg)
+		return ;
+	ft_putstr_fd(arg, 1);
+	ft_putstr_fd(" ", 1);
+}
+
+void	print_last_arg(char *arg, int new_line)
+{
+	if (!arg)
+		return ;
+	ft_putstr_fd(arg, 1);
 	if (new_line)
 		ft_putstr_fd("\n", 1);
-	return (0);
 }

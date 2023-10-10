@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/10 22:59:31 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/10 23:33:33 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,5 +202,5 @@ void	set_env_value(char *key, char *value, int equal_sign)
 	if (!node)
 		append_to_env(env, key, value, equal_sign);
 	else
-		edit_env(node, value);
+		edit_env(node, value, equal_sign);
 }

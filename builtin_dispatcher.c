@@ -6,12 +6,13 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:09:31 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/01 16:57:32 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/10 23:35:51 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin_utils.h"
 #include "builtins.h"
+#include "global_utils.h"
 #include <libft.h>
 #include <stdio.h>
 #include <string.h> // TODO : add clone the libft that has ft_strcmp

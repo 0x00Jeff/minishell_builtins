@@ -19,6 +19,19 @@ int	validate_args(int args_num, char **args)
 	return (0);
 }
 
+int	ft_is_alphanum_underscore(char *str)
+{
+	if (!str)
+		return (1);
+	while (*str)
+	{
+		if (!ft_isalnum(*str) && *str != '_')
+			return (1);
+		str++;
+	}
+	return (0);
+}
+
 int	validate_var_name(char *str)
 {
 	char	*key;

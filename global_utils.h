@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:02:00 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/10 23:04:48 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/10 23:35:22 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,8 @@ char		*get_key(char *line);
 char		*get_value(char *line);
 void		set_env_value(char *key, char *value, int equal_sign);
 void		append_to_env(t_env **env, char *key, char *value, int equal_sign);
+void		edit_env(t_env *node, char *value, int equal_sign);
+int			is_concate(char *str);
+t_env		*get_envp(t_env *envp);
+t_env		**get_envp_internal(t_env *envp);
 #endif
