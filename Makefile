@@ -11,7 +11,7 @@ CD	= cd/cd.c cd/utils.c
 EXIT	= exit/exit.c exit/utils.c
 PWD	= pwd/pwd.c pwd/utils.c
 UNSET	= unset/unset.c unset/utils.c
-EXPORT	= export/export.c export/utils.c
+EXPORT	= export/export.c export/utils.c export/validation_utils.c
 ENV	= env/env.c env/utils.c
 
 M_SRC = $(ECHO) $(CD) $(EXIT) $(PWD) $(UNSET) $(EXPORT) $(ENV) global_utils.c builtin_dispatcher.c lst_operations.c

@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:35:10 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/10 23:08:30 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/10 23:17:34 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,6 @@ int	print_exports(t_env *env)
 		else
 			printf("declare -x %s\n", ptr->key);
 		ptr = ptr->next;
-	}
-	return (0);
-}
-
-int	validate_args(int args_num, char **args)
-{
-	int	i;
-
-	if (!args)
-		return (false);
-	i = 0;
-	while (i < args_num)
-	{
-		if (validate_var_name(args[i]))
-		{
-			printf("export: `%s': not a valid identifier\n", args[i]);
-			return (1);
-		}
-		i++;
 	}
 	return (0);
 }
@@ -91,33 +72,6 @@ void	edit_env(t_env *node, char *value, int equal_sign)
 	node->equal_sign = equal_sign;
 }
 
-int	validate_var_name(char *str)
-{
-	char	*key;
-	size_t	split_index;
-	int		res;
-
-	if (!str || is_bad_env_name_start(str[0]))
-		return (1);
-	split_index = 0;
-	if (is_concate(str))
-		split_index = (size_t)ft_strchr(str, '+') - (size_t)str;
-	else if (ft_strchr(str, '='))
-		split_index = (size_t)ft_strchr(str, '=') - (size_t)str;
-	if (split_index)
-		key = ft_substr(str, 0, split_index);
-	else
-		key = ft_strdup(str);
-	res = ft_is_alphanum_underscore(key + 1);
-	free(key);
-	return (res);
-}
-
-int	is_bad_env_name_start(char c)
-{
-	return (!ft_isalpha(c) && (c != '_'));
-}
-
 void	concate_env(char *key, char *value)
 {
 	t_env	*node;
@@ -140,17 +94,4 @@ void	concate_env(char *key, char *value)
 		node = ft_lstnew(key, value, 1, ft_lstlast(get_envp(NULL)));
 		ft_lstadd_back(get_envp_internal(NULL), node);
 	}
-}
-
-int	ft_is_alphanum_underscore(char *str)
-{
-	if (!str)
-		return (1);
-	while (*str)
-	{
-		if (!ft_isalnum(*str) && *str != '_')
-			return (1);
-		str++;
-	}
-	return (0);
 }
