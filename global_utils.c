@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/11 18:36:46 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/11 18:52:35 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ char	*pwd_trolling(char *str)
 
 	if (!str)
 		return (pwd);
-	//set_env_value(ft_strdup("OLDPWD"), trim_path(str), 1); // TODO : maybe shouldn't always be one!!;
+	set_env_value("OLDPWD", trim_path(str), 1); // TODO : maybe shouldn't always be one!!;
 	free(pwd);
 	pwd = trim_path(str);
+	set_env_value("PWD", ft_strdup(pwd), 1);
 	return (pwd);
 }
 
