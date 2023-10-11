@@ -35,7 +35,7 @@ exec:	$(EXEC_OBJ) $(LIBFT)/libft.a
 
 cp: $(NAME)
 	cp -rfv * ../1337/minishell-1337/src/minishell_builtins/
-	cp libbuiltins.a ../1337/minishell-1337/src/minishell_builtins/
+	#cp libbuiltins.a ../1337/minishell-1337/src/minishell_builtins/
 
 $(LIBFT)/libft.a:
 	make -C $(LIBFT) all
