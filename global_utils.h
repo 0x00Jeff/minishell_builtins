@@ -6,13 +6,15 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:02:00 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/10 23:35:22 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/11 14:25:28 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GLOBAL_UTILS_H
 # define GLOBAL_UTILS_H
 # include "lst_operations.h"
+# include "builtin_dispatcher.h"
+# include "builtins.h"
 # include <libft.h>
 # include <stdlib.h>
 
@@ -33,4 +35,5 @@ void		edit_env(t_env *node, char *value, int equal_sign);
 int			is_concate(char *str);
 t_env		*get_envp(t_env *envp);
 t_env		**get_envp_internal(t_env *envp);
+void		log_last_command(char *value);
 #endif

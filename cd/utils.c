@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:36:07 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/10 23:44:49 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/11 13:24:57 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	change_directory(char *dir)
 	if (chdir(dir) == -1)
 	{
 		perror("chdir");
-		return;
+		return ;
 	}
 	path = structure_path(pwd_trolling(NULL), dir);
 	pwd_trolling(path);
