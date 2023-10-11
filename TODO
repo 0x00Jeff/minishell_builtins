@@ -1,3 +1,4 @@
 - stress test the return value of the builtins
 - implement checking the existence of a path in cd
 - sort export keys ?
+- replace strcmp with ft_strcmp

@@ -6,13 +6,14 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/11 16:24:21 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:52:01 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "global_utils.h"
 #include <string.h> // TODO : GET RID OF THIS AND USE libft's instead!!
 #include "builtins.h" // GET RID OF THIS AFTER WORKING OUT A SOLUTION FOR LOG_LAST_COMMAND
+#include<stdio.h> // TODO : remove this!!
 
 extern int	g_exit_status;
 
@@ -148,14 +149,15 @@ void	create_env(char **envp)
 
 void	log_last_command(char *value)
 {
-	char	*arr[2];
-
+//	char	*arr[2];
+//
 	if (!value)
 		return ;
-	arr[0] = ft_strjoin("_=", value);
-	arr[1] = 0;
-	export(1, arr, get_envp_internal(NULL));
-	free(arr[0]);
+	set_env_value(ft_strdup("_"), ft_strdup(value), 1);
+//	arr[0] = ft_strjoin("_=", value);
+//	arr[1] = 0;
+//	export(1, arr, get_envp_internal(NULL));
+//	free(arr[0]);
 }
 
 char	*get_key(char *line)
@@ -197,9 +199,13 @@ void	set_env_value(char *key, char *value, int equal_sign)
 	if (!key || !value)
 		return ;
 	env = get_envp_internal(NULL);
-	node = search_in_env(*env, ft_strdup(value));
+	node = search_in_env(*env, ft_strdup(key));
 	if (!node)
+	{
 		append_to_env(env, key, value, equal_sign);
+	}
 	else
+	{
 		edit_env(node, value, equal_sign);
+	}
 }
