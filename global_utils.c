@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/11 16:52:01 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:54:53 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,15 +149,9 @@ void	create_env(char **envp)
 
 void	log_last_command(char *value)
 {
-//	char	*arr[2];
-//
 	if (!value)
 		return ;
 	set_env_value(ft_strdup("_"), ft_strdup(value), 1);
-//	arr[0] = ft_strjoin("_=", value);
-//	arr[1] = 0;
-//	export(1, arr, get_envp_internal(NULL));
-//	free(arr[0]);
 }
 
 char	*get_key(char *line)
@@ -201,11 +195,7 @@ void	set_env_value(char *key, char *value, int equal_sign)
 	env = get_envp_internal(NULL);
 	node = search_in_env(*env, ft_strdup(key));
 	if (!node)
-	{
 		append_to_env(env, key, value, equal_sign);
-	}
 	else
-	{
 		edit_env(node, value, equal_sign);
-	}
 }

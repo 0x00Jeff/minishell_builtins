@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:37:21 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/11 14:14:52 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:58:10 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ void	change_directory(char *dir);
 char	*trim_path(char *pwd);
 void	edit_env(t_env *node, char *value);
 char	*get_env_value(char *var);
-void	concate_env(char *elem);
-int		is_concate(char *str);
-void	concate_env_node(char *key, char *value);
 int		validate_args(int args_num, char **args);
 int		is_bad_env_name_start(char c);
 */

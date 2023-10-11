@@ -1,3 +1,2 @@
 we don't set OLDPWD
 unset PWD; cd anything; fails to set pwd after its been unset
-export += to non-existing variable segfaults

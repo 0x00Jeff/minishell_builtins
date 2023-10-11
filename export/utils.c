@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:35:10 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/11 16:42:46 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:58:47 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	concate_env(char *key, char *value)
 
 	if (!key)
 		return ;
-	node = search_in_env(get_envp(NULL), key);
+	node = search_in_env(get_envp(NULL), ft_strdup(key));
 	if (node)
 	{
 		free(key);
