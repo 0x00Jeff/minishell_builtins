@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:52:58 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/10 23:06:35 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:25:00 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	export(int argc, char **argv, t_env **env)
 {
 	int		i;
 	char	*ptr;
-	t_env	*tmp_node;
 	char	*key;
 
 	if (!env)
@@ -32,11 +31,7 @@ int	export(int argc, char **argv, t_env **env)
 		if (handle_concate_case(ptr))
 			continue ;
 		key = get_key(ptr);
-		tmp_node = search_in_env(*env, key);
-		if (!tmp_node)
-			append_to_env(env, get_key(ptr), get_value(ptr), !!ft_strchr(ptr, '='));
-		else
-			edit_env(tmp_node, get_value(ptr), 1);
+		set_env_value(key, get_value(ptr), !!ft_strchr(ptr, '='));
 	}
 	return (0);
 }
