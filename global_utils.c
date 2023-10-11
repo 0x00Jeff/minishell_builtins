@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/11 16:54:53 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/11 18:36:46 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_env	*search_in_env(t_env *env, char *key)
 			return (ptr);
 		ptr = ptr->next;
 	}
-	return (free(key), NULL);
+	return (NULL);
 }
 
 t_env	**get_envp_internal(t_env *envp)
@@ -193,7 +193,7 @@ void	set_env_value(char *key, char *value, int equal_sign)
 	if (!key || !value)
 		return ;
 	env = get_envp_internal(NULL);
-	node = search_in_env(*env, ft_strdup(key));
+	node = search_in_env(*env, key);
 	if (!node)
 		append_to_env(env, key, value, equal_sign);
 	else

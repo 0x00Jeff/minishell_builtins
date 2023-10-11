@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:33:33 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/30 14:33:34 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/11 17:03:07 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	unset(int argc, char **args, t_env **env)
 	while (i < argc)
 	{
 		ptr = args[i++];
-		del_from_env(env, ptr);
+		del_from_env(env, ft_strdup(ptr));
 	}
 	return (0);
 }
