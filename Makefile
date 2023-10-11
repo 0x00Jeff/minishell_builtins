@@ -33,9 +33,8 @@ $(NAME): rf_lib $(M_OBJ)
 exec:	$(EXEC_OBJ) $(LIBFT)/libft.a
 	$(CC) $(CFLAGS) $(EXEC_OBJ) $(LIBFT)/libft.a -o $(EXEC)
 
-cp: $(NAME)
+cp: fclean
 	cp -rfv * ../1337/minishell-1337/src/minishell_builtins/
-	#cp libbuiltins.a ../1337/minishell-1337/src/minishell_builtins/
 
 $(LIBFT)/libft.a:
 	make -C $(LIBFT) all
