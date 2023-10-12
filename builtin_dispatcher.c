@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_dispatcher.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:09:31 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/11 14:24:19 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/12 14:25:04 by ylyoussf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ int	check_builtins(int argc, char *command, char **args)
 	else
 		used = 0;
 	if (used)
-		g_exit_status = res;
+		set_exit_status(res);
 	return (used);
 }

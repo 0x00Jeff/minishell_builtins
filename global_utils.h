@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   global_utils.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:02:00 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/11 14:25:28 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/12 14:27:56 by ylyoussf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "builtins.h"
 # include <libft.h>
 # include <stdlib.h>
+# include <globals.h>
 
 extern int	g_exit_status;
 char		*pwd_trolling(char *str);

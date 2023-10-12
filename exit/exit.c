@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:35:51 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/30 14:35:52 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/12 14:26:52 by ylyoussf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	my_exit(char *arg)
 {
 	int	status;
 
-	status = g_exit_status;
+	status = get_exit_status();
 	if (arg)
 		status = ft_atoi(arg);
 	free(pwd_trolling(NULL));
