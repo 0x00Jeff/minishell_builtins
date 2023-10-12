@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/12 16:52:06 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/12 17:02:16 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ char	*pwd_trolling(char *str)
 
 	if (!str)
 		return (pwd);
-	set_env_value("OLDPWD", trim_path(str), 1); // TODO : maybe shouldn't always be one!!;
+	set_env_value(ft_strdup("OLDPWD"), trim_path(str), 1); // TODO : maybe shouldn't always be one!!;
 	free(pwd);
 	pwd = trim_path(str);
-	set_env_value("PWD", ft_strdup(pwd), 1);
+	set_env_value(ft_strdup("PWD"), ft_strdup(pwd), 1);
 	return (pwd);
 }
 
@@ -152,7 +152,7 @@ void	log_last_command(char *value)
 {
 	if (!value)
 		return ;
-	set_env_value("_", ft_strdup(value), 1);
+	set_env_value(ft_strdup("_"), ft_strdup(value), 1);
 }
 
 char	*get_key(char *line)
@@ -200,6 +200,6 @@ void	set_env_value(char *key, char *value, int equal_sign)
 	else
 	{
 		edit_env(node, value, equal_sign);
-//		free(key);
+		free(key);
 	}
 }
