@@ -6,7 +6,7 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:24:47 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/11 13:24:47 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/12 14:40:32 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <libft.h>
-
-int	g_exit_status;
+#include "global_utils.h"
 
 int	main(int argc, char *argv[], char **envp)
 {

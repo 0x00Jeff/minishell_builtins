@@ -4,7 +4,7 @@ NAME = libbuiltins.a
 
 EXEC = minishell
 
-CFLAGS = -Wall -Wextra -Werror -I../../include -g -ggdb3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -I../../include # -g -ggdb3 -fsanitize=address
 
 ECHO	= echo/echo.c echo/utils.c
 CD	= cd/cd.c cd/utils.c

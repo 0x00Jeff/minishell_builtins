@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/11 18:52:35 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/12 16:52:06 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ void	log_last_command(char *value)
 {
 	if (!value)
 		return ;
-	set_env_value(ft_strdup("_"), ft_strdup(value), 1);
+	set_env_value("_", ft_strdup(value), 1);
 }
 
 char	*get_key(char *line)
@@ -198,5 +198,8 @@ void	set_env_value(char *key, char *value, int equal_sign)
 	if (!node)
 		append_to_env(env, key, value, equal_sign);
 	else
+	{
 		edit_env(node, value, equal_sign);
+//		free(key);
+	}
 }
