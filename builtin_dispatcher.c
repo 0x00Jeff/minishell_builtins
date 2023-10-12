@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:09:31 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/12 14:25:04 by ylyoussf         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:09:59 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 #include "global_utils.h"
 #include <libft.h>
 #include <stdio.h>
-#include <string.h> // TODO : add clone the libft that has ft_strcmp
-
-int	g_exit = 0;
 
 int	check_builtins(int argc, char *command, char **args)
 {
@@ -28,19 +25,19 @@ int	check_builtins(int argc, char *command, char **args)
 		return (0);
 	res = 0;
 	used = 1;
-	if (!strcmp(command, "echo")) // TODO : use libft version that has ft_strcmp
+	if (!ft_strcmp(command, "echo"))
 		res = echo(argc, args);
-	else if (!strcmp(command, "cd"))
+	else if (!ft_strcmp(command, "cd"))
 		res = cd(*args, get_envp(NULL));
-	else if (!strcmp(command, "pwd"))
+	else if (!ft_strcmp(command, "pwd"))
 		res = pwd();
-	else if (!strcmp(command, "export"))
+	else if (!ft_strcmp(command, "export"))
 		res = export(argc, args, get_envp_internal(NULL));
-	else if (!strcmp(command, "unset"))
+	else if (!ft_strcmp(command, "unset"))
 		res = unset(argc, args, get_envp_internal(NULL));
-	else if (!strcmp(command, "exit"))
+	else if (!ft_strcmp(command, "exit"))
 		my_exit(*args);
-	else if (!strcmp(command, "env"))
+	else if (!ft_strcmp(command, "env"))
 		res = env_(get_envp_internal(NULL));
 	else
 		used = 0;

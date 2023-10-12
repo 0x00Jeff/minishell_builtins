@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:36:07 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/11 18:51:02 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/12 17:10:18 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*structure_path(char *curr_dir, char *dir)
 
 	if (!curr_dir || !dir)
 		return (NULL);
-	if (!strcmp(dir, "."))
+	if (!ft_strcmp(dir, "."))
 		return (ft_strdup(curr_dir));
 	if (*dir == '/')
 		return (ft_strdup(dir));
@@ -62,7 +62,7 @@ char	*structure_path(char *curr_dir, char *dir)
 	while (*slice_ptr)
 	{
 		//		printf("- slice = %s && slice++ = %s\n", *slice_ptr, *(slice_ptr + 1));
-		if (*(slice_ptr + 1) && !strcmp(*(slice_ptr + 1), ".."))
+		if (*(slice_ptr + 1) && !ft_strcmp(*(slice_ptr + 1), ".."))
 		{
 			//			printf("skipping over '%s'\n", *slice_ptr);
 			slice_ptr += 2;
@@ -86,9 +86,9 @@ char	*join_dirs(char *dirname, char *basename)
 
 	if (!dirname || !basename)
 		return (NULL);
-	if (!strcmp(dirname, "/"))
+	if (!ft_strcmp(dirname, "/"))
 	{
-		if (!strcmp(basename, ".."))
+		if (!ft_strcmp(basename, ".."))
 			return (ft_strdup("/"));
 		tmp = strdup("/");
 	}

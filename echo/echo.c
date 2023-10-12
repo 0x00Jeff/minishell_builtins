@@ -6,12 +6,12 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:24:38 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/11 18:44:59 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/12 17:11:33 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-#include<stdio.h>
+#include <stdio.h>
 
 int	echo(int argc, char **args)
 {
@@ -25,7 +25,7 @@ int	echo(int argc, char **args)
 	{
 		opt = args[i];
 		if (!opt || !ft_strlen(opt))
-			break;
+			break ;
 		if (ft_strlen(opt + 1) && consist_of(opt + 1, 'n'))
 		{
 			new_line = 0;
