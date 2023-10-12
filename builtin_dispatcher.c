@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:09:31 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/12 17:09:59 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/12 18:36:54 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 #include "global_utils.h"
 #include <libft.h>
 #include <stdio.h>
+
+int	handle_exit_status(int used, int res)
+{
+	if (used)
+		set_exit_status(res);
+	return (used);
+}
 
 int	check_builtins(int argc, char *command, char **args)
 {
@@ -39,9 +46,5 @@ int	check_builtins(int argc, char *command, char **args)
 		my_exit(*args);
 	else if (!ft_strcmp(command, "env"))
 		res = env_(get_envp_internal(NULL));
-	else
-		used = 0;
-	if (used)
-		set_exit_status(res);
-	return (used);
+	return (handle_exit_status(used, res));
 }

@@ -8,8 +8,8 @@ CFLAGS = -Wall -Wextra -Werror -I../../include # -g -ggdb3 -fsanitize=address
 
 ECHO	= echo/echo.c echo/utils.c
 CD	= cd/cd.c cd/utils.c
-EXIT	= exit/exit.c exit/utils.c
-PWD	= pwd/pwd.c pwd/utils.c
+EXIT	= exit/exit.c
+PWD	= pwd/pwd.c
 UNSET	= unset/unset.c unset/utils.c
 EXPORT	= export/export.c export/utils.c export/validation_utils.c
 ENV	= env/env.c env/utils.c
