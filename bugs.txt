@@ -1,0 +1,2 @@
+- cd non-existing-path doesn't correctly set the exit status
+- echo $garbage heap bofs

@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:36:07 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/13 14:46:18 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/13 20:08:59 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	change_directory(char *dir)
 	if (chdir(dir) == -1)
 	{
 		perror("chdir");
+		set_exit_status(1);
 		return ;
 	}
 	path = structure_path(pwd_trolling(NULL), dir);
@@ -35,12 +36,6 @@ void	change_directory(char *dir)
 
 char	*structure_path(char *curr_dir, char *dir)
 {
-	char	*path;
-	char	**slice;
-	char	**slice_ptr;
-	char	*tmp;
-	char	*tmp_path;
-
 	if (!curr_dir || !dir)
 		return (NULL);
 	if (!ft_strcmp(dir, "."))
@@ -48,23 +43,37 @@ char	*structure_path(char *curr_dir, char *dir)
 	if (*dir == '/')
 		return (ft_strdup(dir));
 	if (!ft_strnstr(dir, "..", ft_strlen(dir)))
-		return (joins_paths(curr_dir, dir));
-//	handle_dot_dot_path(curr_dir, dir);
+		return (join_paths(curr_dir, dir));
+	return (handle_dot_dot_path(join_paths(curr_dir, dir)));
+}
+
+char	*handle_dot_dot_path(char *joined_paths)
+{
+	char *path;
+	char **slice;
+	char **slice_ptr;
+	char *tmp;
+	if (!joined_paths)
+		return (NULL);
+
 	path = ft_strdup("/");
-	tmp_path = join_dir_chunks(curr_dir, dir);
-	slice = ft_split(tmp_path, '/');
-	free(tmp_path);
+	slice = ft_split(joined_paths, '/');
+	free(joined_paths);
 	// TODO : protect this split?
 	slice_ptr = slice;
 	while (*slice_ptr)
 	{
+		print_slices(slice);
 		//		printf("- slice = %s && slice++ = %s\n", *slice_ptr, *(slice_ptr + 1));
 		if (*(slice_ptr + 1) && !ft_strcmp(*(slice_ptr + 1), ".."))
 		{
-			//			printf("skipping over '%s'\n", *slice_ptr);
-			slice_ptr += 2;
+			puts("shifting slices!!");
+			//slice_ptr;
+			shift_slices(slice_ptr);
+			print_slices(slice);
 			continue ;
 		}
+		printf("chunk = %s\n", *slice_ptr);
 		//		printf("===> joining '%s' and '%s'\n", path, *slice_ptr);
 		tmp = join_dir_chunks(path, *slice_ptr);
 		//		printf("===> so far path = '%s'\n", tmp);
@@ -76,14 +85,65 @@ char	*structure_path(char *curr_dir, char *dir)
 	return (path);
 }
 
-char *joins_paths(char *dirname, char *basename)
+void print_slices(char **slices)
 {
-	char *path;
-	char *tmp;
+	if (!slices)
+		return ;
+	puts("---------------- new slice listing --------------");
+	while(*slices)
+		printf("slice = %s\n", *slices++);
+	puts("---------------- end slice listing --------------");
+}
+
+void shift_slices(char **slices)
+{
+	if (!slices)
+		return ;
+
+	free(*slices);
+	free(*(slices + 1));
+	while(*(slices + 2))
+	{
+		*slices = *(slices + 2);
+		slices++;
+	}
+	*slices = *(slices + 2);
+}
+
+int	doesnt_exist(char *path)
+{
+	DIR	*useless_dir;
+	char *tmp_trim;
+	int res;
+	if (!path)
+		return (-1);
+	tmp_trim = trim_path(path);
+	useless_dir = opendir(tmp_trim);
+	printf("useless_dir = %p\n", useless_dir);
+	res = !!useless_dir;
+	printf("%s -> res : %d\n", path, res);
+	if (useless_dir)
+	{
+		res = 0;
+		printf("%s directory exists!\n", tmp_trim);
+		closedir(useless_dir);
+	}
+	else
+	{
+		res = -1;
+		printf("%s directory doesnt exists!\n", tmp_trim);
+	}
+	printf("returned res = %d\n", res);
+	return (res);
+}
+
+char	*join_paths(char *dirname, char *basename)
+{
+	char	*path;
+	char	*tmp;
 
 	if (!dirname || !basename)
 		return (NULL);
-
 	tmp = ft_strjoin(dirname, "/");
 	path = ft_strjoin(tmp, basename);
 	return (free(tmp), path);

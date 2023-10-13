@@ -6,7 +6,7 @@
 /*   By: afatimi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 21:40:43 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/12 17:11:46 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/13 17:00:41 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "global_utils.h"
@@ -22,7 +22,6 @@ t_env	*ft_lstnew(char *key, char *value, int equal_sign, t_env *prev)
 	node = (t_env *)malloc(sizeof(t_env));
 	if (!node)
 		return (NULL);
-	// TODO : protecc malloc
 	node->key = key;
 	node->value = value;
 	node->prev = prev;

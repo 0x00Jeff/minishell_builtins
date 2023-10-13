@@ -6,14 +6,14 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:06:46 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/12 17:10:58 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/13 17:00:18 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "global_utils.h"
 #include <string.h> // TODO : GET RID OF THIS AND USE libft's instead!!
 #include "builtins.h" // GET RID OF THIS AFTER WORKING OUT A SOLUTION FOR LOG_LAST_COMMAND
-#include<stdio.h> // TODO : remove this!!
+#include <stdio.h> // TODO : remove this!!
 
 extern int	g_exit_status;
 
