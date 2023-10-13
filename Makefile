@@ -33,6 +33,7 @@ exec:	$(EXEC_OBJ) $(LIBFT)/libft.a
 	$(CC) $(CFLAGS) $(EXEC_OBJ) $(LIBFT)/libft.a -o $(EXEC)
 
 cp: $(NAME) fclean
+	find . -name "*~" -delete
 	cp -rfv * ../1337/minishell-1337/src/minishell_builtins/
 
 $(LIBFT)/libft.a:

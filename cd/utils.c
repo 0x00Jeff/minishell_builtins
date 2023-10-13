@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:36:07 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/12 17:10:18 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/13 14:46:18 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,10 @@ char	*structure_path(char *curr_dir, char *dir)
 	if (*dir == '/')
 		return (ft_strdup(dir));
 	if (!ft_strnstr(dir, "..", ft_strlen(dir)))
-	{
-		tmp = ft_strjoin(curr_dir, "/");
-		path = ft_strjoin(tmp, dir);
-		return (free(tmp), path);
-	}
+		return (joins_paths(curr_dir, dir));
+//	handle_dot_dot_path(curr_dir, dir);
 	path = ft_strdup("/");
-	tmp_path = join_dirs(curr_dir, dir);
+	tmp_path = join_dir_chunks(curr_dir, dir);
 	slice = ft_split(tmp_path, '/');
 	free(tmp_path);
 	// TODO : protect this split?
@@ -69,7 +66,7 @@ char	*structure_path(char *curr_dir, char *dir)
 			continue ;
 		}
 		//		printf("===> joining '%s' and '%s'\n", path, *slice_ptr);
-		tmp = join_dirs(path, *slice_ptr);
+		tmp = join_dir_chunks(path, *slice_ptr);
 		//		printf("===> so far path = '%s'\n", tmp);
 		free(path);
 		path = tmp;
@@ -79,7 +76,20 @@ char	*structure_path(char *curr_dir, char *dir)
 	return (path);
 }
 
-char	*join_dirs(char *dirname, char *basename)
+char *joins_paths(char *dirname, char *basename)
+{
+	char *path;
+	char *tmp;
+
+	if (!dirname || !basename)
+		return (NULL);
+
+	tmp = ft_strjoin(dirname, "/");
+	path = ft_strjoin(tmp, basename);
+	return (free(tmp), path);
+}
+
+char	*join_dir_chunks(char *dirname, char *basename)
 {
 	char	*tmp;
 	char	*path;
