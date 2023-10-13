@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:09:31 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/12 18:36:54 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/13 14:13:14 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 int	handle_exit_status(int used, int res)
 {
+	if (res == 69)
+		used = 0;
 	if (used)
 		set_exit_status(res);
 	return (used);
@@ -30,7 +32,7 @@ int	check_builtins(int argc, char *command, char **args)
 
 	if (!command)
 		return (0);
-	res = 0;
+	res = 69;
 	used = 1;
 	if (!ft_strcmp(command, "echo"))
 		res = echo(argc, args);
