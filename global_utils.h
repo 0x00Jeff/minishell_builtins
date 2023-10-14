@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:02:00 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/13 19:25:03 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/14 22:17:23 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <globals.h>
 # include <stdbool.h>
+# include <stringbuilder.h>
 
 extern int	g_exit_status;
 char		*pwd_trolling(char *str);

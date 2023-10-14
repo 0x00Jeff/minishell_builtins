@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:36:07 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/14 18:51:30 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/14 22:42:25 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,33 @@ void	change_directory(char *dir)
 		return ;
 	}
 	path = structure_path(pwd_trolling(NULL), dir);
-	pwd_trolling(path);
+	if (!opendir(path))
+	{
+		fprintf(stderr, "SHELL69: cd: ..: No such file or directory\n");
+		pwd_trolling(trim_path(join_paths(pwd_trolling(NULL), dir)));
+	}
+	else
+		pwd_trolling(structure_path(pwd_trolling(NULL), dir));
 	free(path);
+}
+
+char	*contruct_path(char **path)
+{
+	t_strbuilder	*sb;
+	char			*consumed;
+
+	if (!*path)
+		return (ft_strdup("/"));
+	sb = stringbuilder();
+	while (*path)
+	{
+		sb_append(sb, "/");
+		sb_append(sb, *path);
+		path++;
+	}
+	consumed = sb->str;
+	free(sb);
+	return (consumed);
 }
 
 char	*structure_path(char *curr_dir, char *dir)
@@ -44,106 +69,94 @@ char	*structure_path(char *curr_dir, char *dir)
 		return (ft_strdup(dir));
 	if (!ft_strnstr(dir, "..", ft_strlen(dir)))
 		return (join_paths(curr_dir, dir));
-	print_slices(handle_dot_dot_path(join_paths(curr_dir, dir)));
-	return (NULL);
+	return (contruct_path(handle_dot_dot_path(join_paths(curr_dir, dir))));
+}
+
+int	is_dot_dot(char *slice)
+{
+	if (!slice)
+		return (false);
+	return (!ft_strcmp(slice, ".."));
+}
+
+void	trim_slices(char **slices)
+{
+	if (!slices || !*slices)
+		return ;
+	while (*slices && is_dot_dot(*slices))
+	{
+		free(*slices);
+		*slices = NULL;
+		slices++;
+	}
+	while (*slices && !is_dot_dot(*slices))
+		slices++;
+	if (*slices)
+		shift_slices(slices - 1);
 }
 
 char	**handle_dot_dot_path(char *joined_paths)
 {
-	char *path;
-	char **slice;
-	char **slice_ptr;
-	//char *tmp;
+	char	**slices;
+
 	if (!joined_paths)
 		return (NULL);
-
-	path = ft_strdup("/");
-	slice = ft_split(joined_paths, '/');
+	slices = ft_split(joined_paths, '/');
 	free(joined_paths);
-	// TODO : protect this split?
-	slice_ptr = slice;
-	while (slice_ptr && *slice_ptr)
+	while (slices && has_dot_dot(slices))
+		trim_slices(slices);
+	return (slices);
+}
+
+int	has_dot_dot(char **slices)
+{
+	size_t	i;
+
+	if (!slices || !*slices)
+		return (false);
+	i = 0;
+	while (slices[i])
 	{
-	//	print_slices(slice);
-		//		printf("- slice = %s && slice++ = %s\n", *slice_ptr, *(slice_ptr + 1));
-		if (*(slice_ptr + 1) && !ft_strcmp(*(slice_ptr + 1), ".."))
-		{
-		//	printf("shifting slices @ %s\n", *slice_ptr);
-			if (slice_ptr == slice && ft_strcmp(*slice_ptr, ".."))
-				shift_slices(slice_ptr + 1);
-			else{
-				slice_ptr--;
-				shift_slices(slice_ptr + 1);
-			}
-			print_slices(slice);
-			//printf(" 8=====> now pointing @ slice : %s\n", *slice_ptr);
-			continue ;
-		}
-	//	printf(" 8=====> now pointing @ slice : %s\n", *slice_ptr);
-		/*
-		printf("chunk = %s\n", *slice_ptr);
-		//		printf("===> joining '%s' and '%s'\n", path, *slice_ptr);
-		tmp = join_dir_chunks(path, *slice_ptr);
-		//		printf("===> so far path = '%s'\n", tmp);
-		free(path);
-		path = tmp;
-		*/
-		slice_ptr++;
+		if (!ft_strcmp(slices[i++], ".."))
+			return (true);
 	}
-	return (slice);
+	return (false);
 }
 
-void print_slices(char **slices)
+void	shift_slices(char **slices)
 {
-	if (!slices)
+	if (!slices && !*slices)
 		return ;
-	puts("---------------- new slice listing --------------");
-	while(*slices)
-		printf("slice = %s\n", *slices++);
-	puts("---------------- end slice listing --------------");
-}
-
-void shift_slices(char **slices)
-{
-	if (!slices)
-		return ;
-
-	free(*slices);
-	*slices = NULL;
-	free(*(slices + 1));
-	*(slices + 1) = NULL;
-	while(*(slices + 2))
+	free(slices[0]);
+	free(slices[1]);
+	slices[0] = NULL;
+	slices[1] = NULL;
+	while (slices[2])
 	{
-		*slices = *(slices + 2);
+		slices[0] = slices[2];
 		slices++;
 	}
-	*slices = *(slices + 2);
+	slices[0] = slices[2];
 }
 
 int	doesnt_exist(char *path)
 {
-	DIR	*useless_dir;
-	char *tmp_trim;
-	int res;
+	DIR		*useless_dir;
+	char	*tmp_trim;
+	int		res;
+
 	if (!path)
 		return (-1);
 	tmp_trim = trim_path(path);
 	useless_dir = opendir(tmp_trim);
-	printf("useless_dir = %p\n", useless_dir);
 	res = !!useless_dir;
-	printf("%s -> res : %d\n", path, res);
 	if (useless_dir)
 	{
 		res = 0;
-		printf("%s directory exists!\n", tmp_trim);
 		closedir(useless_dir);
 	}
 	else
-	{
 		res = -1;
-		printf("%s directory doesnt exists!\n", tmp_trim);
-	}
-	printf("returned res = %d\n", res);
 	return (res);
 }
 
