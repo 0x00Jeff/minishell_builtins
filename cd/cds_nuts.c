@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:36:07 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/13 20:08:59 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/14 18:51:30 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,16 @@ char	*structure_path(char *curr_dir, char *dir)
 		return (ft_strdup(dir));
 	if (!ft_strnstr(dir, "..", ft_strlen(dir)))
 		return (join_paths(curr_dir, dir));
-	return (handle_dot_dot_path(join_paths(curr_dir, dir)));
+	print_slices(handle_dot_dot_path(join_paths(curr_dir, dir)));
+	return (NULL);
 }
 
-char	*handle_dot_dot_path(char *joined_paths)
+char	**handle_dot_dot_path(char *joined_paths)
 {
 	char *path;
 	char **slice;
 	char **slice_ptr;
-	char *tmp;
+	//char *tmp;
 	if (!joined_paths)
 		return (NULL);
 
@@ -61,28 +62,35 @@ char	*handle_dot_dot_path(char *joined_paths)
 	free(joined_paths);
 	// TODO : protect this split?
 	slice_ptr = slice;
-	while (*slice_ptr)
+	while (slice_ptr && *slice_ptr)
 	{
-		print_slices(slice);
+	//	print_slices(slice);
 		//		printf("- slice = %s && slice++ = %s\n", *slice_ptr, *(slice_ptr + 1));
 		if (*(slice_ptr + 1) && !ft_strcmp(*(slice_ptr + 1), ".."))
 		{
-			puts("shifting slices!!");
-			//slice_ptr;
-			shift_slices(slice_ptr);
+		//	printf("shifting slices @ %s\n", *slice_ptr);
+			if (slice_ptr == slice && ft_strcmp(*slice_ptr, ".."))
+				shift_slices(slice_ptr + 1);
+			else{
+				slice_ptr--;
+				shift_slices(slice_ptr + 1);
+			}
 			print_slices(slice);
+			//printf(" 8=====> now pointing @ slice : %s\n", *slice_ptr);
 			continue ;
 		}
+	//	printf(" 8=====> now pointing @ slice : %s\n", *slice_ptr);
+		/*
 		printf("chunk = %s\n", *slice_ptr);
 		//		printf("===> joining '%s' and '%s'\n", path, *slice_ptr);
 		tmp = join_dir_chunks(path, *slice_ptr);
 		//		printf("===> so far path = '%s'\n", tmp);
 		free(path);
 		path = tmp;
+		*/
 		slice_ptr++;
 	}
-	free_list(slice);
-	return (path);
+	return (slice);
 }
 
 void print_slices(char **slices)
@@ -101,7 +109,9 @@ void shift_slices(char **slices)
 		return ;
 
 	free(*slices);
+	*slices = NULL;
 	free(*(slices + 1));
+	*(slices + 1) = NULL;
 	while(*(slices + 2))
 	{
 		*slices = *(slices + 2);
