@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:36:07 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/15 13:22:09 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/15 13:26:10 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 int	change_directory(char *dir)
 {
 	char	*path;
+	int		status;
 
 	if (!dir)
 		return (1);
@@ -33,11 +34,15 @@ int	change_directory(char *dir)
 	{
 		fprintf(stderr, "SHELL69: cd: ..: No such file or directory\n");
 		pwd_trolling(trim_path(join_paths(pwd_trolling(NULL), dir)));
+		status = 1;
 	}
 	else
+	{
 		pwd_trolling(structure_path(pwd_trolling(NULL), dir));
+		status = 0;
+	}
 	free(path);
-	return (0);
+	return (status);
 }
 
 char	*contruct_path(char **path)
