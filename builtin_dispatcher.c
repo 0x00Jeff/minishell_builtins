@@ -6,7 +6,7 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:09:31 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/15 13:12:04 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/15 13:22:14 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 int	handle_exit_status(int used, int res)
 {
-	printf("res = %d\n", res);
 	if (res == 69)
 		used = 0;
 	if (used)

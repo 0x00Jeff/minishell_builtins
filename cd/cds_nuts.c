@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:36:07 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/15 13:10:41 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/15 13:22:09 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,16 @@
 #include <string.h> // TODO : GET RID OF THIS AND USE LIBFT's INSTEAD!!
 #include <unistd.h>
 
-void	change_directory(char *dir)
+int	change_directory(char *dir)
 {
 	char	*path;
 
 	if (!dir)
-		return ;
+		return (1);
 	if (chdir(dir) == -1)
 	{
 		perror("chdir");
-		set_exit_status(1);
-		return ;
+		return (1);
 	}
 	path = structure_path(pwd_trolling(NULL), dir);
 	if (!opendir(path))
@@ -38,6 +37,7 @@ void	change_directory(char *dir)
 	else
 		pwd_trolling(structure_path(pwd_trolling(NULL), dir));
 	free(path);
+	return (0);
 }
 
 char	*contruct_path(char **path)
