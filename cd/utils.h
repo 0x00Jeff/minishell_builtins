@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:17:57 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/14 22:36:21 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/15 13:05:01 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ int		doesnt_exist(char *path);
 char	*consume_path(char *joined_paths);
 void	shift_slices(char **slices);
 int		has_dot_dot(char **slices);
+void	trim_slices(char **slices);
 #endif

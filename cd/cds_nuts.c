@@ -6,7 +6,7 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:36:07 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/14 22:42:25 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/15 13:10:41 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,100 +93,4 @@ void	trim_slices(char **slices)
 		slices++;
 	if (*slices)
 		shift_slices(slices - 1);
-}
-
-char	**handle_dot_dot_path(char *joined_paths)
-{
-	char	**slices;
-
-	if (!joined_paths)
-		return (NULL);
-	slices = ft_split(joined_paths, '/');
-	free(joined_paths);
-	while (slices && has_dot_dot(slices))
-		trim_slices(slices);
-	return (slices);
-}
-
-int	has_dot_dot(char **slices)
-{
-	size_t	i;
-
-	if (!slices || !*slices)
-		return (false);
-	i = 0;
-	while (slices[i])
-	{
-		if (!ft_strcmp(slices[i++], ".."))
-			return (true);
-	}
-	return (false);
-}
-
-void	shift_slices(char **slices)
-{
-	if (!slices && !*slices)
-		return ;
-	free(slices[0]);
-	free(slices[1]);
-	slices[0] = NULL;
-	slices[1] = NULL;
-	while (slices[2])
-	{
-		slices[0] = slices[2];
-		slices++;
-	}
-	slices[0] = slices[2];
-}
-
-int	doesnt_exist(char *path)
-{
-	DIR		*useless_dir;
-	char	*tmp_trim;
-	int		res;
-
-	if (!path)
-		return (-1);
-	tmp_trim = trim_path(path);
-	useless_dir = opendir(tmp_trim);
-	res = !!useless_dir;
-	if (useless_dir)
-	{
-		res = 0;
-		closedir(useless_dir);
-	}
-	else
-		res = -1;
-	return (res);
-}
-
-char	*join_paths(char *dirname, char *basename)
-{
-	char	*path;
-	char	*tmp;
-
-	if (!dirname || !basename)
-		return (NULL);
-	tmp = ft_strjoin(dirname, "/");
-	path = ft_strjoin(tmp, basename);
-	return (free(tmp), path);
-}
-
-char	*join_dir_chunks(char *dirname, char *basename)
-{
-	char	*tmp;
-	char	*path;
-
-	if (!dirname || !basename)
-		return (NULL);
-	if (!ft_strcmp(dirname, "/"))
-	{
-		if (!ft_strcmp(basename, ".."))
-			return (ft_strdup("/"));
-		tmp = strdup("/");
-	}
-	else
-		tmp = ft_strjoin(dirname, "/");
-	path = ft_strjoin(tmp, basename);
-	return (free(tmp), path);
 }
