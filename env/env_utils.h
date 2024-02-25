@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   env_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 14:33:04 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/30 14:33:56 by afatimi          ###   ########.fr       */
+/*   Created: 2023/09/30 14:24:47 by afatimi           #+#    #+#             */
+/*   Updated: 2023/10/15 16:37:46 by ylyoussf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#ifndef ENV_UTILS_H
+# define ENV_UTILS_H
+# include <libft.h>
+# include <stdio.h>
 
-void	del_from_env(t_env **env, char *key)
-{
-	t_env	*node;
-
-	if (!env || !*env)
-		return ;
-	node = search_in_env(*env, key);
-	if (!node)
-		return ;
-	if (node == *env)
-		*env = (*env)->next;
-	else if (!node->next)
-		node->prev->next = NULL;
-	else
-	{
-		node->prev->next = node->next;
-		node->next->prev = node->prev;
-	}
-	ft_lstdelone(node, free);
-}
+int	print_env(t_env *env);
+#endif

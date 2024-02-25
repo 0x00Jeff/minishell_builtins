@@ -1,29 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   exit_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 14:35:25 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/30 14:35:26 by afatimi          ###   ########.fr       */
+/*   Created: 2023/09/30 14:26:15 by afatimi           #+#    #+#             */
+/*   Updated: 2023/10/15 16:37:36 by ylyoussf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-
-int	print_env(t_env *env)
-{
-	t_env	*ptr;
-
-	if (!env)
-		return (1);
-	ptr = env;
-	while (ptr)
-	{
-		if (ptr->equal_sign && ptr->value)
-			printf("%s=%s\n", ptr->key, ptr->value);
-		ptr = ptr->next;
-	}
-	return (0);
-}
+#ifndef EXIT_UTILS_H
+# define EXIT_UTILS_H
+# include "../global_utils.h"
+# include <error.h>
+#endif

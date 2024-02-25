@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 14:24:47 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/30 14:26:02 by afatimi          ###   ########.fr       */
+/*   Created: 2023/09/30 14:35:39 by afatimi           #+#    #+#             */
+/*   Updated: 2023/10/15 13:37:11 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
-# include <libft.h>
-# include <stdio.h>
+#include "echo_utils.h"
 
-int	print_env(t_env *env);
-#endif
+int	consist_of(char *line, char c)
+{
+	return (count(line, c) == ft_strlen(line));
+}
+
+size_t	count(const char *s, int c)
+{
+	size_t	res;
+
+	res = 0;
+	while (*s)
+		res += *s++ == c;
+	return (res);
+}

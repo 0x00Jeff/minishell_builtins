@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   unset_utils.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 14:35:39 by afatimi           #+#    #+#             */
-/*   Updated: 2023/09/30 14:35:40 by afatimi          ###   ########.fr       */
+/*   Created: 2023/09/30 14:28:14 by afatimi           #+#    #+#             */
+/*   Updated: 2023/10/15 16:36:30 by ylyoussf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#ifndef UNSET_UTILS_H
+# define UNSET_UTILS_H
+# include "../global_utils.h"
+# include "../lst_operations.h"
+# include <stdlib.h>
 
-int	consist_of(char *line, char c)
-{
-	return (count(line, c) == ft_strlen(line));
-}
-
-size_t	count(const char *s, int c)
-{
-	size_t	res;
-
-	res = 0;
-	while (*s)
-		res += *s++ == c;
-	return (res);
-}
+void	del_from_env(t_env **env, char *key);
+#endif

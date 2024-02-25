@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   cds_nuts.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:36:07 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/15 13:26:10 by afatimi          ###   ########.fr       */
+/*   Updated: 2023/10/17 15:53:50 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "cd_utils.h"
 #include <libft.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h> // TODO : GET RID OF THIS AND USE LIBFT's INSTEAD!!
 #include <unistd.h>
+#include <executor.h>
 
 int	change_directory(char *dir)
 {
+	char	*joined_paths;
+	char	*trimmed_path;
 	char	*path;
 	int		status;
 
@@ -30,18 +32,17 @@ int	change_directory(char *dir)
 		return (1);
 	}
 	path = structure_path(pwd_trolling(NULL), dir);
-	if (!opendir(path))
+	if (!is_dir(path))
 	{
-		fprintf(stderr, "SHELL69: cd: ..: No such file or directory\n");
-		pwd_trolling(trim_path(join_paths(pwd_trolling(NULL), dir)));
+		joined_paths = join_paths(pwd_trolling(NULL), dir);
+		print_err(dir, -5);
+		trimmed_path = trim_path(joined_paths);
+		pwd_trolling(trimmed_path);
+		(free(joined_paths), free(trimmed_path), free(path));
 		status = 1;
 	}
 	else
-	{
-		pwd_trolling(structure_path(pwd_trolling(NULL), dir));
-		status = 0;
-	}
-	free(path);
+		return (pwd_trolling(path), free(path), 0);
 	return (status);
 }
 
@@ -66,6 +67,9 @@ char	*contruct_path(char **path)
 
 char	*structure_path(char *curr_dir, char *dir)
 {
+	char	*constructed;
+	char	**dot_dot;
+
 	if (!curr_dir || !dir)
 		return (NULL);
 	if (!ft_strcmp(dir, "."))
@@ -74,7 +78,10 @@ char	*structure_path(char *curr_dir, char *dir)
 		return (ft_strdup(dir));
 	if (!ft_strnstr(dir, "..", ft_strlen(dir)))
 		return (join_paths(curr_dir, dir));
-	return (contruct_path(handle_dot_dot_path(join_paths(curr_dir, dir))));
+	dot_dot = handle_dot_dot_path(join_paths(curr_dir, dir));
+	constructed = contruct_path(dot_dot);
+	free_list(dot_dot);
+	return (constructed);
 }
 
 int	is_dot_dot(char *slice)
