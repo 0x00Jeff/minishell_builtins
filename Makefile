@@ -4,7 +4,7 @@ NAME = libbuiltins.a
 
 EXEC = minishell
 
-CFLAGS = -Wall -Wextra -Werror -Iinclude # -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Iinclude -DFROM_SUBMODULE # -g -fsanitize=address
 ECHO   = src/echo/echo.c src/echo/echo_utils.c
 CD     = src/cd/cd.c src/cd/cds_nuts.c src/cd/path_utils.c
 EXIT   = src/exit/exit.c
