@@ -6,13 +6,13 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:17:57 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/15 13:21:28 by afatimi          ###   ########.fr       */
+/*   Updated: 2024/02/26 19:40:22 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CD_UTILS_H
 # define CD_UTILS_H
-# include "../global_utils.h"
+# include <global_utils.h>
 
 int		change_directory(char *dir);
 char	*structure_path(char *curr_dir, char *dir);

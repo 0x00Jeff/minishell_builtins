@@ -6,14 +6,14 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:02:00 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/17 14:48:44 by afatimi          ###   ########.fr       */
+/*   Updated: 2024/02/26 19:41:10 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GLOBAL_UTILS_H
 # define GLOBAL_UTILS_H
-# include "builtin_dispatcher.h"
-# include "lst_operations.h"
+# include <builtin_dispatcher.h>
+# include <lst_operations.h>
 # include <globals.h>
 # include <libft.h>
 # include <stdbool.h>

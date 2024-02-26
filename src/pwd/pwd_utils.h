@@ -6,12 +6,12 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:26:42 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/15 16:36:43 by ylyoussf         ###   ########.fr       */
+/*   Updated: 2024/02/26 19:44:30 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PWD_UTILS_H
 # define PWD_UTILS_H
-# include "../global_utils.h"
+# include <global_utils.h>
 # include <stdio.h>
 #endif

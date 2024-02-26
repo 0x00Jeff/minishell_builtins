@@ -6,14 +6,14 @@
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:25:08 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/17 14:51:25 by afatimi          ###   ########.fr       */
+/*   Updated: 2024/02/26 19:45:17 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXPORT_UTILS_H
 # define EXPORT_UTILS_H
-# include "../global_utils.h"
-# include "../lst_operations.h"
+# include <global_utils.h>
+# include <lst_operations.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>

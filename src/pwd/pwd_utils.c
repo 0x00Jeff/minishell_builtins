@@ -6,11 +6,11 @@
 /*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:38:45 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/17 15:38:50 by afatimi          ###   ########.fr       */
+/*   Updated: 2024/02/26 19:44:42 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../global_utils.h"
+#include <global_utils.h>
 
 char	*pwd_trolling(char *str)
 {

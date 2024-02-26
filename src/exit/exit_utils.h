@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo_utils.h                                       :+:      :+:    :+:   */
+/*   exit_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 14:24:38 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/15 16:38:02 by ylyoussf         ###   ########.fr       */
+/*   Created: 2023/09/30 14:26:15 by afatimi           #+#    #+#             */
+/*   Updated: 2024/02/26 19:44:16 by afatimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ECHO_UTILS_H
-# define ECHO_UTILS_H
-# include "../global_utils.h"
-# include <unistd.h>
-
-void	print_spaced_arg(char *arg);
-void	print_last_arg(char *arg, int new_line);
-int		consist_of(char *line, char c);
-size_t	count(const char *s, int c);
+#ifndef EXIT_UTILS_H
+# define EXIT_UTILS_H
+# include <global_utils.h>
+# include <error.h>
 #endif

@@ -1,17 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_utils.h                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afatimi <afatimi@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: ylyoussf <ylyoussf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 14:26:15 by afatimi           #+#    #+#             */
-/*   Updated: 2023/10/15 16:37:36 by ylyoussf         ###   ########.fr       */
+/*   Created: 2022/11/15 16:14:32 by ylyoussf          #+#    #+#             */
+/*   Updated: 2022/11/16 18:44:23 by ylyoussf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXIT_UTILS_H
-# define EXIT_UTILS_H
-# include "../global_utils.h"
-# include <error.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <libft.h>
+
+size_t	ft_strlen_noseg(const char *s);
+char	*get_next_line(int fd);
+
 #endif
